@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import cocaCola from '../../assets/logos/coca-cola.png';
+import cuauhtemoc from '../../assets/logos/cuahutemoc.png';
+import emyco from '../../assets/logos/emyco.png';
+import sandler from '../../assets/logos/sandler.png';
+import nexe from '../../assets/logos/nexe.png';
+import gnp from '../../assets/logos/gnp.png';
+
+interface Props {
+  variant?: 'showcase' | 'footer';
+}
+const { variant = 'showcase' } = Astro.props;
+
+const logos = [
+  { src: cocaCola, alt: 'Coca-Cola' },
+  { src: cuauhtemoc, alt: 'Cervecería Cuauhtémoc' },
+  { src: emyco, alt: 'Emyco' },
+  { src: sandler, alt: 'Sandler Training' },
+  { src: nexe, alt: 'NEXE' },
+  { src: gnp, alt: 'Grupo Jezreel GNP' },
+];
+---
+
+{
+  variant === 'showcase' ? (
+    <div class="flex flex-wrap items-center justify-center gap-5">
+      {logos.map((logo) => (
+        <div class="flex items-center justify-center rounded-[6px] border border-line-200 bg-white px-6 py-4 shadow-sm">
+          <Image
+            src={logo.src}
+            alt={logo.alt}
+            height={96}
+            class="h-10 w-auto object-contain grayscale opacity-70 transition duration-300 hover:grayscale-0 hover:opacity-100 md:h-12"
+          />
+        </div>
+      ))}
+    </div>
+  ) : (
+    <div class="flex flex-wrap items-center gap-8">
+      {logos.map((logo) => (
+        <Image
+          src={logo.src}
+          alt={logo.alt}
+          height={64}
+          class="h-6 w-auto object-contain opacity-50 brightness-0 invert transition duration-300 hover:opacity-90"
+        />
+      ))}
+    </div>
+  )
+}

@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrimaryCta from '../../components/cta/PrimaryCta.astro';
+
+// El sitio es estático: no hay request en build time, así que `?tipo=` en
+// la URL real del visitante nunca es visible aquí. El markup se renderiza
+// con la copia CMV como fallback (válido sin JS) y el script de cliente lo
+// corrige a PPR si `location.search` trae `?tipo=ppr` — misma técnica que
+// CalendlyEmbed.astro.
+const copyByTipo = {
+  cmv: {
+    title: 'Tu Diagnóstico Comercial quedó agendado',
+    body: 'Revisa tu correo — ahí tienes la confirmación y el enlace de acceso a la videollamada. Antes de la sesión, ten a la mano el número aproximado de personas en tu equipo comercial y tu reto #1 actual.',
+  },
+  ppr: {
+    title: 'Tu sesión de Estrategia Patrimonial quedó agendada',
+    body: 'Revisa tu correo — ahí tienes la confirmación y el enlace de acceso a la videollamada. Antes de la sesión, piensa en un número: ¿a qué edad te gustaría dejar de depender de un sueldo?',
+  },
+};
+
+const title = 'Cita confirmada — Gracias';
+const description = 'Tu sesión con Jorge Sergio Ramírez quedó agendada.';
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <section
+    data-gracias-root
+    data-copy={JSON.stringify(copyByTipo)}
+    class="flex min-h-[70vh] flex-col items-center justify-center bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600 px-6 py-24 text-center md:px-16"
+  >
+    <div class="mb-7 grid h-16 w-16 place-items-center rounded-full bg-gold-500" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0d1b30" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5" />
+      </svg>
+    </div>
+    <h1 data-gracias-title class="mb-4 max-w-[560px] font-serif text-[30px] font-semibold text-bone-50 md:text-[38px]">
+      {copyByTipo.cmv.title}
+    </h1>
+    <p data-gracias-body class="mb-10 max-w-[520px] text-[16px] leading-[1.7] text-slate-400">
+      {copyByTipo.cmv.body}
+    </p>
+    <PrimaryCta href="/" variant="outline">Volver al inicio</PrimaryCta>
+  </section>
+</BaseLayout>
+
+<script>
+  // Conversión de analítica al llegar a la página de gracias — el redirect
+  // se configura dentro de Calendly (Confirmation Page) apuntando aquí.
+  // TODO: conectar GA4/Meta Pixel reales; por ahora solo alimenta dataLayer
+  // si existe, sin fallar si no hay ninguna herramienta instalada todavía.
+  type Tipo = 'cmv' | 'ppr';
+
+  const root = document.querySelector<HTMLElement>('[data-gracias-root]');
+  if (root) {
+    const requested = new URLSearchParams(location.search).get('tipo');
+    const tipo: Tipo = requested === 'ppr' ? 'ppr' : 'cmv';
+
+    if (tipo === 'ppr') {
+      try {
+        const copy = JSON.parse(root.dataset.copy || '{}') as Record<Tipo, { title: string; body: string }>;
+        const titleEl = root.querySelector('[data-gracias-title]');
+        const bodyEl = root.querySelector('[data-gracias-body]');
+        if (titleEl) titleEl.textContent = copy.ppr.title;
+        if (bodyEl) bodyEl.textContent = copy.ppr.body;
+      } catch {
+        // El fallback CMV ya renderizado server-side se queda tal cual.
+      }
+    }
+
+    // @ts-expect-error -- dataLayer es un global inyectado por GTM/GA4 cuando exista.
+    window.dataLayer = window.dataLayer || [];
+    // @ts-expect-error -- ídem
+    window.dataLayer.push({ event: 'booking_confirmed', booking_type: tipo });
+  }
+</script>

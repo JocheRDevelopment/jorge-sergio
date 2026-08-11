@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/hero/Hero.astro';
+import SocialProof from '../components/sections/SocialProof.astro';
+import Pillars from '../components/sections/Pillars.astro';
+import Historia from '../components/sections/Historia.astro';
+import Testimonios from '../components/sections/Testimonios.astro';
+import FaqAccordion from '../components/sections/FaqAccordion.astro';
+import StepCard from '../components/sections/StepCard.astro';
+import CalendlyEmbed from '../components/calendly/CalendlyEmbed.astro';
+import { getFaqForPage, faqSchema } from '../lib/faq';
+
+const faqEntries = await getFaqForPage('home');
+
+const title = 'Coaching de Liderazgo Comercial y Planeación Patrimonial';
+const description =
+  'Tu equipo no vende lo que debería y tu retiro no está garantizado. Jorge Sergio Ramírez, +40 años de trayectoria, te da el diagnóstico y la estrategia. Agenda tu sesión sin costo.';
+---
+
+<BaseLayout title={title} description={description} jsonLd={faqSchema(faqEntries)}>
+  <Hero
+    eyebrow="+40 años de trayectoria comercial"
+    headline="Tu equipo no vende lo que debería. Tu retiro no está garantizado. Los dos problemas se resuelven igual: con un sistema, no con suerte."
+    subhead="Más de 40 años ayudando a directores, empresarios y profesionales a escalar sus ventas y estructurar su retiro financiero — con un método, no con motivación de pizarrón."
+    ctaPrimary={{ label: 'Agendar Diagnóstico Comercial (Empresas)', href: '/?tipo=cmv#agenda' }}
+    ctaSecondary={{ label: 'Planear mi Retiro Financiero (Personal)', href: '/?tipo=ppr#agenda' }}
+  />
+
+  <SocialProof />
+
+  <Pillars />
+
+  <Historia variant="teaser" />
+
+  <Testimonios />
+
+  <FaqAccordion entries={faqEntries} />
+
+  <section id="agenda" class="bg-gradient-to-br from-navy-900 to-navy-700 px-6 py-20 md:px-16 md:py-[100px]">
+    <div class="mx-auto mb-14 max-w-[680px] text-center">
+      <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-300">
+        Agendamiento automático 24/7
+      </p>
+      <h2 class="mb-4 font-serif text-[28px] font-semibold text-bone-50 md:text-[36px]">
+        Agenda tu sesión sin hablar con nadie
+      </h2>
+      <p class="text-[16px] text-slate-400">
+        Elige el tipo de sesión, selecciona horario, responde las preguntas de filtro dentro del calendario y
+        recibe tu confirmación al instante.
+      </p>
+    </div>
+
+    <div class="mx-auto mb-16 grid max-w-[900px] gap-6 md:grid-cols-3">
+      <StepCard number={1} title="Elige el tipo de sesión y el horario" theme="dark" />
+      <StepCard number={2} title="Responde las preguntas de filtro" theme="dark" />
+      <StepCard number={3} title="Confirmación automática instantánea" theme="dark" />
+    </div>
+
+    <CalendlyEmbed initialTipo="cmv" theme="light" />
+  </section>
+</BaseLayout>

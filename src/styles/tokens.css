@@ -1,0 +1,54 @@
+/*
+ * Design tokens tomados literalmente del handoff de diseño (README.md /
+ * Home.dc.html del cliente). No inventar valores nuevos aquí — si hace
+ * falta un tono nuevo, se agrega a esta tabla, nunca inline en un componente.
+ */
+@theme {
+  /* Color — navy + bone + un solo dorado. No introducir más colores. */
+  --color-navy-900: #0a1728;
+  --color-navy-800: #0d1b30;
+  --color-navy-700: #142a4a;
+  --color-navy-600: #1a3358;
+
+  --color-gold-500: #c9a227;
+  --color-gold-300: #e4c766;
+  --color-gold-100: #f0ead9;
+
+  --color-bone-50: #f7f5f1;
+  --color-bone-100: #f2efe8;
+
+  --color-line-200: #e6e2d8;
+  --color-line-150: #eceae2;
+  --color-line-300: #d8d3c6;
+
+  --color-slate-100: #e8ecf2;
+  --color-slate-200: #dbe1ea;
+  --color-slate-300: #cfd6e0;
+  --color-slate-400: #b9c2d1;
+  --color-slate-500: #8a93a3;
+  --color-slate-600: #6c7d99;
+
+  --color-ink-700: #5c6577;
+  --color-ink-800: #4a5568;
+  --color-ink-900: #333c47;
+  --color-ink-base: #1b2430;
+
+  --color-muted-day: #c3bfb2;
+
+  /* Tipografía */
+  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+  --font-sans: 'Work Sans Variable', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radios */
+  --radius-btn: 3px;
+  --radius-card: 4px;
+  --radius-media: 6px;
+
+  /* Sombras */
+  --shadow-media: 0 30px 70px rgba(0, 0, 0, 0.45);
+  --shadow-embed: 0 30px 70px rgba(0, 0, 0, 0.35);
+
+  /* Breakpoints (por si se necesitan como variante de Tailwind) */
+  --breakpoint-tablet: 1024px;
+  --breakpoint-mobile: 640px;
+}

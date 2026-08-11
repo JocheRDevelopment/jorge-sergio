@@ -1,0 +1,32 @@
+---
+import JsonLd from './JsonLd.astro';
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, CONTACT } from '../../config/site';
+
+// Organization + WebSite, inyectado una sola vez en BaseLayout para todo el
+// sitio. Person vive aparte, solo en /sobre-jorge-sergio/.
+const schema = [
+  {
+    '@type': 'ProfessionalService',
+    '@id': `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    description: SITE_DESCRIPTION,
+    // TODO: reemplazar por un logo cuadrado real cuando exista.
+    logo: `${SITE_URL}/apple-touch-icon.png`,
+    image: `${SITE_URL}/og/og-default.jpg`,
+    email: CONTACT.email,
+    areaServed: 'MX',
+    priceRange: '$$',
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_NAME,
+    inLanguage: 'es-MX',
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  },
+];
+---
+
+<JsonLd schema={schema} />

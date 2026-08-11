@@ -1,0 +1,92 @@
+[
+  {
+    "id": "home-diferencia",
+    "page": "home",
+    "question": "¿Qué diferencia hay entre el Diagnóstico Comercial y la Estrategia Patrimonial?",
+    "answer": "El Diagnóstico Comercial es para dueños y directores que necesitan que su equipo de ventas venda más y con procesos, no con suerte. La Estrategia Patrimonial es para profesionistas y empresarios de 35 a 65 años que quieren un plan de retiro y protección del patrimonio ante la inflación. Son dos sesiones distintas — eliges la que corresponde a tu situación al agendar."
+  },
+  {
+    "id": "home-costo",
+    "page": "home",
+    "question": "¿Cuánto cuesta la primera sesión con Jorge Sergio?",
+    "answer": "La primera sesión, tanto de Diagnóstico Comercial como de Estrategia Patrimonial, no tiene costo. Es una llamada de 30 minutos para entender tu situación y decirte con claridad si — y cómo — podemos ayudarte."
+  },
+  {
+    "id": "home-modalidad",
+    "page": "home",
+    "question": "¿La sesión es en línea o presencial?",
+    "answer": "Es en línea, por videollamada. En cuanto agendas, recibes automáticamente el enlace de acceso — no necesitas coordinar nada por teléfono ni por correo."
+  },
+  {
+    "id": "home-duracion",
+    "page": "home",
+    "question": "¿Cuánto dura la llamada y qué necesito preparar?",
+    "answer": "30 minutos. Al agendar respondes 2 o 3 preguntas rápidas que nos ayudan a llegar a la sesión ya enfocados en tu reto — no necesitas preparar ninguna presentación ni documento."
+  },
+  {
+    "id": "home-tamano-empresa",
+    "page": "home",
+    "question": "¿Jorge Sergio trabaja con empresas pequeñas o solo con grandes corporativos?",
+    "answer": "Con ambos. La experiencia de Jorge Sergio viene de formar equipos comerciales dentro de organizaciones grandes (Coca-Cola, Cervecería Cuauhtémoc, entre otras), pero el método CMV está diseñado para implementarse en equipos de cualquier tamaño, incluyendo PyMEs con dos o tres vendedores."
+  },
+  {
+    "id": "cmv-que-es",
+    "page": "cmv",
+    "question": "¿Qué es el método CMV?",
+    "answer": "CMV es el sistema de Crecimiento, Mentoría y Ventas que usa Jorge Sergio para convertir equipos comerciales sin proceso en equipos autodirigidos y con accountability. Combina formación de neuroventas y venta consultiva, definición de procesos de prospección, y mentoría directa a los líderes del equipo — no es un curso genérico, se construye alrededor de tu equipo real."
+  },
+  {
+    "id": "cmv-tiempo-resultados",
+    "page": "cmv",
+    "question": "¿Cuánto tiempo toma ver resultados en el equipo comercial?",
+    "answer": "Los primeros cambios de comportamiento — accountability, uso consistente del proceso de prospección — suelen verse dentro de las primeras semanas. El impacto en cierres y facturación depende del ciclo de venta de tu industria, pero se define un objetivo medible desde la sesión de diagnóstico, no una promesa vaga."
+  },
+  {
+    "id": "cmv-crm",
+    "page": "cmv",
+    "question": "¿Funciona si mi equipo ya usa un CRM o una metodología de ventas?",
+    "answer": "Sí. El método CMV no reemplaza tu CRM ni tu metodología — les da la disciplina y el proceso de accountability que normalmente falta para que se usen de verdad, en vez de quedarse como una herramienta que el equipo ignora."
+  },
+  {
+    "id": "cmv-directores-equipo",
+    "page": "cmv",
+    "question": "¿Trabajas directo con el equipo comercial o solo con los directores?",
+    "answer": "Depende del alcance que se defina en el diagnóstico. Lo más común es trabajar primero con los líderes comerciales para instalar el sistema, y desde ahí extender la formación al equipo — así el proceso sobrevive aunque cambie la plantilla de vendedores."
+  },
+  {
+    "id": "cmv-diagnostico",
+    "page": "cmv",
+    "question": "¿Qué pasa en la sesión de Diagnóstico Comercial?",
+    "answer": "En 30 minutos revisamos el estado actual de tu equipo comercial (proceso, rotación, accountability, resultados), identificamos el cuello de botella real que está deteniendo tu facturación, y te digo con claridad si el método CMV es el camino correcto para tu empresa — sin presión ni discurso de venta."
+  },
+  {
+    "id": "ppr-que-es",
+    "page": "ppr",
+    "question": "¿Qué es una Planeación Patrimonial y de Retiro (PPR)?",
+    "answer": "Es una estrategia personalizada que define cuánto necesitas ahorrar, en qué instrumentos y con qué protección fiscal para sostener tu nivel de vida en el retiro y proteger tu patrimonio para tu familia — no una calculadora genérica, sino un plan construido con tu situación real."
+  },
+  {
+    "id": "ppr-ahorros-grandes",
+    "page": "ppr",
+    "question": "¿Necesito tener ya ahorros grandes para empezar una PPR?",
+    "answer": "No. La estrategia se construye a partir de tu capacidad de ahorro actual, sea cual sea. Entre antes empieces, menos esfuerzo mensual necesitas para llegar a la misma meta — por eso la sesión inicial es justo para dimensionar esto contigo."
+  },
+  {
+    "id": "ppr-inflacion",
+    "page": "ppr",
+    "question": "¿Cómo protege la PPR mi dinero de la inflación?",
+    "answer": "Distribuyendo tu ahorro en instrumentos pensados para crecer por encima de la inflación en el largo plazo, en vez de dejarlo perdiendo poder adquisitivo en una cuenta tradicional. La mezcla exacta depende de tu horizonte de retiro y tu tolerancia al riesgo, y se define en la sesión de estrategia."
+  },
+  {
+    "id": "ppr-fiscal",
+    "page": "ppr",
+    "question": "¿La estrategia patrimonial incluye optimización fiscal?",
+    "answer": "Sí. Parte del valor de una PPR bien diseñada es aprovechar los vehículos de ahorro para el retiro que existen en México y que tienen tratamiento fiscal preferente — es una de las primeras cosas que se revisan en la sesión."
+  },
+  {
+    "id": "ppr-sesion",
+    "page": "ppr",
+    "question": "¿Qué pasa en la Sesión de Estrategia Patrimonial?",
+    "answer": "En 30 minutos revisamos tu situación actual (edad, capacidad de ahorro, si ya tienes un plan de retiro o no), te muestro con números qué tan lejos o cerca estás de tu meta de retiro, y definimos si una estrategia patrimonial contigo tiene sentido — sin costo y sin compromiso."
+  }
+]

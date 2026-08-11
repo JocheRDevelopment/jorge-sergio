@@ -1,0 +1,28 @@
+---
+import LogoStrip from './LogoStrip.astro';
+
+const metrics = [
+  { value: '+40', label: 'Años de experiencia' },
+  { value: 'Miles', label: 'de vendedores capacitados' },
+  { value: '100%', label: 'Enfocado en resultados' },
+];
+---
+
+<section class="border-b border-line-200 bg-white px-6 py-14 md:px-16">
+  <p class="mb-8 text-center text-[13px] font-semibold uppercase tracking-[1.4px] text-slate-500">
+    Formó equipos comerciales en
+  </p>
+  <div class="mb-12">
+    <LogoStrip variant="showcase" />
+  </div>
+  <div class="mx-auto grid max-w-[920px] grid-cols-3 gap-8 text-center">
+    {
+      metrics.map((m) => (
+        <div>
+          <div class="font-serif text-[32px] font-bold text-navy-800 md:text-[40px]">{m.value}</div>
+          <div class="mt-1.5 text-[13px] text-ink-700 md:text-[14px]">{m.label}</div>
+        </div>
+      ))
+    }
+  </div>
+</section>

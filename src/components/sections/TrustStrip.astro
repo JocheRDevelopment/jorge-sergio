@@ -1,0 +1,14 @@
+---
+const items = ['Sin costo', 'Sin compromiso', 'Confirmación automática', 'Cero llamadas de venta'];
+---
+
+<div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
+  {
+    items.map((item) => (
+      <span class="flex items-center gap-2 text-[13.5px] font-medium text-slate-300">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold-500" aria-hidden="true" />
+        {item}
+      </span>
+    ))
+  }
+</div>

@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import TestimonialCard from './TestimonialCard.astro';
+
+interface Props {
+  pillar?: 'cmv' | 'ppr';
+  eyebrow?: string;
+  title?: string;
+}
+const {
+  pillar,
+  eyebrow = 'Resultados que hablan',
+  title = 'Testimonios y casos de éxito',
+} = Astro.props;
+
+const all = await getCollection('testimonials');
+const entries = pillar
+  ? all.filter((t) => t.data.pillar === pillar).slice(0, 3)
+  : // Home: mezcla representativa de ambos pilares.
+    [
+      all.find((t) => t.id === 'cmv-1'),
+      all.find((t) => t.id === 'ppr-1'),
+      all.find((t) => t.id === 'cmv-2'),
+    ].filter((t): t is NonNullable<typeof t> => Boolean(t));
+---
+
+<section id="testimonios" class="bg-bone-50 px-6 py-20 md:px-16 md:py-[100px]">
+  <div class="mx-auto mb-14 max-w-[640px] text-center">
+    <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">{eyebrow}</p>
+    <h2 class="font-serif text-[28px] font-semibold text-navy-800 md:text-[36px]">{title}</h2>
+  </div>
+  <div class="mx-auto grid max-w-[1140px] gap-7 md:grid-cols-3">
+    {
+      entries.map((t) => (
+        <TestimonialCard quote={t.data.quote} name={t.data.name} role={t.data.role} isPlaceholder={t.data.isPlaceholder} />
+      ))
+    }
+  </div>
+</section>

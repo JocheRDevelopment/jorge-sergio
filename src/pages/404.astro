@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PrimaryCta from '../components/cta/PrimaryCta.astro';
+
+const title = 'Página no encontrada';
+const description = 'La página que buscas no existe o fue movida.';
+---
+
+<BaseLayout title={title} description={description} noindex>
+  <section class="flex min-h-[70vh] flex-col items-center justify-center bg-bone-50 px-6 py-24 text-center">
+    <p class="mb-4 font-serif text-[64px] font-bold text-navy-800">404</p>
+    <h1 class="mb-4 max-w-[520px] font-serif text-[26px] font-semibold text-navy-800">
+      Esta página no existe, pero tu diagnóstico o tu plan de retiro sí pueden empezar hoy
+    </h1>
+    <p class="mb-9 max-w-[480px] text-[15.5px] leading-[1.7] text-ink-800">
+      El enlace que seguiste no corresponde a ninguna página del sitio. Puedes volver al inicio o agendar tu
+      sesión directamente.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <PrimaryCta href="/" variant="navy">Volver al inicio</PrimaryCta>
+      <PrimaryCta href="/agenda/" variant="gold">Agenda tu sesión</PrimaryCta>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import '../styles/global.css';
+import SEO from '../components/seo/SEO.astro';
+import FontPreload from '../components/seo/FontPreload.astro';
+import OrganizationSchema from '../components/seo/OrganizationSchema.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+import Nav from '../components/nav/Nav.astro';
+import Footer from '../components/footer/Footer.astro';
+import StickyMobileCta from '../components/cta/StickyMobileCta.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonical?: string;
+  noindex?: boolean;
+  ogType?: 'website' | 'profile' | 'article';
+  /** Schema JSON-LD específico de la página (Service, Person, FAQPage, BreadcrumbList...). */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, image, canonical, noindex, ogType, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0d1b30" />
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      canonical={canonical}
+      noindex={noindex}
+      ogType={ogType}
+    />
+    <FontPreload />
+    <OrganizationSchema />
+    {jsonLd && <JsonLd schema={jsonLd} />}
+  </head>
+  <body class="pb-16 lg:pb-0">
+    <Nav />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+    <StickyMobileCta />
+  </body>
+</html>

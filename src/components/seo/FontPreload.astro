@@ -1,0 +1,12 @@
+---
+// Precarga solo el subconjunto latino (el que realmente se usa en es-MX) de
+// los dos pesos above-the-fold. El resto de unicode-ranges/pesos se cargan
+// normalmente vía global.css sin bloquear el LCP. `?url` le pide a Vite la
+// URL final ya hasheada, así el preload apunta exactamente al archivo que el
+// navegador va a pedir.
+import workSansLatin from '@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2?url';
+import sourceSerifLatin from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2?url';
+---
+
+<link rel="preload" as="font" type="font/woff2" href={workSansLatin} crossorigin />
+<link rel="preload" as="font" type="font/woff2" href={sourceSerifLatin} crossorigin />

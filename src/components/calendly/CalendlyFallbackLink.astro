@@ -1,0 +1,23 @@
+---
+import { calendlyUrl, type EventType } from '../../config/site';
+
+interface Props {
+  tipo: EventType;
+  class?: string;
+  linkId?: string;
+}
+const { tipo, class: className = '', linkId } = Astro.props;
+---
+
+<p class:list={['text-[13px] text-slate-400', className]} data-calendly-fallback>
+  ¿El calendario no carga?
+  <a
+    id={linkId}
+    href={calendlyUrl(tipo)}
+    target="_blank"
+    rel="noopener"
+    class="font-semibold text-gold-500 hover:text-gold-300"
+  >
+    Abre el enlace directo de Calendly
+  </a>
+</p>

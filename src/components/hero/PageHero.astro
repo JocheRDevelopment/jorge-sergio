@@ -1,0 +1,46 @@
+---
+import PrimaryCta from '../cta/PrimaryCta.astro';
+
+interface Cta {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  subhead: string;
+  cta?: Cta;
+}
+
+const { eyebrow, headline, subhead, cta } = Astro.props;
+---
+
+<section class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600 px-6 py-20 md:px-16 md:py-24">
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.08]"
+    style="background-image: repeating-linear-gradient(115deg, rgba(201,162,39,0.6) 0px, rgba(201,162,39,0.6) 1px, transparent 1px, transparent 42px);"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="relative z-10 mx-auto max-w-[760px] text-center">
+    <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-500/40 px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[1.2px] text-gold-300">
+      {eyebrow}
+    </span>
+    <h1 class="mb-5 font-serif text-[32px] font-semibold leading-[1.2] text-bone-50 md:text-[44px]">
+      {headline}
+    </h1>
+    <p class="mx-auto max-w-[620px] text-[17px] leading-[1.6] text-slate-400">
+      {subhead}
+    </p>
+    {
+      cta && (
+        <div class="mt-9">
+          <PrimaryCta href={cta.href} variant="gold" size="lg">
+            {cta.label}
+          </PrimaryCta>
+        </div>
+      )
+    }
+  </div>
+</section>

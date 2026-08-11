@@ -1,0 +1,43 @@
+---
+import PrimaryCta from '../cta/PrimaryCta.astro';
+
+interface Props {
+  pillar: 'cmv' | 'ppr';
+  kicker: string;
+  title: string;
+  body: string;
+  bullets: string[];
+  ctaLabel: string;
+  ctaHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+}
+
+const { pillar, kicker, title, body, bullets, ctaLabel, ctaHref, secondaryLabel, secondaryHref } =
+  Astro.props;
+
+const accentBorder = pillar === 'cmv' ? 'border-t-navy-800' : 'border-t-gold-500';
+const ctaVariant = pillar === 'cmv' ? 'navy' : 'gold';
+---
+
+<article class:list={['rounded-[4px] border border-line-200 border-t-4 bg-white p-9 md:p-11', accentBorder]}>
+  <div class="mb-3 text-[12px] font-bold uppercase tracking-[1.2px] text-slate-500">{kicker}</div>
+  <h3 class="mb-4 font-serif text-[22px] font-semibold text-navy-800 md:text-[26px]">{title}</h3>
+  <p class="mb-6 text-[15.5px] leading-[1.7] text-ink-800">{body}</p>
+  <ul class="mb-8 flex flex-col gap-2.5">
+    {
+      bullets.map((b) => (
+        <li class="flex gap-2.5 text-[14.5px] text-ink-900">
+          <span class="font-bold text-gold-500">—</span>
+          {b}
+        </li>
+      ))
+    }
+  </ul>
+  <div class="flex flex-wrap items-center gap-5">
+    <PrimaryCta href={ctaHref} variant={ctaVariant}>{ctaLabel}</PrimaryCta>
+    <a href={secondaryHref} class="text-[14px] font-semibold text-gold-500 hover:text-gold-300">
+      {secondaryLabel} &rarr;
+    </a>
+  </div>
+</article>

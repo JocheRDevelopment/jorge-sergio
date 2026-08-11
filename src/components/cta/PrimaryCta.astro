@@ -1,0 +1,32 @@
+---
+// Botón CTA compartido. `variant` sigue los tres tratamientos del mock:
+// gold (acento principal), navy (secundario sobre fondo claro) y outline
+// (secundario sobre fondo oscuro).
+interface Props {
+  href: string;
+  variant?: 'gold' | 'navy' | 'outline';
+  class?: string;
+  size?: 'md' | 'lg';
+}
+
+const { href, variant = 'gold', class: className = '', size = 'md' } = Astro.props;
+
+const base =
+  'inline-flex items-center justify-center rounded-[3px] font-semibold transition-colors duration-150 min-h-[48px]';
+
+const sizes = {
+  md: 'px-6 py-3.5 text-[14.5px]',
+  lg: 'px-7 py-[17px] text-[15px]',
+};
+
+const variants = {
+  gold: 'bg-gold-500 text-navy-900 hover:bg-gold-300',
+  navy: 'bg-navy-800 text-bone-50 hover:bg-navy-700',
+  outline:
+    'bg-transparent border-[1.5px] border-slate-600 text-slate-100 hover:border-gold-300 hover:text-gold-300',
+};
+---
+
+<a href={href} class:list={[base, sizes[size], variants[variant], className]}>
+  <slot />
+</a>

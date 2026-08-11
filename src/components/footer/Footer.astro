@@ -1,0 +1,22 @@
+---
+import LogoStrip from '../sections/LogoStrip.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-navy-900 px-6 py-12 md:px-16">
+  <div class="flex flex-wrap items-center justify-between gap-5">
+    <div class="font-serif text-[17px] text-slate-400">Jorge Sergio Ramírez Lizárraga</div>
+    <div class="flex flex-wrap gap-7">
+      <a href="/liderazgo-comercial-cmv/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Liderazgo Comercial</a>
+      <a href="/planeacion-patrimonial-retiro/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Planeación Patrimonial</a>
+      <a href="/sobre-jorge-sergio/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Sobre Jorge</a>
+      <a href="/agenda/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Agenda tu sesión</a>
+      <a href="/aviso-de-privacidad/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Aviso de Privacidad</a>
+    </div>
+    <div class="text-[12.5px] text-ink-700">&copy; {year} &middot; Liderazgo Comercial &amp; Planeación Patrimonial</div>
+  </div>
+
+  <div class="mt-10 border-t border-white/10 pt-8">
+    <LogoStrip variant="footer" />
+  </div>
+</footer>

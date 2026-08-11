@@ -1,0 +1,123 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/hero/PageHero.astro';
+import SocialProof from '../../components/sections/SocialProof.astro';
+import Historia from '../../components/sections/Historia.astro';
+import PrincipleCard from '../../components/sections/PrincipleCard.astro';
+import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+import { CAREER_HISTORY, SITE_URL } from '../../config/site';
+import cocaCola from '../../assets/logos/coca-cola.png';
+import cuauhtemoc from '../../assets/logos/cuahutemoc.png';
+import emyco from '../../assets/logos/emyco.png';
+import sandler from '../../assets/logos/sandler.png';
+import nexe from '../../assets/logos/nexe.png';
+import gnp from '../../assets/logos/gnp.png';
+
+const careerLogos = [
+  { company: 'Coca-Cola', logo: cocaCola },
+  { company: 'Cervecería Cuauhtémoc', logo: cuauhtemoc },
+  { company: 'Emyco', logo: emyco },
+  { company: 'Sandler Training', logo: sandler },
+  { company: 'NEXE', logo: nexe },
+  { company: 'Grupo Jezreel GNP', logo: gnp },
+];
+
+const title = 'Sobre Jorge Sergio Ramírez Lizárraga';
+const description =
+  '+40 años transformando líderes, multiplicando resultados comerciales y construyendo patrimonios sólidos. La historia, los principios y la trayectoria detrás del método CMV y la estrategia PPR.';
+
+const principles = [
+  {
+    title: 'Sabiduría',
+    body: 'Prepararse antes de necesitar. Cada decisión comercial o patrimonial se toma con visión de largo plazo, no reaccionando a la urgencia del momento.',
+  },
+  {
+    title: 'Servicio',
+    body: 'Liderar es servir al equipo y al cliente primero. Un negocio o un patrimonio que solo sirve a quien lo dirige no está construido para durar.',
+  },
+  {
+    title: 'Fidelidad en lo pequeño',
+    body: 'El carácter se forma en lo que nadie ve: el seguimiento constante, la disciplina diaria, el proceso que se sostiene incluso cuando nadie está midiendo.',
+  },
+  {
+    title: 'Trascendencia',
+    body: 'Formar equipos y construir patrimonios que sigan de pie después de que uno se va — esa es la medida real del trabajo bien hecho.',
+  },
+];
+
+const jsonLd = [
+  {
+    '@type': 'Person',
+    name: 'Jorge Sergio Ramírez Lizárraga',
+    url: `${SITE_URL}/sobre-jorge-sergio/`,
+    jobTitle: 'Coach de Liderazgo Comercial y Planeación Patrimonial',
+    description,
+    worksFor: { '@type': 'ProfessionalService', name: 'Jorge Sergio Ramírez Lizárraga' },
+    alumniOf: CAREER_HISTORY.map((name) => ({ '@type': 'Organization', name })),
+  },
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Sobre Jorge Sergio', path: '/sobre-jorge-sergio/' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHero
+    eyebrow="Historia y principios"
+    headline="Más de 40 años transformando líderes, multiplicando resultados comerciales y construyendo patrimonios sólidos"
+    subhead="La disciplina que hoy convierte equipos comerciales dispersos en sistemas de venta, y ahorro disperso en planes de retiro, no nació en un salón de clases."
+  />
+
+  <article>
+    <SocialProof />
+
+    <Historia variant="full" />
+
+    <section class="bg-bone-50 px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[900px]">
+        <p class="mb-3.5 text-center text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">
+          Principios de liderazgo
+        </p>
+        <h2 class="mb-10 text-center font-serif text-[28px] font-semibold text-navy-800 md:text-[34px]">
+          Los valores detrás del método
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2">
+          {principles.map((p) => <PrincipleCard title={p.title} body={p.body} />)}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[760px]">
+        <p class="mb-3.5 text-center text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">
+          Trayectoria
+        </p>
+        <h2 class="mb-10 text-center font-serif text-[28px] font-semibold text-navy-800 md:text-[34px]">
+          Formado dentro de organizaciones que exigen resultados
+        </h2>
+        <ul class="mx-auto flex max-w-[560px] flex-col divide-y divide-line-200">
+          {
+            careerLogos.map(({ company, logo }) => (
+              <li class="flex items-center gap-4 py-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-[4px] border border-line-200 bg-bone-50">
+                  <Image src={logo} alt={company} width={64} height={64} fit="contain" class="h-6 w-6 object-contain" />
+                </span>
+                <span class="font-serif text-[17px] font-semibold text-navy-800">{company}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </section>
+
+    <FinalCtaBand
+      title="Conoce de primera mano cómo aplica este método a tu situación"
+      subhead="30 minutos, sin costo, para revisar tu reto comercial o tu plan de retiro con Jorge Sergio directamente."
+      ctaLabel="Agendar mi sesión"
+      ctaHref="/agenda/"
+    />
+  </article>
+</BaseLayout>

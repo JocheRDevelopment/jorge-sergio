@@ -1,0 +1,52 @@
+---
+import HeroGraphic from './HeroGraphic.astro';
+import PrimaryCta from '../cta/PrimaryCta.astro';
+
+interface Cta {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  subhead: string;
+  ctaPrimary: Cta;
+  ctaSecondary: Cta;
+}
+
+const { eyebrow, headline, subhead, ctaPrimary, ctaSecondary } = Astro.props;
+---
+
+<section
+  class="relative grid gap-12 overflow-hidden bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600 px-6 py-16 md:gap-16 md:px-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"
+>
+  <div
+    class="pointer-events-none absolute inset-0 opacity-[0.08]"
+    style="background-image: repeating-linear-gradient(115deg, rgba(201,162,39,0.6) 0px, rgba(201,162,39,0.6) 1px, transparent 1px, transparent 42px);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative z-10">
+    <span
+      class="mb-7 inline-flex items-center gap-2 rounded-full border border-gold-500/40 px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[1.2px] text-gold-300"
+    >
+      {eyebrow}
+    </span>
+    <h1 class="mb-6 font-serif text-[34px] font-semibold leading-[1.15] text-bone-50 md:text-[52px] md:leading-[1.12]">
+      {headline}
+    </h1>
+    <p class="mb-10 max-w-[520px] text-[17px] leading-[1.6] text-slate-400 md:text-[19px]">
+      {subhead}
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <PrimaryCta href={ctaPrimary.href} variant="gold" size="lg">{ctaPrimary.label}</PrimaryCta>
+      <PrimaryCta href={ctaSecondary.href} variant="outline" size="lg">{ctaSecondary.label}</PrimaryCta>
+    </div>
+  </div>
+
+  <div class="relative z-10">
+    <HeroGraphic variant="graphic" />
+  </div>
+</section>

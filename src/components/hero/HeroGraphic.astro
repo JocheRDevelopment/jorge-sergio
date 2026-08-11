@@ -1,0 +1,131 @@
+---
+// Visual del hero sin depender de foto/video (no existen todavía). Aura de
+// gradiente + línea ascendente SVG animada + estadísticas flotantes. Cuando
+// el cliente entregue el video real, cambiar `variant` a 'video' — el resto
+// del layout del hero no necesita tocarse.
+import StatChip from './StatChip.astro';
+
+interface Props {
+  variant?: 'graphic' | 'video';
+  videoPlaceholder?: string;
+}
+const { variant = 'graphic' } = Astro.props;
+---
+
+{
+  variant === 'graphic' ? (
+    <div class="relative h-[420px] w-full overflow-hidden rounded-[6px] border border-gold-500/30 shadow-media">
+      <div class="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600" />
+
+      <div class="hero-aura absolute -left-1/4 -top-1/4 h-[70%] w-[70%] rounded-full bg-gold-500/25 blur-[70px]" />
+      <div class="hero-aura hero-aura--delay absolute -bottom-1/4 -right-1/4 h-[65%] w-[65%] rounded-full bg-navy-600/40 blur-[80px]" />
+
+      <svg
+        class="absolute inset-0 h-full w-full"
+        viewBox="0 0 400 420"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M 20 340 L 100 300 L 150 330 L 210 220 L 260 250 L 320 120 L 380 70"
+          fill="none"
+          stroke="#c9a227"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          pathLength="1"
+          class="hero-line"
+        />
+        <circle cx="380" cy="70" r="5" fill="#e4c766" class="hero-line-dot" />
+      </svg>
+
+      <div class="hero-particles absolute inset-0" aria-hidden="true">
+        <span class="particle" style="left:18%; top:70%; animation-delay:0s;" />
+        <span class="particle" style="left:42%; top:35%; animation-delay:1.2s;" />
+        <span class="particle" style="left:68%; top:55%; animation-delay:2.1s;" />
+        <span class="particle" style="left:82%; top:22%; animation-delay:0.6s;" />
+      </div>
+
+      <StatChip value="+40" label="Años de experiencia" class="absolute left-6 top-8" />
+      <StatChip value="Miles" label="Vendedores capacitados" class="absolute right-6 top-1/2 -translate-y-1/2" />
+      <StatChip value="100%" label="Enfocado en resultados" class="absolute bottom-8 left-10" />
+    </div>
+  ) : (
+    <div class="relative h-[420px] w-full overflow-hidden rounded-[6px] border border-gold-500/30 shadow-media bg-navy-900">
+      {/* TODO: reemplazar por el reproductor real (click-to-play, sin autoplay) cuando exista el video. */}
+    </div>
+  )
+}
+
+<style>
+  .hero-line {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw-line 2.2s ease-out 0.3s forwards;
+  }
+  .hero-line-dot {
+    opacity: 0;
+    animation: fade-in 0.4s ease-out 2.2s forwards;
+  }
+  .hero-aura {
+    animation: drift 9s ease-in-out infinite;
+  }
+  .hero-aura--delay {
+    animation-delay: -4s;
+  }
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #e4c766;
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes draw-line {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(4%, -4%) scale(1.08);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translateY(-14px);
+      opacity: 0.8;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-line {
+      animation: none;
+      stroke-dashoffset: 0;
+    }
+    .hero-line-dot {
+      animation: none;
+      opacity: 1;
+    }
+    .hero-aura,
+    .particle {
+      animation: none;
+    }
+  }
+</style>

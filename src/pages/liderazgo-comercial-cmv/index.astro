@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/hero/PageHero.astro';
+import SocialProof from '../../components/sections/SocialProof.astro';
+import StepCard from '../../components/sections/StepCard.astro';
+import StatBlock from '../../components/sections/StatBlock.astro';
+import Testimonios from '../../components/sections/Testimonios.astro';
+import FaqAccordion from '../../components/sections/FaqAccordion.astro';
+import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
+import { getFaqForPage, faqSchema } from '../../lib/faq';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE_NAME } from '../../config/site';
+
+const faqEntries = await getFaqForPage('cmv');
+
+const title = 'Coaching Comercial y Método CMV para Equipos de Venta';
+const description =
+  'Equipos con bajo rendimiento comercial, rotación y cero accountability cuestan facturación cada mes. El método CMV de Jorge Sergio Ramírez instala el proceso que tu equipo necesita. Agenda tu diagnóstico sin costo.';
+
+const jsonLd = [
+  {
+    '@type': 'Service',
+    serviceType: 'Coaching de liderazgo comercial y formación de equipos de venta',
+    name: 'Desarrollo Comercial & Coaching Ejecutivo (CMV)',
+    provider: { '@type': 'ProfessionalService', name: SITE_NAME },
+    areaServed: 'MX',
+    description,
+  },
+  faqSchema(faqEntries),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Liderazgo Comercial CMV', path: '/liderazgo-comercial-cmv/' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHero
+    eyebrow="B2B — Empresas y directores comerciales"
+    headline="El método CMV instala el proceso de ventas que tu equipo no tiene"
+    subhead="Crecimiento, Mentoría y Ventas: el sistema que convierte un equipo comercial disperso en un equipo autodirigido, con accountability real y resultados medibles."
+    cta={{ label: 'Agendar Diagnóstico Comercial', href: '/agenda/?tipo=cmv' }}
+  />
+
+  <article>
+    <SocialProof />
+
+    <section class="mx-auto max-w-[760px] px-6 py-16 md:px-0">
+      <p class="text-[18px] leading-[1.75] text-ink-800">
+        <strong>CMV (Crecimiento, Mentoría y Ventas)</strong> es el método que Jorge Sergio Ramírez usa para reconstruir
+        equipos comerciales sin proceso: instala un sistema de prospección, cierre y accountability, y forma a los
+        líderes que lo van a sostener después de que la consultoría termina. No es un curso motivacional de un día —
+        es un proceso que se implementa dentro de tu equipo real, con tus vendedores reales.
+      </p>
+    </section>
+
+    <section class="bg-navy-900 px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[760px]">
+        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">
+          Lo que te está costando cada mes
+        </p>
+        <h2 class="mb-8 font-serif text-[28px] font-semibold text-bone-50 md:text-[34px]">
+          Un vendedor sin proceso no es un vendedor lento. Es facturación que ya se fue.
+        </h2>
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Rotación constante</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Cada vendedor que se va se lleva la relación con sus prospectos y te obliga a volver a empezar de cero
+              — porque nunca hubo un proceso documentado, solo memoria individual.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Prospección al azar</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Sin un proceso de prospección real, cada vendedor decide a quién le llama y cuándo. El resultado:
+              un pipeline que depende del ánimo del equipo, no de un sistema.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Cero accountability</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Sin métricas ni seguimiento, "estoy trabajando en eso" se vuelve una respuesta aceptable durante meses
+              — y el estancamiento en ventas se normaliza.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Depender de un vendedor estrella</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Si el 70% de tu facturación depende de una persona, no tienes un equipo comercial — tienes un riesgo
+              operativo esperando a que esa persona renuncie.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-bone-50 px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[760px]">
+        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">Cómo funciona el método CMV</p>
+        <h2 class="mb-10 font-serif text-[28px] font-semibold text-navy-800 md:text-[34px]">
+          Tres etapas para instalar un sistema, no una motivación pasajera
+        </h2>
+        <div class="flex flex-col gap-9">
+          <StepCard
+            number={1}
+            variant="left"
+            theme="light"
+            title="Crecimiento — diagnóstico y proceso"
+            body="Auditamos el estado real de tu equipo: proceso de prospección, ciclo de venta, cuellos de botella y accountability. De ahí se diseña el proceso comercial documentado que tu equipo va a seguir — no una teoría genérica, sino el proceso adaptado a tu industria y ciclo de venta."
+          />
+          <StepCard
+            number={2}
+            variant="left"
+            theme="light"
+            title="Mentoría — formación de líderes"
+            body="Se forma a los líderes comerciales en neuroventas, venta consultiva y manejo de objeciones, y se les da las herramientas de accountability para sostener el proceso con el equipo — así el sistema no depende de que Jorge Sergio esté presente todos los días."
+          />
+          <StepCard
+            number={3}
+            variant="left"
+            theme="light"
+            title="Ventas — ejecución y seguimiento"
+            body="El equipo ejecuta el proceso con métricas visibles y seguimiento estructurado. Se ajusta en campo, no en pizarrón, hasta que el sistema queda instalado como cultura — no como un proyecto que se abandona en tres meses."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto grid max-w-[900px] gap-6 md:grid-cols-3">
+        <StatBlock value="+40" label="Años formando equipos comerciales" />
+        <StatBlock value="Miles" label="De vendedores capacitados" />
+        <StatBlock value="6" label="Industrias distintas, un mismo método" />
+      </div>
+    </section>
+
+    <Testimonios
+      pillar="cmv"
+      eyebrow="Lo que dicen los directores que ya lo implementaron"
+      title="Resultados del método CMV"
+    />
+
+    <FaqAccordion entries={faqEntries} title="Preguntas frecuentes sobre CMV" />
+
+    <FinalCtaBand
+      title="Tu equipo puede seguir vendiendo por suerte, o puede seguir un sistema"
+      subhead="30 minutos para revisar el estado real de tu equipo comercial y decirte con claridad si el método CMV es el camino."
+      ctaLabel="Agendar Diagnóstico Comercial"
+      ctaHref="/agenda/?tipo=cmv"
+    />
+  </article>
+</BaseLayout>

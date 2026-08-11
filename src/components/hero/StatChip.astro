@@ -1,0 +1,18 @@
+---
+interface Props {
+  value: string;
+  label: string;
+  class?: string;
+}
+const { value, label, class: className = '' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-[4px] border border-gold-500/30 bg-navy-900/60 px-4 py-3 shadow-[0_18px_40px_rgba(0,0,0,0.35)] backdrop-blur-md',
+    className,
+  ]}
+>
+  <div class="font-serif text-[22px] font-bold text-bone-50">{value}</div>
+  <div class="text-[11px] font-medium uppercase tracking-[0.8px] text-slate-400">{label}</div>
+</div>

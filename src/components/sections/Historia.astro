@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import jorgeCoachPhoto from '../../assets/jorge-ramirez-coach.png';
+
+interface Props {
+  variant?: 'teaser' | 'full';
+}
+const { variant = 'teaser' } = Astro.props;
+---
+
+<section id="historia" class="grid gap-14 bg-navy-900 px-6 py-20 md:gap-16 md:px-16 md:py-[100px] lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
+  <div class="relative flex min-h-[320px] flex-col justify-end overflow-hidden rounded-[4px] border border-gold-500/25 p-10 md:min-h-[420px]">
+    <Image
+      src={jorgeCoachPhoto}
+      alt="Jorge Sergio Ramírez Lizárraga"
+      width={720}
+      height={900}
+      class="absolute inset-0 h-full w-full object-cover object-top"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/40 to-transparent" aria-hidden="true" />
+    <div class="relative">
+      <div class="mb-6 h-[3px] w-16 bg-gold-500" />
+      <p class="font-serif text-[24px] italic leading-[1.5] text-gold-100 md:text-[28px]">
+        "La sabiduría consiste en prepararse antes de necesitar. El carácter se forma siendo fiel en lo pequeño."
+      </p>
+    </div>
+  </div>
+
+  <div>
+    <p class="mb-4 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">Historia y principios</p>
+    <h2 class="mb-6 font-serif text-[28px] font-semibold leading-[1.25] text-bone-50 md:text-[32px]">
+      La disciplina que nace de la adversidad
+    </h2>
+    <p class="mb-5 text-[16px] leading-[1.75] text-slate-400">
+      A los 18 años, un accidente severo lo puso frente a la posibilidad de no volver a caminar. Su regreso al
+      motocross y al fútbol americano forjó la disciplina y resiliencia que hoy son la base de cómo lidera
+      organizaciones y personas.
+    </p>
+    {
+      variant === 'full' && (
+        <p class="mb-5 text-[16px] leading-[1.75] text-slate-400">
+          Esa misma ética — sabiduría, servicio y fidelidad en lo pequeño — respaldó su trayectoria en Coca-Cola,
+          Cervecería Cuauhtémoc, Emyco, Sandler Training, NEXE y Grupo Jezreel GNP. No aprendió a formar equipos
+          comerciales leyendo teoría: lo aprendió reconstruyéndose a sí mismo primero.
+        </p>
+      )
+    }
+    {
+      variant === 'teaser' ? (
+        <a href="/sobre-jorge-sergio/" class="text-[14.5px] font-semibold text-gold-500 hover:text-gold-300">
+          Conoce la historia completa &rarr;
+        </a>
+      ) : (
+        <p class="text-[16px] leading-[1.75] text-slate-400">
+          Hoy convierte esa misma disciplina en un método replicable — para equipos comerciales que necesitan
+          estructura, y para familias que necesitan certeza patrimonial.
+        </p>
+      )
+    }
+  </div>
+</section>

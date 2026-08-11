@@ -1,0 +1,39 @@
+---
+interface Props {
+  quote: string;
+  name: string;
+  role: string;
+  isPlaceholder?: boolean;
+}
+const { quote, name, role, isPlaceholder } = Astro.props;
+
+const initials = name
+  .split(' ')
+  .map((w) => w[0])
+  .slice(0, 2)
+  .join('')
+  .toUpperCase();
+---
+
+<figure class="rounded-[4px] border border-line-200 bg-white p-7">
+  <blockquote class="m-0 mb-6 text-[15px] italic leading-[1.7] text-ink-900">"{quote}"</blockquote>
+  <figcaption class="flex items-center gap-3">
+    <span
+      class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-navy-800 font-serif text-[14px] font-semibold text-gold-300"
+      aria-hidden="true"
+    >
+      {initials}
+    </span>
+    <span>
+      <span class="block text-[14px] font-semibold text-navy-800">{name}</span>
+      <span class="block text-[12.5px] text-slate-500">{role}</span>
+    </span>
+  </figcaption>
+  {
+    isPlaceholder && (
+      <p class="mt-4 text-[11px] uppercase tracking-[0.6px] text-slate-500">
+        Testimonio representativo — pendiente autorización real
+      </p>
+    )
+  }
+</figure>

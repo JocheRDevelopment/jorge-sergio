@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StepCard from '../../components/sections/StepCard.astro';
+import TrustStrip from '../../components/sections/TrustStrip.astro';
+import CalendlyEmbed from '../../components/calendly/CalendlyEmbed.astro';
+import { breadcrumbSchema } from '../../lib/schema';
+
+const title = 'Agenda tu Sesión — Diagnóstico Comercial o Estrategia Patrimonial';
+const description =
+  'Agenda en 30 segundos tu sesión sin costo con Jorge Sergio Ramírez: Diagnóstico Comercial para empresas o Estrategia Patrimonial y de Retiro. Confirmación automática, sin llamadas de venta.';
+
+const jsonLd = breadcrumbSchema([
+  { name: 'Inicio', path: '/' },
+  { name: 'Agenda tu sesión', path: '/agenda/' },
+]);
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <section class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600 px-6 py-20 md:px-16 md:py-24">
+    <div
+      class="pointer-events-none absolute inset-0 opacity-[0.08]"
+      style="background-image: repeating-linear-gradient(115deg, rgba(201,162,39,0.6) 0px, rgba(201,162,39,0.6) 1px, transparent 1px, transparent 42px);"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="relative z-10 mx-auto max-w-[720px] text-center">
+      <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-gold-500/40 px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[1.2px] text-gold-300">
+        Agendamiento automático 24/7
+      </span>
+      <h1 class="mb-5 font-serif text-[32px] font-semibold leading-[1.2] text-bone-50 md:text-[44px]">
+        Elige tu sesión y agenda sin hablar con nadie
+      </h1>
+      <p class="mx-auto max-w-[600px] text-[17px] leading-[1.6] text-slate-400">
+        Selecciona el tipo de sesión, elige un horario disponible y responde las preguntas de filtro dentro del
+        calendario. Recibes la confirmación y el enlace de acceso de inmediato — cero llamadas de venta antes de
+        tu sesión.
+      </p>
+      <div class="mt-9">
+        <TrustStrip />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-bone-50 px-6 py-16 md:px-16">
+    <div class="mx-auto mb-14 grid max-w-[900px] gap-6 md:grid-cols-3">
+      <StepCard number={1} title="Elige el tipo de sesión y el horario" theme="light" />
+      <StepCard number={2} title="Responde las preguntas de filtro" theme="light" />
+      <StepCard number={3} title="Confirmación automática instantánea" theme="light" />
+    </div>
+
+    <CalendlyEmbed theme="light" />
+  </section>
+</BaseLayout>

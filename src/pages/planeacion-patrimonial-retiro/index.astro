@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/hero/PageHero.astro';
+import SocialProof from '../../components/sections/SocialProof.astro';
+import StepCard from '../../components/sections/StepCard.astro';
+import StatBlock from '../../components/sections/StatBlock.astro';
+import Testimonios from '../../components/sections/Testimonios.astro';
+import FaqAccordion from '../../components/sections/FaqAccordion.astro';
+import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
+import { getFaqForPage, faqSchema } from '../../lib/faq';
+import { breadcrumbSchema } from '../../lib/schema';
+import { SITE_NAME } from '../../config/site';
+
+const faqEntries = await getFaqForPage('ppr');
+
+const title = 'Planeación Patrimonial y de Retiro (PPR) para Profesionistas';
+const description =
+  'La inflación se come tu ahorro más rápido de lo que crees. La Planeación Patrimonial y de Retiro (PPR) de Jorge Sergio Ramírez te da un número real y una estrategia para llegar a él. Agenda tu sesión sin costo.';
+
+const jsonLd = [
+  {
+    '@type': 'Service',
+    serviceType: 'Planeación patrimonial y de retiro',
+    name: 'Planeación Patrimonial y Retiro (PPR)',
+    provider: { '@type': 'ProfessionalService', name: SITE_NAME },
+    areaServed: 'MX',
+    description,
+  },
+  faqSchema(faqEntries),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Planeación Patrimonial y Retiro', path: '/planeacion-patrimonial-retiro/' },
+  ]),
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <PageHero
+    eyebrow="B2C / B2B — Profesionales y empresarios 35–65"
+    headline="La Planeación Patrimonial y de Retiro (PPR) es el plan que reemplaza 'ya luego lo veo'"
+    subhead="Un número real, una estrategia de ahorro con protección fiscal, y certeza para ti y tu familia — no una calculadora genérica de internet."
+    cta={{ label: 'Agendar Estrategia Patrimonial', href: '/agenda/?tipo=ppr' }}
+  />
+
+  <article>
+    <SocialProof />
+
+    <section class="mx-auto max-w-[760px] px-6 py-16 md:px-0">
+      <p class="text-[18px] leading-[1.75] text-ink-800">
+        <strong>La Planeación Patrimonial y de Retiro (PPR)</strong> es una estrategia personalizada que define cuánto
+        necesitas ahorrar, en qué instrumentos y con qué protección fiscal para sostener tu nivel de vida en el
+        retiro y proteger tu patrimonio para tu familia. Jorge Sergio Ramírez la construye contigo, con tu capacidad
+        real de ahorro — no con una tabla genérica de porcentajes.
+      </p>
+    </section>
+
+    <section class="bg-navy-900 px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[760px]">
+        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">
+          Lo que la mayoría descubre demasiado tarde
+        </p>
+        <h2 class="mb-8 font-serif text-[28px] font-semibold text-bone-50 md:text-[34px]">
+          "Ya luego lo veo" es la razón número uno por la que la gente llega a los 65 sin plan
+        </h2>
+        <div class="grid gap-5 md:grid-cols-2">
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">La inflación no da tregua</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              El dinero que "ahorras" en una cuenta tradicional pierde poder de compra cada año que pasa. Sin una
+              estrategia activa, estás ahorrando para tener menos, no más.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Incertidumbre sobre el retiro</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              No saber si vas a llegar bien a tu retiro no es un detalle menor — es la razón por la que muchos
+              profesionistas de 50 años todavía no pueden bajar el ritmo de trabajo.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Cero protección patrimonial</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Sin una estructura patrimonial clara, lo que construiste en 30 años de trabajo queda vulnerable ante
+              imprevistos — en vez de protegido para ti y las próximas generaciones.
+            </p>
+          </div>
+          <div class="rounded-[4px] border border-gold-500/25 p-6">
+            <h3 class="mb-2 font-serif text-[18px] font-semibold text-bone-50">Postergación del ahorro futuro</h3>
+            <p class="text-[14.5px] leading-[1.7] text-slate-400">
+              Cada año que se pospone el plan de retiro, el esfuerzo mensual necesario para llegar a la misma meta
+              crece — empezar hoy siempre cuesta menos que empezar en cinco años.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-bone-50 px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto max-w-[760px]">
+        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">Cómo se construye tu estrategia PPR</p>
+        <h2 class="mb-10 font-serif text-[28px] font-semibold text-navy-800 md:text-[34px]">
+          Tres pasos, de tu situación actual a un plan con números reales
+        </h2>
+        <div class="flex flex-col gap-9">
+          <StepCard
+            number={1}
+            variant="left"
+            theme="light"
+            title="Diagnóstico patrimonial"
+            body="Revisamos tu situación actual: edad, capacidad de ahorro, si ya tienes algún plan de retiro y qué tan protegido está tu patrimonio hoy ante inflación e imprevistos."
+          />
+          <StepCard
+            number={2}
+            variant="left"
+            theme="light"
+            title="Diseño de la estrategia"
+            body="Se define cuánto necesitas ahorrar mensualmente, en qué instrumentos con protección fiscal, y con qué horizonte — un plan con números específicos, no un rango genérico."
+          />
+          <StepCard
+            number={3}
+            variant="left"
+            theme="light"
+            title="Implementación y seguimiento"
+            body="El plan se pone en marcha y se revisa periódicamente conforme cambia tu situación — un plan de retiro no es un documento que se firma una vez y se olvida."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-20 md:px-16 md:py-[100px]">
+      <div class="mx-auto grid max-w-[900px] gap-6 md:grid-cols-3">
+        <StatBlock value="+40" label="Años de experiencia en planeación financiera" />
+        <StatBlock value="35–65" label="Rango de edad del perfil patrimonial" />
+        <StatBlock value="1" label="Plan hecho a tu medida, no una tabla genérica" />
+      </div>
+    </section>
+
+    <Testimonios
+      pillar="ppr"
+      eyebrow="Lo que dicen quienes ya tienen un plan"
+      title="Resultados de la estrategia PPR"
+    />
+
+    <FaqAccordion entries={faqEntries} title="Preguntas frecuentes sobre PPR" />
+
+    <FinalCtaBand
+      title="Tu retiro puede seguir siendo una intención, o puede convertirse en un plan"
+      subhead="30 minutos para revisar tu situación real y decirte con números qué tan lejos o cerca estás de tu meta de retiro."
+      ctaLabel="Agendar Estrategia Patrimonial"
+      ctaHref="/agenda/?tipo=ppr"
+    />
+  </article>
+</BaseLayout>

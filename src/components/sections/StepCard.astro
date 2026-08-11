@@ -1,0 +1,35 @@
+---
+interface Props {
+  number: number;
+  title: string;
+  body?: string;
+  variant?: 'centered' | 'left';
+  theme?: 'dark' | 'light';
+}
+const { number, title, body, variant = 'centered', theme = 'dark' } = Astro.props;
+
+const border = theme === 'dark' ? 'border-gold-500/25' : 'border-line-200';
+const titleColor = theme === 'dark' ? 'text-slate-200' : 'text-navy-800';
+const bodyColor = theme === 'dark' ? 'text-slate-400' : 'text-ink-800';
+---
+
+{
+  variant === 'centered' ? (
+    <div class:list={['rounded-[4px] border px-5 py-7 text-center', border]}>
+      <div class="mx-auto mb-4 grid h-9 w-9 place-items-center rounded-full bg-gold-500 font-bold text-navy-900">
+        {number}
+      </div>
+      <p class:list={['text-[14.5px]', titleColor]}>{title}</p>
+    </div>
+  ) : (
+    <div class="flex gap-5">
+      <div class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gold-500 font-bold text-navy-900">
+        {number}
+      </div>
+      <div>
+        <h3 class:list={['mb-1.5 font-serif text-[19px] font-semibold', titleColor]}>{title}</h3>
+        {body && <p class:list={['text-[15px] leading-[1.7]', bodyColor]}>{body}</p>}
+      </div>
+    </div>
+  )
+}

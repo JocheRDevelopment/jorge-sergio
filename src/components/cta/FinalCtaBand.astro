@@ -1,0 +1,23 @@
+---
+import PrimaryCta from './PrimaryCta.astro';
+import TrustStrip from '../sections/TrustStrip.astro';
+
+interface Props {
+  title: string;
+  subhead: string;
+  ctaLabel: string;
+  ctaHref: string;
+}
+const { title, subhead, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="bg-gradient-to-br from-navy-900 to-navy-700 px-6 py-20 text-center md:px-16">
+  <h2 class="mx-auto mb-4 max-w-[640px] font-serif text-[28px] font-semibold text-bone-50 md:text-[34px]">
+    {title}
+  </h2>
+  <p class="mx-auto mb-9 max-w-[560px] text-[16px] text-slate-400">{subhead}</p>
+  <PrimaryCta href={ctaHref} variant="gold" size="lg">{ctaLabel}</PrimaryCta>
+  <div class="mt-9">
+    <TrustStrip />
+  </div>
+</section>

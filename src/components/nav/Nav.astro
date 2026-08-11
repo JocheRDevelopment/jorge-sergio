@@ -1,0 +1,91 @@
+---
+import { NAV_LINKS } from '../../config/site';
+import PrimaryCta from '../cta/PrimaryCta.astro';
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-gold-500/25 bg-navy-800"
+>
+  <nav
+    class="flex items-center justify-between gap-3 px-6 py-[18px] md:px-12"
+    aria-label="Principal"
+  >
+    <a
+      href="/"
+      class="whitespace-nowrap font-serif text-[20px] font-semibold tracking-[0.3px] text-bone-50 hover:text-bone-50"
+    >
+      Jorge Sergio Ramírez
+    </a>
+
+    <div class="hidden items-center gap-9 lg:flex">
+      {
+        NAV_LINKS.map((link) => (
+          <a
+            href={link.href}
+            class="text-[15px] font-medium text-slate-300 hover:text-gold-300"
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <PrimaryCta href="/agenda/" variant="gold">Agenda tu sesión</PrimaryCta>
+    </div>
+
+    <div class="flex items-center gap-3 lg:hidden">
+      <PrimaryCta href="/agenda/" variant="gold" class="!px-4 !py-2.5 !text-[13px]">
+        Agenda tu sesión
+      </PrimaryCta>
+      <button
+        id="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="nav-mobile-panel"
+        aria-label="Abrir menú de navegación"
+        class="grid h-11 w-11 place-items-center rounded-[3px] border border-slate-600 text-bone-50"
+      >
+        <svg id="nav-toggle-icon-open" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <path d="M2 5h16M2 10h16M2 15h16" />
+        </svg>
+        <svg id="nav-toggle-icon-close" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" class="hidden">
+          <path d="M4 4l12 12M16 4L4 16" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="nav-mobile-panel" class="hidden border-t border-gold-500/25 bg-navy-800 px-6 py-4 lg:hidden">
+    <div class="flex flex-col gap-4">
+      {
+        NAV_LINKS.map((link) => (
+          <a href={link.href} class="text-[15px] font-medium text-slate-300 hover:text-gold-300">
+            {link.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('nav-mobile-panel');
+  const iconOpen = document.getElementById('nav-toggle-icon-open');
+  const iconClose = document.getElementById('nav-toggle-icon-close');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    panel?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+  });
+
+  panel?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      panel.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    })
+  );
+</script>
