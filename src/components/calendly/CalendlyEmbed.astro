@@ -1,53 +1,25 @@
 ---
-import { calendlyUrl, type EventType } from '../../config/site';
+import { CALENDLY_URL } from '../../config/site';
 import CalendlyFallbackLink from './CalendlyFallbackLink.astro';
 
 interface Props {
-  /**
-   * Tipo de evento por defecto para el HTML pre-renderado (el sitio es
-   * estático — no hay request en build time, así que `?tipo=` en la URL
-   * real del visitante NUNCA es visible aquí). El script de cliente lee
-   * `location.search` en cuanto corre y corrige la pestaña/URL activa si
-   * el visitante llegó con un `?tipo=` distinto — ese es el valor real.
-   */
-  initialTipo?: EventType;
   theme?: 'dark' | 'light';
 }
 
-const { initialTipo, theme = 'light' } = Astro.props;
-const tipo: EventType = initialTipo ?? 'cmv';
+const { theme = 'light' } = Astro.props;
 
 const cardBg = theme === 'dark' ? 'bg-navy-800' : 'bg-white';
 ---
 
-<div
-  data-calendly-root
-  data-initial-tipo={tipo}
-  data-cmv-url={calendlyUrl('cmv')}
-  data-ppr-url={calendlyUrl('ppr')}
-  class="mx-auto max-w-[980px]"
->
-  <div class:list={['overflow-hidden rounded-[6px] shadow-embed', cardBg]}>
-    <div class="flex flex-wrap items-center justify-center gap-2 border-b border-line-150/40 p-4">
-      <button
-        type="button"
-        data-tipo-btn="cmv"
-        aria-pressed={tipo === 'cmv' ? 'true' : 'false'}
-        class="rounded-full px-4 py-2 text-[13px] font-semibold transition-colors"
-      >
-        Diagnóstico Comercial (30 min)
-      </button>
-      <button
-        type="button"
-        data-tipo-btn="ppr"
-        aria-pressed={tipo === 'ppr' ? 'true' : 'false'}
-        class="rounded-full px-4 py-2 text-[13px] font-semibold transition-colors"
-      >
-        Estrategia Patrimonial (30 min)
-      </button>
-    </div>
+<div data-calendly-root data-calendly-url={CALENDLY_URL} class="relative z-10 mx-auto max-w-[1160px]">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -inset-6 rounded-[24px] bg-gold-500/10 blur-3xl md:-inset-10"
+  >
+  </div>
 
-    <div class="relative min-h-[700px]">
+  <div class:list={['relative overflow-hidden rounded-[6px] border-t-4 border-t-gold-500 shadow-embed', cardBg]}>
+    <div class="relative h-[1080px] md:h-[760px]">
       <div
         data-calendly-skeleton
         class="absolute inset-0 flex animate-pulse flex-col items-center justify-center gap-3 p-10 text-center"
@@ -55,12 +27,12 @@ const cardBg = theme === 'dark' ? 'bg-navy-800' : 'bg-white';
         <div class="h-10 w-10 rounded-full border-2 border-gold-500 border-t-transparent" style="animation: spin 0.8s linear infinite;" />
         <p class="text-[13.5px] text-slate-500">Cargando calendario…</p>
       </div>
-      <div data-calendly-mount class="min-h-[700px] w-full"></div>
+      <div data-calendly-mount class="h-[1080px] w-full md:h-[760px]"></div>
     </div>
   </div>
 
-  <div class="mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
-    <CalendlyFallbackLink tipo={tipo} linkId="calendly-fallback-link" />
+  <div class="relative mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
+    <CalendlyFallbackLink linkId="calendly-fallback-link" />
     <p class="text-[12px] text-slate-500">Las preguntas de calificación se responden dentro del calendario.</p>
   </div>
 </div>
@@ -71,47 +43,17 @@ const cardBg = theme === 'dark' ? 'bg-navy-800' : 'bg-white';
       transform: rotate(360deg);
     }
   }
-  [data-tipo-btn] {
-    background: color-mix(in srgb, currentColor 8%, transparent);
-    color: inherit;
-  }
-  [data-tipo-btn][aria-pressed='true'] {
-    background: #0d1b30;
-    color: #fff;
-  }
 </style>
 
 <script>
-  type EventType = 'cmv' | 'ppr';
-
   const root = document.querySelector<HTMLElement>('[data-calendly-root]');
   if (root) {
     const mount = root.querySelector<HTMLElement>('[data-calendly-mount]');
     const skeleton = root.querySelector<HTMLElement>('[data-calendly-skeleton]');
-    const buttons = root.querySelectorAll<HTMLButtonElement>('[data-tipo-btn]');
-    const fallbackLink = document.getElementById('calendly-fallback-link') as HTMLAnchorElement | null;
-
-    const urls: Record<EventType, string> = {
-      cmv: root.dataset.cmvUrl || '',
-      ppr: root.dataset.pprUrl || '',
-    };
-
-    let currentTipo = (root.dataset.initialTipo as EventType) || 'cmv';
+    const baseUrl = root.dataset.calendlyUrl || '';
     let scriptRequested = false;
-    let widgetRendered = false;
 
     const params = new URLSearchParams(location.search);
-
-    // El sitio es estático — el HTML pre-renderado nunca vio el `?tipo=`
-    // real del visitante (no hay request en build time). location.search
-    // es la única fuente de verdad en runtime; se corrige aquí, antes de
-    // cualquier render, así el flash del valor por defecto es mínimo.
-    const requestedTipo = params.get('tipo');
-    if (requestedTipo === 'cmv' || requestedTipo === 'ppr') {
-      currentTipo = requestedTipo;
-      setActiveButtons(currentTipo);
-      updateFallback(currentTipo);
-    }
 
     // UTM: capturado en la primera visita, persistido para sobrevivir una
     // navegación multi-página (Home -> página pilar -> Agenda) antes de agendar.
@@ -133,74 +75,47 @@ const cardBg = theme === 'dark' ? 'bg-navy-800' : 'bg-white';
       }
     }
 
-    function buildUrl(tipo: EventType): string {
-      const base = urls[tipo];
-      const u = new URL(base);
+    function buildUrl(): string {
+      const u = new URL(baseUrl);
       const utm = getStoredUtm();
       for (const [k, v] of Object.entries(utm)) u.searchParams.set(k, v);
       u.searchParams.set('hide_gdpr_banner', '1');
       return u.toString();
     }
 
-    function setActiveButtons(tipo: EventType) {
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.tipoBtn === tipo)));
-    }
-
-    function updateFallback(tipo: EventType) {
-      if (fallbackLink) fallbackLink.href = urls[tipo];
-    }
-
-    function renderWidget(tipo: EventType) {
+    function renderWidget() {
       // @ts-expect-error -- Calendly widget.js attaches this global at runtime.
       const Calendly = window.Calendly;
       if (!Calendly || !mount) return;
       mount.innerHTML = '';
       Calendly.initInlineWidget({
-        url: buildUrl(tipo),
+        url: buildUrl(),
         parentElement: mount,
       });
-      widgetRendered = true;
       skeleton?.remove();
     }
 
-    function ensureCalendlyScript(tipo: EventType) {
+    function ensureCalendlyScript() {
       if (scriptRequested) {
         // @ts-expect-error -- runtime global
-        if (window.Calendly) renderWidget(tipo);
+        if (window.Calendly) renderWidget();
         return;
       }
       scriptRequested = true;
       const script = document.createElement('script');
       script.src = 'https://assets.calendly.com/assets/external/widget.js';
       script.async = true;
-      script.onload = () => renderWidget(currentTipo);
+      script.onload = () => renderWidget();
       document.head.appendChild(script);
     }
 
-    function selectTipo(tipo: EventType) {
-      if (tipo === currentTipo && widgetRendered) return;
-      currentTipo = tipo;
-      setActiveButtons(tipo);
-      updateFallback(tipo);
-      const url = new URL(location.href);
-      url.searchParams.set('tipo', tipo);
-      history.replaceState({}, '', url);
-      if (widgetRendered) {
-        renderWidget(tipo);
-      } else {
-        ensureCalendlyScript(tipo);
-      }
-    }
-
-    buttons.forEach((b) => b.addEventListener('click', () => selectTipo((b.dataset.tipoBtn as EventType) || 'cmv')));
-
     // Carga diferida real: no se pide widget.js hasta que la sección entra
-    // (casi) en viewport, o si el usuario ya llega con el ancla activa.
+    // (casi) en viewport.
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting) {
-            ensureCalendlyScript(currentTipo);
+            ensureCalendlyScript();
             io.disconnect();
           }
         }

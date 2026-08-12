@@ -15,21 +15,7 @@ export const SITE_NAME = 'Jorge Sergio Ramírez Lizárraga';
 export const SITE_DESCRIPTION =
   'Coaching de liderazgo comercial y planeación patrimonial y de retiro. Más de 40 años de trayectoria. Agenda tu diagnóstico o estrategia sin costo.';
 
-// TODO: reemplazar por la cuenta real de Calendly del cliente. La
-// integración completa (lazy-load, deep-link, UTM, fallback) ya está lista
-// para apuntar aquí — cambiar estos tres valores es suficiente.
-export const CALENDLY_BASE = 'https://calendly.com/jorge-sergio-ramirez';
-
-export const CALENDLY_EVENTS = {
-  cmv: 'diagnostico-comercial',
-  ppr: 'estrategia-patrimonial',
-} as const;
-
-export type EventType = keyof typeof CALENDLY_EVENTS;
-
-export function calendlyUrl(tipo: EventType): string {
-  return `${CALENDLY_BASE}/${CALENDLY_EVENTS[tipo]}`;
-}
+export const CALENDLY_URL = 'https://calendly.com/jorge-sergio/sesion-servicio';
 
 export const CONTACT = {
   // TODO: correo/teléfono real de contacto para el aviso de privacidad y JSON-LD.

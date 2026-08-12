@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/hero/PageHero.astro';
 import SocialProof from '../../components/sections/SocialProof.astro';
+import AuthorityPhoto from '../../components/sections/AuthorityPhoto.astro';
 import StepCard from '../../components/sections/StepCard.astro';
 import StatBlock from '../../components/sections/StatBlock.astro';
 import Testimonios from '../../components/sections/Testimonios.astro';
@@ -10,6 +11,7 @@ import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
 import { getFaqForPage, faqSchema } from '../../lib/faq';
 import { breadcrumbSchema } from '../../lib/schema';
 import { SITE_NAME } from '../../config/site';
+import jorgeSergioPatrimonio from '../../assets/jorge-sergio-patrimonio.png';
 
 const faqEntries = await getFaqForPage('ppr');
 
@@ -39,7 +41,7 @@ const jsonLd = [
     eyebrow="B2C / B2B — Profesionales y empresarios 35–65"
     headline="La Planeación Patrimonial y de Retiro (PPR) es el plan que reemplaza 'ya luego lo veo'"
     subhead="Un número real, una estrategia de ahorro con protección fiscal, y certeza para ti y tu familia — no una calculadora genérica de internet."
-    cta={{ label: 'Agendar Estrategia Patrimonial', href: '/agenda/?tipo=ppr' }}
+    cta={{ label: 'Agendar Estrategia Patrimonial', href: '/agenda/' }}
   />
 
   <article>
@@ -53,6 +55,17 @@ const jsonLd = [
         real de ahorro — no con una tabla genérica de porcentajes.
       </p>
     </section>
+
+    <AuthorityPhoto
+      image={jorgeSergioPatrimonio}
+      imageAlt="Jorge Sergio Ramírez Lizárraga"
+      eyebrow="Quién construye tu estrategia patrimonial"
+      title="+40 años protegiendo patrimonios con estrategia, no con esperanza"
+      paragraph="Jorge Sergio Ramírez respalda cada estrategia PPR con más de 40 años de trayectoria formando líderes y protegiendo patrimonios — incluyendo su paso por Grupo Jezreel GNP — con la misma disciplina que aplicó para reconstruirse a sí mismo antes de enseñarla a otros."
+      quote="'Ya luego lo veo' no es una estrategia de retiro. Es la ausencia de una."
+      linkLabel="Conoce su trayectoria completa"
+      linkHref="/sobre-jorge-sergio/"
+    />
 
     <section class="bg-navy-900 px-6 py-20 md:px-16 md:py-[100px]">
       <div class="mx-auto max-w-[760px]">
@@ -147,7 +160,7 @@ const jsonLd = [
       title="Tu retiro puede seguir siendo una intención, o puede convertirse en un plan"
       subhead="30 minutos para revisar tu situación real y decirte con números qué tan lejos o cerca estás de tu meta de retiro."
       ctaLabel="Agendar Estrategia Patrimonial"
-      ctaHref="/agenda/?tipo=ppr"
+      ctaHref="/agenda/"
     />
   </article>
 </BaseLayout>

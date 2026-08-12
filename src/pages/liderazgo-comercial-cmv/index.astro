@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/hero/PageHero.astro';
 import SocialProof from '../../components/sections/SocialProof.astro';
+import AuthorityPhoto from '../../components/sections/AuthorityPhoto.astro';
 import StepCard from '../../components/sections/StepCard.astro';
 import StatBlock from '../../components/sections/StatBlock.astro';
 import Testimonios from '../../components/sections/Testimonios.astro';
@@ -10,6 +11,7 @@ import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
 import { getFaqForPage, faqSchema } from '../../lib/faq';
 import { breadcrumbSchema } from '../../lib/schema';
 import { SITE_NAME } from '../../config/site';
+import jorgeSergioVentas from '../../assets/jorge-sergio-ventas.png';
 
 const faqEntries = await getFaqForPage('cmv');
 
@@ -39,7 +41,7 @@ const jsonLd = [
     eyebrow="B2B — Empresas y directores comerciales"
     headline="El método CMV instala el proceso de ventas que tu equipo no tiene"
     subhead="Crecimiento, Mentoría y Ventas: el sistema que convierte un equipo comercial disperso en un equipo autodirigido, con accountability real y resultados medibles."
-    cta={{ label: 'Agendar Diagnóstico Comercial', href: '/agenda/?tipo=cmv' }}
+    cta={{ label: 'Agendar Diagnóstico Comercial', href: '/agenda/' }}
   />
 
   <article>
@@ -53,6 +55,17 @@ const jsonLd = [
         es un proceso que se implementa dentro de tu equipo real, con tus vendedores reales.
       </p>
     </section>
+
+    <AuthorityPhoto
+      image={jorgeSergioVentas}
+      imageAlt="Jorge Sergio Ramírez Lizárraga"
+      eyebrow="Quién lidera el método CMV"
+      title="+40 años formando equipos comerciales, dentro de la operación real"
+      paragraph="Jorge Sergio Ramírez no diseñó el método CMV en un salón de clases. Lo construyó dirigiendo equipos comerciales dentro de organizaciones como Coca-Cola, Cervecería Cuauhtémoc, Emyco, Sandler Training y NEXE — formando a miles de vendedores en la disciplina de vender con proceso, no con suerte."
+      quote="Un equipo comercial no se motiva una vez al año. Se estructura para vender todos los días."
+      linkLabel="Conoce su trayectoria completa"
+      linkHref="/sobre-jorge-sergio/"
+    />
 
     <section class="bg-navy-900 px-6 py-20 md:px-16 md:py-[100px]">
       <div class="mx-auto max-w-[760px]">
@@ -147,7 +160,7 @@ const jsonLd = [
       title="Tu equipo puede seguir vendiendo por suerte, o puede seguir un sistema"
       subhead="30 minutos para revisar el estado real de tu equipo comercial y decirte con claridad si el método CMV es el camino."
       ctaLabel="Agendar Diagnóstico Comercial"
-      ctaHref="/agenda/?tipo=cmv"
+      ctaHref="/agenda/"
     />
   </article>
 </BaseLayout>
