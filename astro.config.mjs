@@ -9,7 +9,7 @@ export default defineConfig({
   // Cloudflare Pages dev deploy uses its own *.pages.dev URL — override
   // via the PUBLIC_SITE_URL env var at build time on Cloudflare so this
   // stays in sync without a code change (see src/config/site.ts).
-  site: process.env.PUBLIC_SITE_URL || 'https://jorge-sergio-ramirez.pages.dev',
+  site: process.env.PUBLIC_SITE_URL || 'https://jorge-sergio.pages.dev',
   trailingSlash: 'always',
   build: {
     format: 'directory',

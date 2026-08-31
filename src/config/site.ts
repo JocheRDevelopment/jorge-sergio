@@ -8,7 +8,7 @@
 // a Cloudflare Pages y este valor se sobreescribe con PUBLIC_SITE_URL en
 // build (mismo valor que `site` en astro.config.mjs).
 export const SITE_URL =
-  import.meta.env.PUBLIC_SITE_URL || 'https://jorge-sergio-ramirez.pages.dev';
+  import.meta.env.PUBLIC_SITE_URL || 'https://jorge-sergio.pages.dev';
 
 export const SITE_NAME = 'Jorge Sergio Ramírez Lizárraga';
 
