@@ -15,9 +15,9 @@ import jorgeSergioPatrimonio from '../../assets/jorge-sergio-patrimonio.png';
 
 const faqEntries = await getFaqForPage('ppr');
 
-const title = 'Planeación Patrimonial y de Retiro (PPR) para Profesionistas';
+const title = 'Plan Personal de Retiro (PPR) para Profesionistas | Jorge S. Ramírez';
 const description =
-  'La inflación se come tu ahorro más rápido de lo que crees. La Planeación Patrimonial y de Retiro (PPR) de Jorge Sergio Ramírez te da un número real y una estrategia para llegar a él. Agenda tu sesión sin costo.';
+  'Diseña tu plan personal de retiro (PPR) con estrategia real de ahorro y optimización fiscal, no una calculadora genérica. Agenda tu sesión sin costo con Jorge S. Ramírez.';
 
 const jsonLd = [
   {
@@ -36,10 +36,10 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} appendBrand={false} jsonLd={jsonLd}>
   <PageHero
     eyebrow="B2C / B2B — Profesionales y empresarios 35–65"
-    headline="La Planeación Patrimonial y de Retiro (PPR) es el plan que reemplaza 'ya luego lo veo'"
+    headline="Tu Plan Personal de Retiro (PPR): el plan que reemplaza el 'ya luego lo veo'"
     subhead="Un número real, una estrategia de ahorro con protección fiscal, y certeza para ti y tu familia — no una calculadora genérica de internet."
     cta={{ label: 'Agendar Estrategia Patrimonial', href: '/agenda/' }}
   />
@@ -49,9 +49,9 @@ const jsonLd = [
 
     <section class="mx-auto max-w-[760px] px-6 py-16 md:px-0">
       <p class="text-[18px] leading-[1.75] text-ink-800">
-        <strong>La Planeación Patrimonial y de Retiro (PPR)</strong> es una estrategia personalizada que define cuánto
+        <strong>Tu Plan Personal de Retiro (PPR)</strong> es una estrategia personalizada que define cuánto
         necesitas ahorrar, en qué instrumentos y con qué protección fiscal para sostener tu nivel de vida en el
-        retiro y proteger tu patrimonio para tu familia. Jorge Sergio Ramírez la construye contigo, con tu capacidad
+        retiro y proteger tu patrimonio para tu familia. Jorge Sergio Ramírez lo construye contigo, con tu capacidad
         real de ahorro — no con una tabla genérica de porcentajes.
       </p>
     </section>
@@ -110,7 +110,7 @@ const jsonLd = [
 
     <section class="bg-bone-50 px-6 py-20 md:px-16 md:py-[100px]">
       <div class="mx-auto max-w-[760px]">
-        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">Cómo se construye tu estrategia PPR</p>
+        <p class="mb-3.5 text-[13px] font-semibold uppercase tracking-[1.4px] text-gold-500">Cómo se construye tu Plan Personal de Retiro (PPR)</p>
         <h2 class="mb-10 font-serif text-[28px] font-semibold text-navy-800 md:text-[34px]">
           Tres pasos, de tu situación actual a un plan con números reales
         </h2>
@@ -126,7 +126,7 @@ const jsonLd = [
             number={2}
             variant="left"
             theme="light"
-            title="Diseño de la estrategia"
+            title="Diseño de tu ahorro para el retiro"
             body="Se define cuánto necesitas ahorrar mensualmente, en qué instrumentos con protección fiscal, y con qué horizonte — un plan con números específicos, no un rango genérico."
           />
           <StepCard

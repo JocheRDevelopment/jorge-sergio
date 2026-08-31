@@ -15,11 +15,12 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   ogType?: 'website' | 'profile' | 'article';
+  appendBrand?: boolean;
   /** Schema JSON-LD específico de la página (Service, Person, FAQPage, BreadcrumbList...). */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, image, canonical, noindex, ogType, jsonLd } = Astro.props;
+const { title, description, image, canonical, noindex, ogType, appendBrand, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
@@ -35,6 +36,7 @@ const { title, description, image, canonical, noindex, ogType, jsonLd } = Astro.
       canonical={canonical}
       noindex={noindex}
       ogType={ogType}
+      appendBrand={appendBrand}
     />
     <FontPreload />
     <OrganizationSchema />

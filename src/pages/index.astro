@@ -12,16 +12,16 @@ import { getFaqForPage, faqSchema } from '../lib/faq';
 
 const faqEntries = await getFaqForPage('home');
 
-const title = 'Coaching de Liderazgo Comercial y Planeación Patrimonial';
+const title = 'Coaching Empresarial y Plan de Retiro PPR | Jorge Sergio Ramírez';
 const description =
-  'Tu equipo no vende lo que debería y tu retiro no está garantizado. Jorge Sergio Ramírez, +40 años de trayectoria, te da el diagnóstico y la estrategia. Agenda tu sesión sin costo.';
+  'Coaching empresarial para equipos de venta y plan personal de retiro (PPR). Jorge Sergio Ramírez, +40 años de experiencia. Agenda tu sesión sin costo.';
 ---
 
-<BaseLayout title={title} description={description} jsonLd={faqSchema(faqEntries)}>
+<BaseLayout title={title} description={description} appendBrand={false} jsonLd={faqSchema(faqEntries)}>
   <Hero
     eyebrow="+40 años de trayectoria comercial"
     headline="Tu equipo no vende lo que debería. Tu retiro no está garantizado. Los dos problemas se resuelven igual: con un sistema, no con suerte."
-    subhead="Más de 40 años ayudando a directores, empresarios y profesionales a escalar sus ventas y estructurar su retiro financiero — con un método, no con motivación de pizarrón."
+    subhead="Coaching empresarial para equipos de venta y un plan personal de retiro (PPR) construido a tu medida — con un método, no con motivación de pizarrón."
     ctaPrimary={{ label: 'Agendar Diagnóstico Comercial (Empresas)', href: '#agenda' }}
     ctaSecondary={{ label: 'Planear mi Retiro Financiero (Personal)', href: '#agenda' }}
   />

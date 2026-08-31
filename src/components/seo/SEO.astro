@@ -8,6 +8,8 @@ interface Props {
   canonical?: string;
   noindex?: boolean;
   ogType?: 'website' | 'profile' | 'article';
+  /** Si es false, `title` ya es el <title> completo y no se le concatena " | {SITE_NAME}". */
+  appendBrand?: boolean;
 }
 
 const {
@@ -17,13 +19,15 @@ const {
   canonical,
   noindex = false,
   ogType = 'website',
+  appendBrand = true,
 } = Astro.props;
 
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
+const pageTitle = appendBrand ? `${title} | ${SITE_NAME}` : title;
 ---
 
-<title>{title} | {SITE_NAME}</title>
+<title>{pageTitle}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}

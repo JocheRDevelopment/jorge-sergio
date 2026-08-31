@@ -5,9 +5,9 @@ import TrustStrip from '../../components/sections/TrustStrip.astro';
 import CalendlyEmbed from '../../components/calendly/CalendlyEmbed.astro';
 import { breadcrumbSchema } from '../../lib/schema';
 
-const title = 'Agenda tu Sesión — Diagnóstico Comercial o Estrategia Patrimonial';
+const title = 'Agenda tu Sesión sin Costo | Diagnóstico Comercial o Retiro';
 const description =
-  'Agenda en 30 segundos tu sesión sin costo con Jorge Sergio Ramírez: Diagnóstico Comercial para empresas o Estrategia Patrimonial y de Retiro. Confirmación automática, sin llamadas de venta.';
+  'Agenda en 30 segundos tu sesión sin costo: diagnóstico comercial (CMV) o estrategia de plan personal de retiro (PPR). Confirmación automática, sin llamadas de venta.';
 
 const jsonLd = breadcrumbSchema([
   { name: 'Inicio', path: '/' },
@@ -15,7 +15,7 @@ const jsonLd = breadcrumbSchema([
 ]);
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} appendBrand={false} jsonLd={jsonLd}>
   <section class="relative overflow-hidden bg-gradient-to-br from-navy-900 via-navy-700 to-navy-600 px-6 py-20 md:px-16 md:py-24">
     <div
       class="pointer-events-none absolute inset-0 opacity-[0.08]"

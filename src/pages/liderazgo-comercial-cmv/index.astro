@@ -15,9 +15,9 @@ import jorgeSergioVentas from '../../assets/jorge-sergio-ventas.png';
 
 const faqEntries = await getFaqForPage('cmv');
 
-const title = 'Coaching Comercial y Método CMV para Equipos de Venta';
+const title = 'Coaching de Ventas y Capacitación de Equipos Comerciales | CMV';
 const description =
-  'Equipos con bajo rendimiento comercial, rotación y cero accountability cuestan facturación cada mes. El método CMV de Jorge Sergio Ramírez instala el proceso que tu equipo necesita. Agenda tu diagnóstico sin costo.';
+  'Coaching de ventas y capacitación de equipos comerciales con el método CMV: venta consultiva, neuroventas y accountability real. Agenda tu diagnóstico sin costo.';
 
 const jsonLd = [
   {
@@ -36,10 +36,10 @@ const jsonLd = [
 ];
 ---
 
-<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+<BaseLayout title={title} description={description} appendBrand={false} jsonLd={jsonLd}>
   <PageHero
     eyebrow="B2B — Empresas y directores comerciales"
-    headline="El método CMV instala el proceso de ventas que tu equipo no tiene"
+    headline="Coaching de ventas que instala el proceso que tu equipo no tiene (Método CMV)"
     subhead="Crecimiento, Mentoría y Ventas: el sistema que convierte un equipo comercial disperso en un equipo autodirigido, con accountability real y resultados medibles."
     cta={{ label: 'Agendar Diagnóstico Comercial', href: '/agenda/' }}
   />
@@ -126,7 +126,7 @@ const jsonLd = [
             number={2}
             variant="left"
             theme="light"
-            title="Mentoría — formación de líderes"
+            title="Mentoría — venta consultiva y neuroventas"
             body="Se forma a los líderes comerciales en neuroventas, venta consultiva y manejo de objeciones, y se les da las herramientas de accountability para sostener el proceso con el equipo — así el sistema no depende de que Jorge Sergio esté presente todos los días."
           />
           <StepCard
