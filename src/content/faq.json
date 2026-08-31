@@ -62,8 +62,8 @@
   {
     "id": "ppr-que-es",
     "page": "ppr",
-    "question": "¿Qué es una Planeación Patrimonial y de Retiro (PPR)?",
-    "answer": "Es una estrategia personalizada que define cuánto necesitas ahorrar, en qué instrumentos y con qué protección fiscal para sostener tu nivel de vida en el retiro y proteger tu patrimonio para tu familia — no una calculadora genérica, sino un plan construido con tu situación real."
+    "question": "¿Qué es un Plan Personal de Retiro (PPR)?",
+    "answer": "Un Plan Personal de Retiro (PPR) es una estrategia personalizada que define cuánto necesitas ahorrar, en qué instrumentos y con qué protección fiscal para sostener tu nivel de vida en el retiro y proteger tu patrimonio para tu familia — no una calculadora genérica, sino un plan construido con tu situación real."
   },
   {
     "id": "ppr-ahorros-grandes",
@@ -88,5 +88,29 @@
     "page": "ppr",
     "question": "¿Qué pasa en la Sesión de Estrategia Patrimonial?",
     "answer": "En 30 minutos revisamos tu situación actual (edad, capacidad de ahorro, si ya tienes un plan de retiro o no), te muestro con números qué tan lejos o cerca estás de tu meta de retiro, y definimos si una estrategia patrimonial contigo tiene sentido — sin costo y sin compromiso."
+  },
+  {
+    "id": "ppr-deducible",
+    "page": "ppr",
+    "question": "¿El PPR es deducible de impuestos?",
+    "answer": "Sí: los Planes Personales de Retiro cuentan en México con estímulos fiscales que permiten deducir una parte de tus aportaciones anuales, dentro de los límites que marca la ley. El tratamiento exacto depende de tu régimen fiscal y tu perfil de ingresos, así que ese cálculo se revisa a detalle en la sesión de estrategia — no es un dato genérico que aplique igual para todos."
+  },
+  {
+    "id": "ppr-mejor-plan",
+    "page": "ppr",
+    "question": "¿Cuál es el mejor plan personal de retiro?",
+    "answer": "No existe un 'mejor' plan personal de retiro genérico: depende de tu edad, tu capacidad de ahorro, tu horizonte antes del retiro y tu tolerancia al riesgo. Por eso la Sesión de Estrategia Patrimonial no ofrece un producto estándar, sino que diseña la mezcla de instrumentos que mejor se ajusta a tu situación real."
+  },
+  {
+    "id": "cmv-venta-consultiva",
+    "page": "cmv",
+    "question": "¿Qué es la venta consultiva?",
+    "answer": "La venta consultiva es un enfoque donde el vendedor primero entiende a fondo el problema del cliente y solo después propone una solución — en vez de recitar un guion de producto. Es uno de los pilares que se forma dentro del método CMV, junto con neuroventas y manejo de objeciones, para que el equipo cierre con base en necesidades reales, no en presión."
+  },
+  {
+    "id": "cmv-motivar-equipo",
+    "page": "cmv",
+    "question": "¿Cómo motivar a un equipo de ventas sin depender de bonos?",
+    "answer": "Los bonos motivan en el corto plazo, pero no sostienen a un equipo cuando el mes es difícil. Lo que sostiene la motivación es un proceso claro, metas visibles y accountability real: que cada vendedor sepa qué se espera de él, vea su propio avance y tenga seguimiento constante — eso es lo que instala el método CMV, más allá del incentivo económico."
   }
 ]
