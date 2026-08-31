@@ -23,8 +23,8 @@ export const CONTACT = {
 };
 
 export const NAV_LINKS = [
-  { href: '/liderazgo-comercial-cmv/', label: 'Liderazgo Comercial' },
-  { href: '/planeacion-patrimonial-retiro/', label: 'Planeación Patrimonial' },
+  { href: '/coaching-de-ventas/', label: 'Liderazgo Comercial' },
+  { href: '/plan-personal-de-retiro-ppr/', label: 'Planeación Patrimonial' },
   { href: '/sobre-jorge-sergio/', label: 'Sobre Jorge' },
 ] as const;
 

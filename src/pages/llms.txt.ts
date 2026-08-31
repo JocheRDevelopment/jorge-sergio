@@ -9,8 +9,8 @@ export const GET: APIRoute = ({ site }) => {
 
 ## Servicios
 
-- [Liderazgo Comercial — Método CMV](${url('/liderazgo-comercial-cmv/')}): Coaching de liderazgo comercial y formación de equipos de venta para empresas (B2B). Crecimiento, Mentoría y Ventas.
-- [Planeación Patrimonial y de Retiro (PPR)](${url('/planeacion-patrimonial-retiro/')}): Estrategia personalizada de ahorro para el retiro y protección patrimonial ante la inflación, para profesionales y empresarios de 35 a 65 años.
+- [Coaching de Ventas — Método CMV](${url('/coaching-de-ventas/')}): Coaching de ventas y formación de equipos comerciales para empresas (B2B). Crecimiento, Mentoría y Ventas.
+- [Plan Personal de Retiro (PPR)](${url('/plan-personal-de-retiro-ppr/')}): Estrategia personalizada de ahorro para el retiro y protección patrimonial ante la inflación, para profesionales y empresarios de 35 a 65 años.
 - [Agenda tu sesión](${url('/agenda/')}): Reserva automática 24/7 de una sesión de Diagnóstico Comercial o Estrategia Patrimonial, sin costo.
 
 ## Sobre Jorge Sergio
