@@ -6,7 +6,10 @@
       "Bash(npm install *)",
       "Bash(npx playwright *)",
       "Bash(npx astro *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git mv *)"
     ]
   }
 }
