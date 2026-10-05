@@ -1,6 +1,6 @@
 /**
  * Fuente única de configuración del sitio. Todo lo que dependa de dominio,
- * cuenta de Calendly o slugs de evento debe importar de aquí — nunca
+ * cuenta de Cal.com o slugs de evento debe importar de aquí — nunca
  * hardcodear estos valores en un componente o página.
  */
 
@@ -15,7 +15,8 @@ export const SITE_NAME = 'Jorge Sergio Ramírez Lizárraga';
 export const SITE_DESCRIPTION =
   'Coaching de liderazgo comercial y planeación patrimonial y de retiro. Más de 40 años de trayectoria. Agenda tu diagnóstico o estrategia sin costo.';
 
-export const CALENDLY_URL = 'https://calendly.com/jorge-sergio/sesion-servicio';
+export const CAL_LINK = 'jorge-sergio-ramirez-lizarraga-edydir/45min';
+export const CAL_URL = `https://cal.com/${CAL_LINK}`;
 
 export const CONTACT = {
   // TODO: correo/teléfono real de contacto para el aviso de privacidad y JSON-LD.

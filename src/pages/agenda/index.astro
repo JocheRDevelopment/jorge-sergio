@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StepCard from '../../components/sections/StepCard.astro';
 import TrustStrip from '../../components/sections/TrustStrip.astro';
-import CalendlyEmbed from '../../components/calendly/CalendlyEmbed.astro';
+import CalEmbed from '../../components/cal/CalEmbed.astro';
 import { breadcrumbSchema } from '../../lib/schema';
 
 const title = 'Agenda tu Sesión sin Costo | Diagnóstico Comercial o Retiro';
@@ -48,6 +48,6 @@ const jsonLd = breadcrumbSchema([
       <StepCard number={3} title="Confirmación automática instantánea" theme="light" />
     </div>
 
-    <CalendlyEmbed theme="light" />
+    <CalEmbed theme="light" />
   </section>
 </BaseLayout>

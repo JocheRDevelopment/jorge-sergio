@@ -7,7 +7,7 @@ import Historia from '../components/sections/Historia.astro';
 import Testimonios from '../components/sections/Testimonios.astro';
 import FaqAccordion from '../components/sections/FaqAccordion.astro';
 import StepCard from '../components/sections/StepCard.astro';
-import CalendlyEmbed from '../components/calendly/CalendlyEmbed.astro';
+import CalEmbed from '../components/cal/CalEmbed.astro';
 import { getFaqForPage, faqSchema } from '../lib/faq';
 
 const faqEntries = await getFaqForPage('home');
@@ -63,6 +63,6 @@ const description =
       <StepCard number={3} title="Confirmación automática instantánea" theme="dark" />
     </div>
 
-    <CalendlyEmbed theme="light" />
+    <CalEmbed theme="light" />
   </section>
 </BaseLayout>

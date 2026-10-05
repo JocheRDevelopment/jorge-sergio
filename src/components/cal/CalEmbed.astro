@@ -1,0 +1,182 @@
+---
+import { CAL_LINK, CAL_URL } from '../../config/site';
+import CalFallbackLink from './CalFallbackLink.astro';
+
+interface Props {
+  theme?: 'dark' | 'light';
+}
+
+const { theme = 'light' } = Astro.props;
+const cardBg = theme === 'dark' ? 'bg-navy-800' : 'bg-white';
+---
+
+<div data-cal-root data-cal-link={CAL_LINK} data-cal-url={CAL_URL} data-cal-theme={theme} class="relative z-10 mx-auto max-w-[1160px]">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -inset-6 rounded-[24px] bg-gold-500/10 blur-3xl md:-inset-10"
+  >
+  </div>
+
+  <div class:list={['relative overflow-hidden rounded-[6px] border-t-4 border-t-gold-500 shadow-embed', cardBg]}>
+    <div class="relative h-[1080px] md:h-[760px]">
+      <div
+        data-cal-skeleton
+        role="status"
+        class="pointer-events-none absolute inset-0 z-10 flex animate-pulse flex-col items-center justify-center gap-3 p-10 text-center"
+      >
+        <div data-cal-spinner aria-hidden="true" class="h-10 w-10 animate-spin rounded-full border-2 border-gold-500 border-t-transparent" />
+        <p data-cal-status class="text-[13.5px] text-slate-500">Cargando calendario…</p>
+      </div>
+      <div data-cal-mount aria-busy="true" class="h-[1080px] w-full overflow-auto md:h-[760px]"></div>
+    </div>
+  </div>
+
+  <div class="relative mt-5 flex flex-wrap items-center justify-between gap-3 px-1">
+    <CalFallbackLink linkId="cal-fallback-link" />
+    <p class="text-[12px] text-slate-500">Las preguntas de calificación se responden dentro del calendario.</p>
+  </div>
+</div>
+
+<script>
+  // The vanilla embed consumes a command queue attached to window.Cal.
+  type CalCommand = [method: string, options: Record<string, unknown>];
+  type CalApi = ((...command: CalCommand) => void) & {
+    q: CalCommand[];
+    ns: Record<string, CalApi>;
+    loaded: boolean;
+    config?: { forwardQueryParams: boolean };
+  };
+  const calWindow = window as Window & { Cal?: CalApi };
+  const root = document.querySelector<HTMLElement>('[data-cal-root]');
+
+  if (root) {
+    const mount = root.querySelector<HTMLElement>('[data-cal-mount]');
+    const skeleton = root.querySelector<HTMLElement>('[data-cal-skeleton]');
+    const fallback = root.querySelector<HTMLAnchorElement>('[data-cal-fallback] a');
+    const baseUrl = root.dataset.calUrl || '';
+    const calLink = root.dataset.calLink || '';
+    const theme = root.dataset.calTheme === 'dark' ? 'dark' : 'light';
+    const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'] as const;
+    const params = new URLSearchParams(location.search);
+    let storedUtm: unknown = {};
+
+    // Keep attribution across Home -> Agenda, even if storage is unavailable.
+    try {
+      storedUtm = JSON.parse(sessionStorage.getItem('jsr_utm') || '{}');
+    } catch {
+      // A blocked session store must not prevent booking.
+    }
+    const utm = new URLSearchParams();
+    const hasUtm = UTM_KEYS.some((key) => params.has(key));
+    for (const key of UTM_KEYS) {
+      const storedValue = storedUtm && typeof storedUtm === 'object'
+        ? (storedUtm as Record<string, unknown>)[key]
+        : undefined;
+      const value = hasUtm ? params.get(key) : storedValue;
+      if (typeof value === 'string' && value) utm.set(key, value);
+    }
+    if (hasUtm) {
+      try {
+        sessionStorage.setItem('jsr_utm', JSON.stringify(Object.fromEntries(utm)));
+      } catch {
+        // The current visit's UTMs are still passed to both booking links.
+      }
+    }
+    const directUrl = new URL(baseUrl);
+    utm.forEach((value, key) => directUrl.searchParams.set(key, value));
+    if (fallback) fallback.href = directUrl.toString();
+    const trackedCalLink = utm.size ? `${calLink}?${utm}` : calLink;
+
+    let requested = false;
+    let loadTimeout: ReturnType<typeof setTimeout>;
+
+    function showFailure() {
+      clearTimeout(loadTimeout);
+      mount?.setAttribute('aria-busy', 'false');
+      skeleton?.classList.remove('animate-pulse');
+      root?.querySelector('[data-cal-spinner]')?.remove();
+      const status = root?.querySelector('[data-cal-status]');
+      if (status) status.textContent = 'No se pudo cargar el calendario. Usa el enlace directo de abajo.';
+    }
+
+    function renderWidget() {
+      if (requested || !mount) return;
+      requested = true;
+      loadTimeout = setTimeout(showFailure, 30000);
+
+      if (!calWindow.Cal) {
+        const queuedCal: CalApi = Object.assign(
+          (...command: CalCommand) => { queuedCal.q.push(command); },
+          { q: [] as CalCommand[], ns: {} as Record<string, CalApi>, loaded: true }
+        );
+        calWindow.Cal = queuedCal;
+        const script = document.createElement('script');
+        script.src = 'https://cal.com/embed.js';
+        script.async = true;
+        script.onerror = showFailure;
+        document.head.appendChild(script);
+      }
+      const Cal = calWindow.Cal;
+      // Explicitly allow only the UTM params assembled above.
+      Cal.config = { ...Cal.config, forwardQueryParams: false };
+      Cal('init', { origin: 'https://cal.com' });
+      Cal('on', {
+        action: 'linkReady',
+        callback: () => {
+          clearTimeout(loadTimeout);
+          skeleton?.remove();
+          mount.setAttribute('aria-busy', 'false');
+        },
+      });
+      Cal('on', { action: 'linkFailed', callback: showFailure });
+      Cal('inline', {
+        elementOrSelector: mount,
+        calLink: trackedCalLink,
+        config: { theme, layout: 'month_view' },
+      });
+
+      // Resolve brand values from the site's existing design tokens.
+      const tokens = getComputedStyle(root!);
+      const token = (name: string) => tokens.getPropertyValue(name).trim();
+      const brand = {
+        'cal-brand': token('--color-gold-500'),
+        'cal-brand-emphasis': token('--color-gold-300'),
+        'cal-brand-text': token('--color-navy-900'),
+        radius: token('--radius-media'),
+      };
+      Cal('ui', {
+        theme,
+        hideEventTypeDetails: false,
+        layout: 'month_view',
+        cssVarsPerTheme: {
+          light: {
+            ...brand,
+            'cal-text': token('--color-ink-base'),
+            'cal-bg': '#ffffff',
+            'cal-border': token('--color-line-200'),
+            'cal-border-booker': token('--color-line-200'),
+          },
+          dark: {
+            ...brand,
+            'cal-text': token('--color-bone-50'),
+            'cal-bg': token('--color-navy-800'),
+            'cal-border': token('--color-navy-600'),
+            'cal-border-booker': token('--color-navy-600'),
+          },
+        },
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          renderWidget();
+        }
+      });
+      observer.observe(root);
+    } else {
+      renderWidget();
+    }
+  }
+</script>
