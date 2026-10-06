@@ -1,5 +1,9 @@
 ---
 import LogoStrip from '../sections/LogoStrip.astro';
+import { navLinks } from '../../config/site';
+import { getPublishedPosts } from '../../lib/blog';
+
+const links = navLinks((await getPublishedPosts()).length > 0);
 const year = new Date().getFullYear();
 ---
 
@@ -7,13 +11,17 @@ const year = new Date().getFullYear();
   <div class="flex flex-wrap items-center justify-between gap-5">
     <div class="font-serif text-[17px] text-slate-400">Jorge Sergio Ramírez Lizárraga</div>
     <div class="flex flex-wrap gap-7">
-      <a href="/coaching-de-ventas/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Liderazgo Comercial</a>
-      <a href="/plan-personal-de-retiro-ppr/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Planeación Patrimonial</a>
-      <a href="/sobre-jorge-sergio/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Sobre Jorge</a>
+      {
+        links.map((link) => (
+          <a href={link.href} class="text-[13.5px] text-slate-500 hover:text-gold-300">
+            {link.label}
+          </a>
+        ))
+      }
       <a href="/agenda/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Agenda tu sesión</a>
       <a href="/aviso-de-privacidad/" class="text-[13.5px] text-slate-500 hover:text-gold-300">Aviso de Privacidad</a>
     </div>
-    <div class="text-[12.5px] text-ink-700">&copy; {year} &middot; Liderazgo Comercial &amp; Planeación Patrimonial</div>
+    <div class="text-[12.5px] text-ink-700">&copy; {year} &middot; Coaching de Ventas &amp; Plan de Retiro</div>
   </div>
 
   <div class="mt-10 border-t border-white/10 pt-8">

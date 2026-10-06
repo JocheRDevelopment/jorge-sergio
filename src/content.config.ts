@@ -25,4 +25,24 @@ const faq = defineCollection({
   }),
 });
 
-export const collections = { testimonials, faq };
+// Blog. `_plantilla.md` entra a la colección (así su frontmatter también se
+// valida contra el schema), pero getPublishedPosts() descarta cualquier
+// archivo que empiece con "_", así que nunca genera página.
+const blog = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/blog' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().max(160),
+      pubDate: z.coerce.date(),
+      updatedDate: z.coerce.date().optional(),
+      pillar: z.enum(['retiro', 'finanzas', 'ventas', 'coaching']),
+      keyword: z.string(),
+      cta: z.enum(['patrimonial', 'comercial']),
+      heroImage: image().optional(),
+      faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
+      draft: z.boolean().default(true),
+    }),
+});
+
+export const collections = { testimonials, faq, blog };
