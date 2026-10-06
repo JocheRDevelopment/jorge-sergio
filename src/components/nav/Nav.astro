@@ -1,6 +1,9 @@
 ---
-import { NAV_LINKS } from '../../config/site';
+import { navLinks } from '../../config/site';
+import { getPublishedPosts } from '../../lib/blog';
 import PrimaryCta from '../cta/PrimaryCta.astro';
+
+const links = navLinks((await getPublishedPosts()).length > 0);
 ---
 
 <header
@@ -19,7 +22,7 @@ import PrimaryCta from '../cta/PrimaryCta.astro';
 
     <div class="hidden items-center gap-9 lg:flex">
       {
-        NAV_LINKS.map((link) => (
+        links.map((link) => (
           <a
             href={link.href}
             class="text-[15px] font-medium text-slate-300 hover:text-gold-300"
@@ -56,7 +59,7 @@ import PrimaryCta from '../cta/PrimaryCta.astro';
   <div id="nav-mobile-panel" class="hidden border-t border-gold-500/25 bg-navy-800 px-6 py-4 lg:hidden">
     <div class="flex flex-col gap-4">
       {
-        NAV_LINKS.map((link) => (
+        links.map((link) => (
           <a href={link.href} class="text-[15px] font-medium text-slate-300 hover:text-gold-300">
             {link.label}
           </a>

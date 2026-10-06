@@ -1,0 +1,82 @@
+---
+import { getImage } from 'astro:assets';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/blog/Breadcrumbs.astro';
+import AuthorBox from '../components/blog/AuthorBox.astro';
+import FaqAccordion from '../components/sections/FaqAccordion.astro';
+import FinalCtaBand from '../components/cta/FinalCtaBand.astro';
+import { breadcrumbSchema } from '../lib/schema';
+import { faqSchema } from '../lib/faq';
+import { DISCLAIMER_PILLARS, PILLARS, blogPostingSchema, pillarPath, postPath, type Post } from '../lib/blog';
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const { title, description, pubDate, updatedDate, pillar, cta, heroImage, faqs } = post.data;
+
+const ogImage = heroImage
+  ? (await getImage({ src: heroImage, width: 1200, height: 630, format: 'jpg' })).src
+  : '/og/og-default.jpg';
+const ogImageURL = new URL(ogImage, Astro.site).toString();
+
+const crumbs = [
+  { name: 'Inicio', path: '/' },
+  { name: 'Blog', path: '/blog/' },
+  { name: PILLARS[pillar], path: pillarPath(pillar) },
+  { name: title, path: postPath(post) },
+];
+
+const jsonLd = [
+  blogPostingSchema(post, ogImageURL),
+  breadcrumbSchema(crumbs),
+  ...(faqs?.length ? [faqSchema(faqs)] : []),
+];
+
+const ctaCopy = {
+  patrimonial: {
+    title: 'Agenda tu Estrategia Patrimonial sin costo',
+    subhead: '30 minutos para revisar tu situación real y decirte con números qué tan lejos o cerca estás de tu meta de retiro.',
+  },
+  comercial: {
+    title: 'Agenda tu Diagnóstico Comercial sin costo',
+    subhead: '30 minutos para revisar el estado real de tu equipo comercial y decirte con claridad cuál es el siguiente paso.',
+  },
+}[cta];
+---
+
+<BaseLayout title={title} description={description} image={ogImage} ogType="article" jsonLd={jsonLd}>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={pubDate.toISOString()} />
+    <meta property="article:modified_time" content={(updatedDate ?? pubDate).toISOString()} />
+    <meta property="article:section" content={PILLARS[pillar]} />
+  </Fragment>
+
+  <article class="mx-auto max-w-[720px] px-6 pb-20 pt-12 md:px-0 md:pt-16">
+    <Breadcrumbs crumbs={crumbs} />
+
+    <h1 class="mb-8 mt-6 font-serif text-[32px] font-semibold leading-[1.2] text-navy-800 md:text-[42px]">
+      {title}
+    </h1>
+
+    <AuthorBox pubDate={pubDate} updatedDate={updatedDate} />
+
+    <div
+      class="prose prose-slate mt-10 max-w-none prose-headings:font-serif prose-headings:text-navy-800 prose-a:text-gold-500 hover:prose-a:text-gold-300"
+    >
+      <slot />
+    </div>
+
+    {
+      DISCLAIMER_PILLARS.includes(pillar) && (
+        <p class="mt-12 border-t border-line-200 pt-6 text-[13px] italic text-slate-500">
+          Contenido informativo; no sustituye asesoría fiscal o financiera personalizada.
+        </p>
+      )
+    }
+  </article>
+
+  {faqs?.length ? <FaqAccordion entries={faqs} title="Preguntas frecuentes" /> : null}
+
+  <FinalCtaBand title={ctaCopy.title} subhead={ctaCopy.subhead} ctaLabel={ctaCopy.title} ctaHref="/agenda/" />
+</BaseLayout>

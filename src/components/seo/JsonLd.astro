@@ -8,7 +8,7 @@ interface Props {
 const { schema } = Astro.props;
 const payload = Array.isArray(schema)
   ? { '@context': 'https://schema.org', '@graph': schema }
-  : schema;
+  : { '@context': 'https://schema.org', ...schema };
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(payload)} is:inline />

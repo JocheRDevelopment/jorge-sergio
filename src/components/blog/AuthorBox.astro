@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import jorgeRamirez from '../../assets/jorge-ramirez-coach.png';
+import { AUTHOR, formatDate } from '../../lib/blog';
+
+interface Props {
+  pubDate: Date;
+  updatedDate?: Date;
+}
+const { pubDate, updatedDate } = Astro.props;
+---
+
+<div class="flex items-center gap-4 border-y border-line-200 py-5">
+  <Image
+    src={jorgeRamirez}
+    alt={AUTHOR.fullName}
+    width={56}
+    height={56}
+    class="h-14 w-14 shrink-0 rounded-full border border-gold-500/40 object-cover object-top"
+  />
+  <div class="text-[13.5px] leading-[1.6] text-ink-800">
+    <p class="m-0">
+      Por <a href={AUTHOR.path} class="font-semibold text-navy-800 hover:text-gold-500">{AUTHOR.name}</a>
+    </p>
+    <p class="m-0 text-slate-500">
+      Publicado el <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      {
+        updatedDate && (
+          <>
+            {' · '}Actualizado el <time datetime={updatedDate.toISOString()}>{formatDate(updatedDate)}</time>
+          </>
+        )
+      }
+    </p>
+  </div>
+</div>

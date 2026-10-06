@@ -4,11 +4,8 @@
  * hardcodear estos valores en un componente o página.
  */
 
-// TODO: reemplazar cuando exista dominio final. Mientras tanto se despliega
-// a Cloudflare Pages y este valor se sobreescribe con PUBLIC_SITE_URL en
-// build (mismo valor que `site` en astro.config.mjs).
-export const SITE_URL =
-  import.meta.env.PUBLIC_SITE_URL || 'https://jorge-sergio.pages.dev';
+// Dominio sin slash final, derivado de `site` en astro.config.mjs.
+export const SITE_URL = import.meta.env.SITE.replace(/\/$/, '');
 
 export const SITE_NAME = 'Jorge Sergio Ramírez Lizárraga';
 
@@ -24,10 +21,19 @@ export const CONTACT = {
 };
 
 export const NAV_LINKS = [
-  { href: '/coaching-de-ventas/', label: 'Liderazgo Comercial' },
-  { href: '/plan-personal-de-retiro-ppr/', label: 'Planeación Patrimonial' },
+  { href: '/coaching-de-ventas/', label: 'Coaching de Ventas' },
+  { href: '/plan-personal-de-retiro-ppr/', label: 'Plan de Retiro (PPR)' },
   { href: '/sobre-jorge-sergio/', label: 'Sobre Jorge' },
 ] as const;
+
+/** Se inserta antes de "Sobre Jorge" solo si hay artículos publicados. */
+export const BLOG_NAV_LINK = { href: '/blog/', label: 'Blog' } as const;
+
+/** Enlaces de navegación, con "Blog" solo cuando el blog tiene contenido. */
+export function navLinks(hasPosts: boolean) {
+  if (!hasPosts) return [...NAV_LINKS];
+  return [...NAV_LINKS.slice(0, 2), BLOG_NAV_LINK, ...NAV_LINKS.slice(2)];
+}
 
 export const CAREER_HISTORY = [
   'Coca-Cola',

@@ -5,7 +5,8 @@ import SocialProof from '../../components/sections/SocialProof.astro';
 import AuthorityPhoto from '../../components/sections/AuthorityPhoto.astro';
 import StepCard from '../../components/sections/StepCard.astro';
 import StatBlock from '../../components/sections/StatBlock.astro';
-import Testimonios from '../../components/sections/Testimonios.astro';
+// TODO: reactivar con testimonios reales autorizados (nombre, cargo, empresa). Quitar la leyenda "Testimonio representativo".
+// import Testimonios from '../../components/sections/Testimonios.astro';
 import FaqAccordion from '../../components/sections/FaqAccordion.astro';
 import FinalCtaBand from '../../components/cta/FinalCtaBand.astro';
 import { getFaqForPage, faqSchema } from '../../lib/faq';
@@ -148,11 +149,14 @@ const jsonLd = [
       </div>
     </section>
 
+    {/* TODO: reactivar con testimonios reales autorizados (nombre, cargo, empresa). Quitar la leyenda "Testimonio representativo". */}
+    {/*
     <Testimonios
       pillar="ppr"
       eyebrow="Lo que dicen quienes ya tienen un plan"
       title="Resultados de la estrategia PPR"
     />
+    */}
 
     <FaqAccordion entries={faqEntries} title="Preguntas frecuentes sobre PPR" />
 
