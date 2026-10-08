@@ -29,9 +29,12 @@ keyword: "plan personal de retiro"
 #   comercial   → "Agenda tu Diagnóstico Comercial sin costo"
 cta: patrimonial
 
-# Opcional: imagen principal, ruta relativa a este archivo (se optimiza y se
-# usa como og:image 1200×630). Guarda las imágenes en src/assets/blog/.
-# heroImage: ../../assets/blog/mi-imagen.jpg
+# Opcional: imagen principal, ruta relativa a este archivo. Se recorta a
+# 1200×630 y se usa como imagen del artículo, de su tarjeta y como og:image.
+# Guarda las imágenes en src/assets/blogs/.
+# heroImage: ../../assets/blogs/mi-imagen.jpg
+# Texto alternativo de la imagen (si falta, se usa el título).
+# heroImageAlt: "Descripción de la imagen"
 
 # Opcional: preguntas frecuentes. Se muestran al final y generan FAQPage JSON-LD.
 faqs:

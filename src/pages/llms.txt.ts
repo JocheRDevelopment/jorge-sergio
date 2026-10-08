@@ -1,7 +1,19 @@
 import type { APIRoute } from 'astro';
+import { getPublishedPosts, postPath } from '../lib/blog';
 
-export const GET: APIRoute = ({ site }) => {
+export const GET: APIRoute = async ({ site }) => {
   const url = (path: string) => new URL(path, site).toString();
+
+  // Solo artículos publicados (en build se excluyen los borradores). Sin
+  // artículos, la sección no aparece.
+  const posts = await getPublishedPosts();
+  const blogSection = posts.length
+    ? `
+## Blog
+
+${posts.map((p) => `- [${p.data.title}](${url(postPath(p))}): ${p.data.description}`).join('\n')}
+`
+    : '';
 
   const body = `# Jorge Sergio Ramírez Lizárraga
 
@@ -16,7 +28,7 @@ export const GET: APIRoute = ({ site }) => {
 ## Sobre Jorge Sergio
 
 - [Sobre Jorge Sergio Ramírez Lizárraga](${url('/sobre-jorge-sergio/')}): Historia, principios de liderazgo y trayectoria profesional.
-
+${blogSection}
 ## Otros
 
 - [Inicio](${url('/')}): Panorama general de ambos servicios.

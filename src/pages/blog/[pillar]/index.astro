@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../../components/blog/Breadcrumbs.astro';
 import PostCard from '../../../components/blog/PostCard.astro';
 import { breadcrumbSchema } from '../../../lib/schema';
-import { PILLARS, getPublishedPosts, pillarPath, type Pillar, type Post } from '../../../lib/blog';
+import { PILLARS, PILLAR_META, getPublishedPosts, pillarPath, type Pillar, type Post } from '../../../lib/blog';
 
 // Solo se generan los pilares que tienen al menos un artículo publicado.
 export async function getStaticPaths() {
@@ -21,6 +21,7 @@ interface Props {
 }
 const { pillar, posts } = Astro.props;
 const label = PILLARS[pillar];
+const meta = PILLAR_META[pillar];
 
 const crumbs = [
   { name: 'Inicio', path: '/' },
@@ -30,8 +31,10 @@ const crumbs = [
 ---
 
 <BaseLayout
-  title={`${label} — Blog`}
-  description={`Artículos de ${label.toLowerCase()} por Jorge Sergio Ramírez: guías prácticas y respuestas claras, sin rodeos.`}
+  title={meta?.title ?? `${label} — Blog`}
+  description={meta?.description ??
+    `Artículos de ${label.toLowerCase()} por Jorge Sergio Ramírez: guías prácticas y respuestas claras, sin rodeos.`}
+  appendBrand={!meta}
   jsonLd={breadcrumbSchema(crumbs)}
 >
   <section class="mx-auto max-w-[1140px] px-6 py-16 md:px-16">
