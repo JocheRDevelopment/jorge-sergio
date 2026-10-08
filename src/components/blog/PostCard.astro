@@ -1,24 +1,52 @@
 ---
+import { Image } from 'astro:assets';
 import { PILLARS, formatDate, pillarPath, postPath, type Post } from '../../lib/blog';
 
 interface Props {
   post: Post;
 }
 const { post } = Astro.props;
+const { heroImage } = post.data;
 ---
 
-<article class="flex flex-col rounded-[4px] border border-line-200 bg-white p-7">
-  <a
-    href={pillarPath(post.data.pillar)}
-    class="mb-3 text-[12px] font-semibold uppercase tracking-[1.2px] text-gold-500 hover:text-gold-300"
-  >
-    {PILLARS[post.data.pillar]}
-  </a>
-  <h2 class="mb-3 font-serif text-[22px] font-semibold leading-[1.3]">
-    <a href={postPath(post)} class="text-navy-800 hover:text-gold-500">{post.data.title}</a>
-  </h2>
-  <p class="mb-5 text-[14.5px] leading-[1.7] text-ink-800">{post.data.description}</p>
-  <time datetime={post.data.pubDate.toISOString()} class="mt-auto text-[12.5px] text-slate-500">
-    {formatDate(post.data.pubDate)}
-  </time>
+<!--
+  Toda la tarjeta lleva al artículo: el ::after del enlace del título la cubre
+  completa ("stretched link"), así sigue habiendo un solo enlace accesible. El
+  enlace del pilar queda por encima (relative z-10) y conserva su destino.
+-->
+<article
+  class="group relative flex flex-col overflow-hidden rounded-[4px] border border-line-200 bg-white transition-[border-color,box-shadow] duration-150 hover:border-gold-500/60 hover:shadow-[0_8px_24px_rgba(13,27,48,0.08)] has-[a:focus-visible]:ring-2 has-[a:focus-visible]:ring-gold-300"
+>
+  {
+    heroImage && (
+      <Image
+        src={heroImage}
+        alt=""
+        width={720}
+        height={378}
+        loading="lazy"
+        class="aspect-[1200/630] w-full border-b border-line-200 object-cover"
+      />
+    )
+  }
+  <div class="flex flex-1 flex-col p-7">
+    <a
+      href={pillarPath(post.data.pillar)}
+      class="relative z-10 mb-3 self-start text-[12px] font-semibold uppercase tracking-[1.2px] text-gold-500 hover:text-gold-300"
+    >
+      {PILLARS[post.data.pillar]}
+    </a>
+    <h2 class="mb-3 font-serif text-[22px] font-semibold leading-[1.3]">
+      <a
+        href={postPath(post)}
+        class="text-navy-800 after:absolute after:inset-0 after:content-[''] group-hover:text-gold-500 focus-visible:outline-none"
+      >
+        {post.data.title}
+      </a>
+    </h2>
+    <p class="mb-5 text-[14.5px] leading-[1.7] text-ink-800">{post.data.description}</p>
+    <time datetime={post.data.pubDate.toISOString()} class="mt-auto text-[12.5px] text-slate-500">
+      {formatDate(post.data.pubDate)}
+    </time>
+  </div>
 </article>

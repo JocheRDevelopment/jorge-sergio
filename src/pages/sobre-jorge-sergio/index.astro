@@ -50,11 +50,14 @@ const principles = [
 const jsonLd = [
   {
     '@type': 'Person',
+    // Mismo @id que el author de BlogPosting (src/lib/blog.ts): así los
+    // artículos quedan ligados a esta entidad.
+    '@id': `${SITE_URL}/sobre-jorge-sergio/#person`,
     name: 'Jorge Sergio Ramírez Lizárraga',
     url: `${SITE_URL}/sobre-jorge-sergio/`,
     jobTitle: 'Coach de Liderazgo Comercial y Planeación Patrimonial',
     description,
-    worksFor: { '@type': 'ProfessionalService', name: 'Jorge Sergio Ramírez Lizárraga' },
+    worksFor: { '@id': `${SITE_URL}/#organization` },
     alumniOf: CAREER_HISTORY.map((name) => ({ '@type': 'Organization', name })),
   },
   breadcrumbSchema([

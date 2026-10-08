@@ -5,6 +5,8 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  /** Texto alternativo de `image` para og:image:alt y twitter:image:alt. */
+  imageAlt?: string;
   canonical?: string;
   noindex?: boolean;
   ogType?: 'website' | 'profile' | 'article';
@@ -16,6 +18,7 @@ const {
   title,
   description,
   image = '/og/og-default.jpg',
+  imageAlt = SITE_NAME,
   canonical,
   noindex = false,
   ogType = 'website',
@@ -39,6 +42,7 @@ const pageTitle = appendBrand ? `${title} | ${SITE_NAME}` : title;
 <meta property="og:image" content={imageURL} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
 <meta property="og:site_name" content={SITE_NAME} />
 <meta property="og:locale" content="es_MX" />
 
@@ -47,6 +51,7 @@ const pageTitle = appendBrand ? `${title} | ${SITE_NAME}` : title;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={imageURL} />
+<meta name="twitter:image:alt" content={imageAlt} />
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

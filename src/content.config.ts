@@ -40,6 +40,7 @@ const blog = defineCollection({
       keyword: z.string(),
       cta: z.enum(['patrimonial', 'comercial']),
       heroImage: image().optional(),
+      heroImageAlt: z.string().optional(),
       faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
       draft: z.boolean().default(true),
     }),

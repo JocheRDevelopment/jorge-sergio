@@ -11,6 +11,18 @@ export const PILLARS: Record<Pillar, string> = {
   coaching: 'Coaching',
 };
 
+/**
+ * <title> y meta description propios por pilar. Si un pilar no aparece aquí,
+ * la página del pilar usa un texto genérico.
+ */
+export const PILLAR_META: Partial<Record<Pillar, { title: string; description: string }>> = {
+  retiro: {
+    title: 'Blog de retiro y PPR | Jorge Sergio Ramírez',
+    description:
+      'Guías claras sobre PPR, pensiones Ley 73 y Ley 97, deducciones ante el SAT y cómo planear tu retiro en México.',
+  },
+};
+
 /** Pilares que llevan aviso de "contenido informativo". */
 export const DISCLAIMER_PILLARS: Pillar[] = ['retiro', 'finanzas'];
 

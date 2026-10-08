@@ -59,3 +59,115 @@
     color: var(--color-navy-900);
   }
 }
+
+/* Cuerpo Markdown de los artículos del blog (BlogPostLayout). Las clases
+   table-wrap, bq-placeholder y bq-callout las agrega src/lib/blog-markdown.mjs.
+   Van en @layer utilities porque ahí vive .prose (@tailwindcss/typography);
+   en components perderían contra él sin importar la especificidad. */
+@layer utilities {
+  .prose .table-wrap {
+    margin-block: 1.75em;
+    overflow-x: auto;
+    border: 1px solid var(--color-line-200);
+    border-radius: 4px;
+    background: #fff;
+  }
+  .prose .table-wrap table {
+    margin: 0;
+    min-width: 560px;
+    font-size: 14.5px;
+  }
+  .prose .table-wrap thead {
+    background: var(--color-navy-800);
+    border-bottom: 0;
+  }
+  .prose .table-wrap thead th {
+    color: var(--color-bone-50);
+    font-weight: 600;
+    padding: 12px 14px;
+    vertical-align: bottom;
+  }
+  .prose .table-wrap tbody tr {
+    border-bottom-color: var(--color-line-200);
+  }
+  .prose .table-wrap tbody tr:nth-child(even) {
+    background: var(--color-bone-50);
+  }
+  .prose .table-wrap tbody td {
+    padding: 12px 14px;
+    vertical-align: top;
+  }
+  .prose .table-wrap tbody td:first-child {
+    color: var(--color-navy-800);
+    font-weight: 600;
+  }
+
+  .prose blockquote:is(.bq-placeholder, .bq-callout, .bq-story) {
+    font-style: normal;
+    quotes: none;
+    border-radius: 4px;
+    padding: 20px 24px;
+  }
+  .prose blockquote:is(.bq-placeholder, .bq-callout, .bq-story) p::before,
+  .prose blockquote:is(.bq-placeholder, .bq-callout, .bq-story) p::after {
+    content: none;
+  }
+  .prose blockquote:is(.bq-placeholder, .bq-callout, .bq-story) p {
+    margin: 0;
+  }
+
+  /* Anécdota o cita de un caso real. */
+  .prose blockquote.bq-story {
+    border-left: 4px solid var(--color-gold-500);
+    background: var(--color-bone-100);
+    color: var(--color-ink-900);
+    font-family: var(--font-serif);
+    font-size: 18px;
+    line-height: 1.65;
+    padding: 24px 28px;
+  }
+
+  /* Placeholder pendiente: alerta visible. Nunca llega a producción
+     (blogPublishGuard en astro.config.mjs). */
+  .prose blockquote.bq-placeholder {
+    border: 1px dashed #d97706;
+    border-left: 4px solid #d97706;
+    background: #fef9c3;
+    color: #713f12;
+    font-size: 14.5px;
+  }
+
+  /* Callout dentro del artículo: misma paleta que FinalCtaBand y PrimaryCta gold. */
+  .prose blockquote.bq-callout {
+    border-left: 4px solid var(--color-gold-500);
+    background: var(--color-navy-800);
+    color: var(--color-slate-300);
+    padding: 26px 28px;
+  }
+  .prose blockquote.bq-callout strong {
+    display: block;
+    margin-bottom: 14px;
+    color: var(--color-bone-50);
+    font-family: var(--font-serif);
+    font-size: 19px;
+    line-height: 1.4;
+  }
+  .prose blockquote.bq-callout a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 48px;
+    margin-right: 6px;
+    padding: 12px 22px;
+    border-radius: 3px;
+    background: var(--color-gold-500);
+    color: var(--color-navy-900);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 150ms;
+  }
+  .prose blockquote.bq-callout a:hover {
+    background: var(--color-gold-300);
+    color: var(--color-navy-900);
+  }
+}
