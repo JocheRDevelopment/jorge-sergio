@@ -1,7 +1,7 @@
 ---
 title: "¿Qué es un PPR y cómo funciona? Guía 2026 en México"
 description: "Qué es un PPR (Plan Personal de Retiro), cómo funciona, cuánto puedes deducir ante el SAT en 2026 y qué pasa si retiras antes de los 65. Guía clara."
-pubDate: 2026-11-03
+pubDate: 2026-10-08
 pillar: "retiro"
 keyword: "que es un ppr"
 cta: "patrimonial"

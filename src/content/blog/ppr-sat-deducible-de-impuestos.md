@@ -1,7 +1,7 @@
 ---
 title: "PPR y SAT: cómo deducir tu PPR de impuestos en 2026"
 description: "¿El PPR es deducible de impuestos? Cuánto puedes deducir ante el SAT en 2026, requisitos, cómo declararlo y por qué aportar antes del 31 de diciembre."
-pubDate: 2026-11-10
+pubDate: 2026-10-09
 pillar: "retiro"
 keyword: "ppr sat"
 cta: "patrimonial"

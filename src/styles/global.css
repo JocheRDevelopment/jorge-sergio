@@ -61,7 +61,7 @@
 }
 
 /* Cuerpo Markdown de los artículos del blog (BlogPostLayout). Las clases
-   table-wrap, bq-placeholder y bq-callout las agrega src/lib/blog-markdown.mjs.
+   table-wrap, bq-placeholder, bq-callout y blog-diagram las agrega src/lib/blog-markdown.mjs.
    Van en @layer utilities porque ahí vive .prose (@tailwindcss/typography);
    en components perderían contra él sin importar la especificidad. */
 @layer utilities {
@@ -169,6 +169,15 @@
   .prose blockquote.bq-callout a:hover {
     background: var(--color-gold-300);
     color: var(--color-navy-900);
+  }
+
+  /* Diagramas SVG del artículo (publicImagePlugin): son verticales; sin
+     límite ocuparían más de 2,000 px de alto en escritorio. */
+  .prose img.blog-diagram {
+    width: 100%;
+    max-width: 480px;
+    margin-inline: auto;
+    border-radius: 4px;
   }
 
   /* Nota de vigencia al final del artículo ("*Cifras vigentes a…*"): un

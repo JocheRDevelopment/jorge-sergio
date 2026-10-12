@@ -13,7 +13,7 @@
 | Title tag / H1 | ¿Qué es un PPR y cómo funciona? Guía 2026 en México (51 caracteres) |
 | Meta description | 148 caracteres (ver frontmatter) |
 | Extensión | ~1,600 palabras + 6 FAQs (~1,850 con FAQs) |
-| Fecha sugerida | 3 de noviembre de 2026 |
+| Fecha sugerida | 8 de octubre de 2026 |
 | Estado | `draft: true` hasta completar los pendientes de abajo |
 
 ## Mapa de keywords

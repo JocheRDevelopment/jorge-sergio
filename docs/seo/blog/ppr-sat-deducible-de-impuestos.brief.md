@@ -13,7 +13,7 @@
 | Title tag / H1 | PPR y SAT: cómo deducir tu PPR de impuestos en 2026 (51 caracteres) |
 | Meta description | 150 caracteres (ver frontmatter) |
 | Extensión | ~1,600 palabras + 7 FAQs |
-| Fecha sugerida | 10 de noviembre de 2026 (antes del cierre de año: es el momento de mayor intención) |
+| Fecha sugerida | 9 de octubre de 2026 (antes del cierre de año: es el momento de mayor intención) |
 | Estado | `draft: true` hasta completar los pendientes de abajo |
 | Dependencia | Publicar **después** del artículo #1, porque enlaza a `/blog/retiro/que-es-un-ppr/` |
 
