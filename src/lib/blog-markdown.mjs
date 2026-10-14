@@ -16,7 +16,19 @@ function withClass(node, cls) {
   return [...(Array.isArray(current) ? current : [current]), cls];
 }
 
-/** Envuelve cada <table> en un contenedor con scroll horizontal propio. */
+/** Número de celdas de la primera fila de una tabla. */
+function columnCount(node) {
+  const elements = (n) => (n.children ?? []).filter((child) => child.type === 'element');
+  const findRow = (n) => (n.tagName === 'tr' ? n : elements(n).map(findRow).find(Boolean));
+  const row = findRow(node);
+  return row ? elements(row).filter((cell) => cell.tagName === 'th' || cell.tagName === 'td').length : 0;
+}
+
+/**
+ * Envuelve cada <table> en un contenedor con scroll horizontal propio. Las
+ * tablas de más de 3 columnas llevan además table-wrap--sticky: la primera
+ * columna se queda fija al hacer scroll, para no perder qué fila se lee.
+ */
 export const tableWrapPlugin = {
   name: 'blog-table-wrap',
   element: {
@@ -25,7 +37,7 @@ export const tableWrapPlugin = {
       ctx.wrapNode(node, {
         type: 'element',
         tagName: 'div',
-        properties: { className: ['table-wrap'] },
+        properties: { className: columnCount(node) > 3 ? ['table-wrap', 'table-wrap--sticky'] : ['table-wrap'] },
         children: [],
       });
     },

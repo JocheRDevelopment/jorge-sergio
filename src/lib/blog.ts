@@ -27,6 +27,11 @@ export const PILLAR_META: Partial<Record<Pillar, { title: string; description: s
     description:
       'Guías prácticas para dueños y directores comerciales: proceso de ventas, prospección, manejo de objeciones, KPIs y cómo formar equipos que venden con sistema.',
   },
+  coaching: {
+    title: 'Blog de coaching empresarial y liderazgo | Jorge Sergio Ramírez',
+    description:
+      'Coaching empresarial, liderazgo y desarrollo de equipos para dueños y directivos en México. Guías prácticas de Jorge Sergio Ramírez, con +40 años de experiencia.',
+  },
 };
 
 /** Pilares que llevan aviso de "contenido informativo". */

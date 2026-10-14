@@ -24,3 +24,7 @@ Con el chequeo de enlaces, el build no deja publicar `ppr-sat-deducible-de-impue
 ### Proceso de ventas (pilar `ventas`)
 
 `proceso-de-ventas` es la guía pilar de Ventas y no depende de otros artículos del blog. Usa el diagrama `public/images/blog/diagrama-proceso-de-ventas.svg`: si cambian las etapas o los puntos de decisión del artículo, actualiza también el SVG (incluido su `<desc>`). Cuando se publiquen los artículos #7, #8, #12, #19 y #24, agrega los enlaces de la tabla "Keywords que se mencionan…" de `proceso-de-ventas.brief.md`.
+
+### Coaching empresarial (pilar `coaching`)
+
+`coaching-empresarial` es la guía pilar de Coaching y no depende de otros artículos del blog. Solo enlaza a páginas de servicio (`/coaching-de-ventas/` y `/agenda/`). Cuando se publiquen los artículos #3 (`proceso-de-ventas`), #16 y #20, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" de `coaching-empresarial.brief.md`.
