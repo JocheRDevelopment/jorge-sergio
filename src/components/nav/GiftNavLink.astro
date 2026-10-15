@@ -1,0 +1,49 @@
+---
+// Enlace al Simulador PPR en el menú, presentado como "un regalo de Jorge
+// Sergio": cajita con listón y moño (la tapa se levanta al pasar el mouse) y
+// una etiqueta "Gratis" con forma de etiqueta de regalo.
+interface Props {
+  /** desktop: menú completo · mobile: panel desplegable · compact: solo la cajita (barra < 1280 px, desde 640 px). */
+  variant?: 'desktop' | 'mobile' | 'compact';
+}
+
+const { variant = 'desktop' } = Astro.props;
+const href = '/simulador-ppr/';
+const current = Astro.url.pathname.startsWith(href);
+---
+
+<a
+  href={href}
+  aria-current={current ? 'page' : undefined}
+  aria-label={variant === 'compact' ? 'Simulador PPR gratis' : undefined}
+  title={variant === 'compact' ? 'Simulador PPR gratis' : undefined}
+  class:list={[
+    'group items-center gap-2 whitespace-nowrap rounded-full border font-medium text-gold-300 transition-colors duration-150 hover:border-gold-300 hover:bg-gold-500/20 hover:text-gold-300',
+    current ? 'border-gold-300 bg-gold-500/20' : 'border-gold-500/50 bg-gold-500/10',
+    {
+      desktop: 'inline-flex py-1.5 pl-2 pr-1.5 text-[15px]',
+      mobile: 'inline-flex self-start py-2 pl-2.5 pr-2 text-[15px]',
+      compact: 'hidden h-11 w-11 justify-center sm:inline-flex',
+    }[variant],
+  ]}
+>
+  <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" class="shrink-0 overflow-visible">
+    <rect x="4" y="11" width="16" height="11" rx="1.5" fill="#0a1728" stroke="#c9a227" stroke-width="1.3"></rect>
+    <rect x="10.5" y="11" width="3" height="11" fill="#c9a227"></rect>
+    <g
+      class="origin-bottom-left transition-transform duration-200 [transform-box:fill-box] motion-safe:group-hover:-translate-y-[3px] motion-safe:group-hover:-rotate-[14deg]"
+    >
+      <rect x="2.5" y="7" width="19" height="4.5" rx="1.2" fill="#142a4a" stroke="#c9a227" stroke-width="1.3"></rect>
+      <rect x="10.5" y="7" width="3" height="4.5" fill="#e4c766"></rect>
+      <path d="M12 7 C9.5 2.5 5.5 3.5 7 6 C7.6 7 10 7 12 7Z" fill="#e4c766"></path>
+      <path d="M12 7 C14.5 2.5 18.5 3.5 17 6 C16.4 7 14 7 12 7Z" fill="#e4c766"></path>
+      <circle cx="12" cy="7" r="1.4" fill="#c9a227"></circle>
+    </g>
+  </svg>
+  {variant !== 'compact' && <span>Simulador PPR</span>}
+  {variant !== 'compact' && <span
+    class="rounded-r-full bg-gold-500 py-0.5 pl-2.5 pr-2 text-[10.5px] font-bold uppercase tracking-[0.8px] text-navy-900 [clip-path:polygon(6px_0,100%_0,100%_100%,6px_100%,0_50%)]"
+  >
+    Gratis
+  </span>}
+</a>
