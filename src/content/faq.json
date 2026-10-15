@@ -112,5 +112,41 @@
     "page": "cmv",
     "question": "¿Cómo motivar a un equipo de ventas sin depender de bonos?",
     "answer": "Los bonos motivan en el corto plazo, pero no sostienen a un equipo cuando el mes es difícil. Lo que sostiene la motivación es un proceso claro, metas visibles y accountability real: que cada vendedor sepa qué se espera de él, vea su propio avance y tenga seguimiento constante — eso es lo que instala el método CMV, más allá del incentivo económico."
+  },
+  {
+    "id": "simulador-gratis",
+    "page": "simulador",
+    "question": "¿El simulador PPR es gratis?",
+    "answer": "Sí. Es gratuito, no pide registro y tus datos no salen de tu navegador."
+  },
+  {
+    "id": "simulador-pesos-de-hoy",
+    "page": "simulador",
+    "question": "¿Por qué los resultados están en pesos de hoy?",
+    "answer": "Porque usa un rendimiento por encima de la inflación. Así, $2 millones en el resultado equivalen a lo que hoy compras con $2 millones, no a un monto inflado del futuro."
+  },
+  {
+    "id": "simulador-devolucion-sat",
+    "page": "simulador",
+    "question": "¿Cuánto me devuelve el SAT por mi PPR?",
+    "answer": "Depende de tu ingreso y de cuánto aportes. El simulador lo calcula con la tarifa anual del ISR 2026. Por ejemplo, con ingresos de $50,000 al mes y $3,000 de aportación mensual, la devolución estimada es de unos $8,467 al año."
+  },
+  {
+    "id": "simulador-retiro-anticipado",
+    "page": "simulador",
+    "question": "¿Puedo retirar mi PPR antes de los 65?",
+    "answer": "Sí, pero pierdes el beneficio fiscal: lo deducido más sus rendimientos se vuelve ingreso acumulable y la institución retiene 20% de ISR. Por eso el simulador usa 65 años como edad mínima de retiro."
+  },
+  {
+    "id": "simulador-cualquier-ppr",
+    "page": "simulador",
+    "question": "¿El simulador sirve para cualquier PPR?",
+    "answer": "Sirve para darte una referencia de cualquier plan personal de retiro deducible. Cada producto tiene costos, coberturas y rendimientos distintos que conviene revisar antes de contratar."
+  },
+  {
+    "id": "simulador-resultado",
+    "page": "simulador",
+    "question": "¿Qué hago con mi resultado?",
+    "answer": "Úsalo como punto de partida. En una Estrategia Patrimonial sin costo, Jorge Sergio revisa contigo tu número, tu Afore y el PPR que más te conviene."
   }
 ]

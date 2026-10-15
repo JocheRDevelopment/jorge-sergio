@@ -20,9 +20,25 @@ interface Props {
   appendBrand?: boolean;
   /** Schema JSON-LD específico de la página (Service, Person, FAQPage, BreadcrumbList...). */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** href del CTA del header (p. ej. con UTMs de la página). */
+  ctaHref?: string;
+  /** Si es false, no se muestra la barra CTA fija global en móvil (la página trae la suya). */
+  stickyCta?: boolean;
 }
 
-const { title, description, image, imageAlt, canonical, noindex, ogType, appendBrand, jsonLd } = Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  canonical,
+  noindex,
+  ogType,
+  appendBrand,
+  jsonLd,
+  ctaHref,
+  stickyCta = true,
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -47,12 +63,12 @@ const { title, description, image, imageAlt, canonical, noindex, ogType, appendB
     {jsonLd && <JsonLd schema={jsonLd} />}
     <slot name="head" />
   </head>
-  <body class="pb-16 lg:pb-0">
-    <Nav />
+  <body class:list={[stickyCta && 'pb-16 lg:pb-0']}>
+    <Nav ctaHref={ctaHref} />
     <main>
       <slot />
     </main>
     <Footer />
-    <StickyMobileCta />
+    {stickyCta && <StickyMobileCta />}
   </body>
 </html>

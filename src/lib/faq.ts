@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content';
 
-export async function getFaqForPage(page: 'home' | 'cmv' | 'ppr') {
+export async function getFaqForPage(page: 'home' | 'cmv' | 'ppr' | 'simulador') {
   const all = await getCollection('faq', ({ data }) => data.page === page);
   return all.map((e) => e.data);
 }

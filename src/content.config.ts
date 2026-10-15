@@ -19,7 +19,7 @@ const faq = defineCollection({
   loader: file('./src/content/faq.json'),
   schema: z.object({
     id: z.string(),
-    page: z.enum(['home', 'cmv', 'ppr']),
+    page: z.enum(['home', 'cmv', 'ppr', 'simulador']),
     question: z.string(),
     answer: z.string(),
   }),

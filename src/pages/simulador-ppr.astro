@@ -1,0 +1,214 @@
+---
+// Simulador PPR ("un regalo de Jorge Sergio"). Brief y prototipo en
+// docs/seo/simulador-ppr/. Todo el texto SEO es HTML estático; solo el
+// formulario y los resultados son una isla de React.
+import { Image } from 'astro:assets';
+import '@fontsource/caveat/600.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SimuladorPPR from '../components/simulador-ppr/SimuladorPPR';
+import PrimaryCta from '../components/cta/PrimaryCta.astro';
+import FaqAccordion from '../components/sections/FaqAccordion.astro';
+import FinalCtaBand from '../components/cta/FinalCtaBand.astro';
+import { getFaqForPage, faqSchema } from '../lib/faq';
+import { breadcrumbSchema } from '../lib/schema';
+import { agendaUrl } from '../lib/simulador-ppr/utm';
+import { SITE_URL, SITE_NAME } from '../config/site';
+import jorgeRamirezCoach from '../assets/jorge-ramirez-coach.png';
+
+const faqEntries = await getFaqForPage('simulador');
+
+const title = 'Simulador PPR 2026: calcula tu plan de retiro gratis';
+const description =
+  'Simulador PPR gratis: calcula cuánto tendrías a los 65 con tu Plan Personal de Retiro y cuánto te devolvería el SAT en 2026. Un regalo de Jorge Sergio Ramírez.';
+
+const jsonLd = [
+  {
+    '@type': 'WebApplication',
+    '@id': `${SITE_URL}/simulador-ppr/#app`,
+    name: 'Simulador PPR',
+    alternateName: [
+      'Calculadora PPR',
+      'Simulador de Plan Personal de Retiro',
+      'Calculadora de retiro',
+      'Calculadora de ahorro para el retiro',
+    ],
+    url: `${SITE_URL}/simulador-ppr/`,
+    description,
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    inLanguage: 'es-MX',
+    isAccessibleForFree: true,
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'MXN' },
+    author: { '@type': 'Person', name: SITE_NAME, url: `${SITE_URL}/sobre-jorge-sergio/` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  },
+  faqSchema(faqEntries),
+  breadcrumbSchema([
+    { name: 'Inicio', path: '/' },
+    { name: 'Simulador PPR', path: '/simulador-ppr/' },
+  ]),
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  appendBrand={false}
+  canonical="/simulador-ppr/"
+  ogType="website"
+  image="/og/og-simulador-ppr.jpg"
+  imageAlt="Simulador PPR gratis · Un regalo de Jorge Sergio"
+  jsonLd={jsonLd}
+  ctaHref={agendaUrl('header')}
+  stickyCta={false}
+>
+  <section class="bg-bone-100 px-4 pb-16 pt-11 md:pb-20">
+    <div class="mx-auto max-w-[1080px] text-center">
+      <div
+        class="relative mb-[22px] inline-block -rotate-2 rounded-[6px] border-[1.5px] border-gold-500 bg-white py-2.5 pl-[34px] pr-[18px] text-left shadow-[0_4px_14px_rgba(13,27,48,0.08)]"
+      >
+        <span
+          class="absolute left-3 top-1/2 -mt-[5px] h-2.5 w-2.5 rounded-full border-2 border-gold-500 bg-bone-100"
+          aria-hidden="true"></span>
+        <small class="block text-[12px] uppercase tracking-[1px] text-ink-700">Un regalo para ti</small>
+        <span class="block font-['Caveat',cursive] text-[23px] font-semibold leading-[1.1] text-navy-800">
+          De: Jorge Sergio Ramírez
+        </span>
+      </div>
+      <h1 class="font-serif text-[clamp(2rem,4.6vw,3.2rem)] font-semibold leading-[1.15] text-navy-800">
+        Simulador PPR: calcula tu Plan Personal de Retiro gratis
+      </h1>
+      <p class="mx-auto mt-3.5 max-w-[680px] text-[17px] leading-[1.6] text-ink-800">
+        Descubre en un minuto cuánto podrías tener a los 65 años con tu PPR y cuánto te devolvería el SAT cada año.
+        Sin registro, sin costo: es mi regalo para que empieces a planear tu retiro con números reales.
+      </p>
+
+      <div class="text-left">
+        <SimuladorPPR client:visible>
+          <Image
+            slot="foto"
+            src={jorgeRamirezCoach}
+            width={144}
+            height={144}
+            alt="Jorge Sergio Ramírez Lizárraga"
+            loading="lazy"
+          />
+        </SimuladorPPR>
+      </div>
+    </div>
+  </section>
+
+  <article
+    class="prose prose-slate mx-auto max-w-[760px] px-4 py-14 prose-headings:font-serif prose-headings:text-navy-800 prose-h2:mt-12 md:px-0"
+  >
+    <h2>Cómo usar el simulador PPR</h2>
+    <p>
+      Este simulador de PPR calcula cuánto podrías acumular en tu Plan Personal de Retiro y cuánto te devolvería el
+      SAT por deducir tus aportaciones. Solo necesitas:
+    </p>
+    <ol>
+      <li>
+        <b>Tu edad actual</b> y la edad a la que quieres retirarte. El PPR deducible se puede retirar a partir de los 65
+        años.
+      </li>
+      <li><b>Tu aportación mensual</b> y, si tienes, un ahorro inicial.</li>
+      <li><b>Tu ingreso mensual bruto</b>, para estimar tu devolución de impuestos.</li>
+      <li><b>Un escenario de rendimiento:</b> conservador, moderado o dinámico.</li>
+    </ol>
+    <p>
+      Al abrir tu regalo verás el monto estimado a tu edad de retiro, cuánto viene de tus aportaciones y cuánto de los
+      rendimientos, tu devolución anual del SAT y el ingreso mensual que podrías recibir durante 20 años de retiro.
+    </p>
+
+    <h2>Ejemplo: cuánto tendrías con $3,000 al mes desde los 40</h2>
+    <p>
+      Una persona de 40 años con un ingreso de $50,000 al mes aporta $3,000 mensuales a su PPR hasta los 65 y reinvierte
+      su devolución del SAT. Con el simulador PPR:
+    </p>
+    <div class="table-wrap">
+      <table style="min-width:0">
+        <thead><tr><th>Escenario</th><th>Monto a los 65</th><th>Ingreso mensual por 20 años</th></tr></thead>
+        <tbody>
+          <tr><td>Conservador (3% real)</td><td>$1,630,725</td><td>$9,011</td></tr>
+          <tr><td>Moderado (5% real)</td><td>$2,152,851</td><td>$14,076</td></tr>
+          <tr><td>Dinámico (7% real)</td><td>$2,876,201</td><td>$21,929</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      En los tres casos aporta $900,000 en total, y el SAT le devuelve alrededor de <b>$8,467 al año</b>. La diferencia
+      entre escenarios muestra por qué importa tanto elegir bien el tipo de PPR.
+    </p>
+    <p>
+      La edad también pesa: con los mismos $3,000 al mes en el escenario moderado, quien empieza a los 30 llegaría a los
+      65 con unos <b>$4,081,682</b>, y quien empieza a los 50, con unos <b>$968,717</b>.
+    </p>
+
+    <div class="not-prose my-6 rounded-[6px] border-[1.5px] border-gold-500 bg-white px-[22px] py-5">
+      <p class="mb-3 font-semibold text-navy-800">
+        ¿Quieres saber qué escenario es realista para ti y qué PPR te conviene?
+      </p>
+      <PrimaryCta href={agendaUrl('ejemplo')}>Agenda tu Estrategia Patrimonial sin costo</PrimaryCta>
+    </div>
+
+    <h2>Cómo calcula esta calculadora PPR</h2>
+    <ul>
+      <li>
+        <b>Pesos de hoy:</b> usa un rendimiento real, es decir, por encima de la inflación, para que el resultado sea comparable
+        con lo que hoy cuestan las cosas.
+      </li>
+      <li>
+        <b>Interés compuesto mensual:</b> tus aportaciones se suman cada mes y generan rendimientos sobre rendimientos.
+      </li>
+      <li>
+        <b>Devolución del SAT:</b> calcula tu deducción (hasta el 10% de tus ingresos, con un tope de 5 UMA anuales, $213,973.20
+        en 2026) y la diferencia de ISR con la tarifa anual 2026.
+      </li>
+      <li><b>Reinversión:</b> si eliges reinvertir, la devolución de cada año se suma a tu PPR.</li>
+      <li>
+        <b>Ingreso en el retiro:</b> reparte el saldo final en pagos mensuales durante 20 años, con el mismo rendimiento real.
+      </li>
+    </ul>
+
+    <h2>¿Cuánto rendimiento da un PPR?</h2>
+    <p>
+      Depende del tipo de PPR y de en qué invierta: deuda, renta variable o una mezcla. No existe un rendimiento
+      garantizado. Por eso el simulador usa tres escenarios reales anuales, del 3% al 7%, para que veas un rango y no una
+      promesa.
+    </p>
+
+    <h2>¿Cuánto me dan si invierto 100 mil pesos en un PPR?</h2>
+    <p>Si inviertes $100,000 hoy y no los tocas durante 25 años, en pesos de hoy tendrías aproximadamente:</p>
+    <div class="table-wrap">
+      <table style="min-width:0">
+        <thead><tr><th>Escenario</th><th>Monto en 25 años</th></tr></thead>
+        <tbody>
+          <tr><td>Conservador (3% real)</td><td>$209,378</td></tr>
+          <tr><td>Moderado (5% real)</td><td>$338,635</td></tr>
+          <tr><td>Dinámico (7% real)</td><td>$542,743</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>A eso hay que sumar la devolución del SAT, si deduces esa aportación en tu declaración anual.</p>
+
+    <h2>Simulador PPR gratis vs simuladores de las instituciones</h2>
+    <p>
+      Las aseguradoras, bancos y operadoras tienen su propio simulador de plan personal de retiro, pensado para su
+      producto. Este simulador es independiente: te ayuda a entender tu número antes de elegir dónde contratar. Para
+      comparar opciones concretas, lo ideal es revisarlas con un asesor.
+    </p>
+  </article>
+
+  <FaqAccordion
+    entries={faqEntries}
+    eyebrow="Preguntas frecuentes"
+    title="Preguntas frecuentes sobre el simulador PPR"
+  />
+
+  <FinalCtaBand
+    title="Tu regalo completo: una estrategia de retiro a tu medida"
+    subhead="El simulador te da un número. En 30 minutos, Jorge Sergio te ayuda a convertirlo en un plan."
+    ctaLabel="Agenda tu Estrategia Patrimonial sin costo"
+    ctaHref={agendaUrl('final')}
+  />
+</BaseLayout>

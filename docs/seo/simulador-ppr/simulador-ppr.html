@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador PPR 2026: calcula tu plan de retiro gratis</title>
+<meta name="description" content="Simulador PPR gratis: calcula cuánto tendrías a los 65 con tu Plan Personal de Retiro y cuánto te devolvería el SAT en 2026. Un regalo de Jorge Sergio Ramírez.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d1b30; --navy-2:#16294a; --gold:#c9a24a; --gold-2:#e2c47a; --gold-ink:#8a6a1f;
+  --cream:#f7f2e8; --paper:#fffdf8; --ink:#1b2333; --muted:#5b6474; --line:#e6dccb;
+  --good:#2f7d5b; --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--navy)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;color:var(--navy);line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,4.6vw,3.2rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;margin-top:2.6rem}
+h3{font-size:1.2rem;font-weight:700;margin-top:1.6rem}
+p{margin:.8rem 0}
+
+/* Header */
+.top{background:var(--navy);color:#fff}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px}
+.brand{font-family:Fraunces,serif;font-weight:700;color:#fff;text-decoration:none;font-size:1.05rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;font:600 1rem Inter,sans-serif;text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease,background .15s}
+.btn:focus-visible{outline:3px solid var(--gold-2);outline-offset:3px}
+.btn-gold{background:var(--gold);color:var(--navy);padding:14px 26px;box-shadow:0 6px 18px rgba(201,162,74,.35)}
+.btn-gold:hover{transform:translateY(-2px);background:var(--gold-2)}
+.btn-sm{padding:9px 16px;font-size:.9rem}
+
+/* Hero */
+.hero{padding:44px 0 8px;text-align:center}
+.tag{position:relative;display:inline-block;background:var(--paper);border:1.5px solid var(--gold);border-radius:10px 10px 10px 10px;padding:10px 18px 10px 34px;margin-bottom:22px;box-shadow:0 4px 14px rgba(13,27,48,.08);transform:rotate(-2deg);text-align:left}
+.tag::before{content:"";position:absolute;left:12px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;border:2px solid var(--gold);background:var(--cream)}
+.tag small{display:block;color:var(--muted);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase}
+.tag span{font-family:Caveat,cursive;font-size:1.45rem;color:var(--navy);line-height:1.1}
+.lead{max-width:680px;margin:14px auto 0;color:var(--muted);font-size:1.08rem}
+
+/* Gift card (form) */
+.gift{position:relative;margin:56px auto 0;max-width:820px;background:var(--navy);border-radius:var(--radius);color:#fff;box-shadow:0 24px 60px rgba(13,27,48,.28);overflow:visible}
+.gift::before,.gift::after{content:"";position:absolute;background:linear-gradient(90deg,var(--gold),var(--gold-2),var(--gold));pointer-events:none}
+.gift::before{left:50%;top:0;bottom:0;width:26px;transform:translateX(-50%);opacity:.95}
+.gift::after{top:64px;left:0;right:0;height:26px;background:linear-gradient(180deg,var(--gold),var(--gold-2),var(--gold));opacity:.95}
+.bow{position:absolute;left:50%;top:-42px;transform:translateX(-50%);width:120px;height:70px;z-index:3;filter:drop-shadow(0 6px 10px rgba(0,0,0,.25))}
+.gift-inner{position:relative;z-index:2;padding:110px 28px 32px}
+.gift-panel{background:var(--paper);color:var(--ink);border-radius:14px;padding:26px;box-shadow:0 2px 0 rgba(0,0,0,.05)}
+.gift-panel h2{margin:0 0 4px;font-size:1.45rem}
+.gift-panel .hint{color:var(--muted);margin:0 0 18px;font-size:.95rem}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px}
+.field label{display:block;font-weight:600;font-size:.93rem;margin-bottom:6px;color:var(--navy)}
+.field .help{display:block;font-size:.8rem;color:var(--muted);margin-top:4px}
+.input{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 12px;font:500 1rem Inter,sans-serif;color:var(--ink);background:#fff}
+.input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,74,.25)}
+.money{position:relative}
+.money::before{content:"$";position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:600}
+.money .input{padding-left:24px}
+input[type=range]{width:100%;accent-color:var(--gold);margin-top:8px}
+.full{grid-column:1/-1}
+.pills{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pill{position:relative}
+.pill input{position:absolute;opacity:0}
+.pill label{display:block;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;cursor:pointer;background:#fff;text-align:center;margin:0}
+.pill label b{display:block;color:var(--navy);font-size:.95rem}
+.pill label span{font-size:.8rem;color:var(--muted)}
+.pill input:checked+label{border-color:var(--gold);background:#fbf5e6;box-shadow:0 0 0 3px rgba(201,162,74,.2)}
+.pill input:focus-visible+label{outline:3px solid var(--gold-2);outline-offset:2px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:.93rem}
+.check input{width:20px;height:20px;accent-color:var(--gold);margin-top:2px}
+.submit{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.submit .btn{font-size:1.08rem;padding:16px 34px}
+.submit small{color:var(--muted);font-size:.82rem}
+.error{color:#b42318;font-weight:600;font-size:.9rem;min-height:1.2em;text-align:center}
+
+/* Reveal */
+.reveal{max-width:820px;margin:28px auto 0;display:none}
+.reveal.show{display:block}
+.box-anim{display:flex;justify-content:center;padding:10px 0 0;height:150px;overflow:hidden;transition:height .5s ease,opacity .5s ease}
+.box-anim.done{height:0;opacity:0;padding:0}
+.box{position:relative;width:130px;height:110px;margin-top:30px}
+.box .base{position:absolute;bottom:0;left:8px;right:8px;height:80px;background:var(--navy);border-radius:8px}
+.box .base::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:16px;transform:translateX(-50%);background:var(--gold)}
+.box .lid{position:absolute;left:0;right:0;top:12px;height:28px;background:var(--navy-2);border-radius:8px;transform-origin:20% 100%}
+.box .lid::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:16px;transform:translateX(-50%);background:var(--gold-2)}
+.box.open .lid{animation:lid 1s cubic-bezier(.2,.8,.2,1) forwards}
+.box .spark{position:absolute;left:50%;top:30px;width:8px;height:8px;border-radius:50%;background:var(--gold-2);opacity:0}
+.box.open .spark{animation:spark .9s .25s ease-out forwards}
+.box.open .spark:nth-child(4){--dx:-60px;--dy:-70px}
+.box.open .spark:nth-child(5){--dx:55px;--dy:-80px;animation-delay:.3s}
+.box.open .spark:nth-child(6){--dx:-20px;--dy:-100px;animation-delay:.35s}
+.box.open .spark:nth-child(7){--dx:30px;--dy:-105px;animation-delay:.4s}
+@keyframes lid{to{transform:translate(-18px,-60px) rotate(-22deg)}}
+@keyframes spark{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx,0),var(--dy,-80px))}}
+.result{background:var(--paper);border:1.5px solid var(--gold);border-radius:var(--radius);padding:30px 28px;box-shadow:0 18px 50px rgba(13,27,48,.12);opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.result.in{opacity:1;transform:none}
+.result .kicker{color:var(--gold-ink);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;text-align:center}
+.big{font-family:Fraunces,serif;font-weight:700;color:var(--navy);font-size:clamp(2.4rem,7vw,3.8rem);text-align:center;line-height:1.05;margin:6px 0}
+.big-sub{text-align:center;color:var(--muted);margin:0 0 20px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.stat small{display:block;color:var(--muted);font-size:.78rem;line-height:1.3}
+.stat b{display:block;font-size:1.15rem;color:var(--navy);margin-top:4px}
+.stat.gold{background:#fbf5e6;border-color:var(--gold)}
+.chart{margin:8px 0 4px}
+.chart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.note{display:grid;grid-template-columns:72px 1fr;gap:16px;align-items:start;background:var(--navy);color:#fff;border-radius:14px;padding:22px;margin-top:22px}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:Fraunces,serif;font-weight:700;font-size:1.5rem;border:3px solid var(--gold-2);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.note p{margin:0 0 10px;color:#e8ecf3}
+.sign{font-family:Caveat,cursive;font-size:1.7rem;color:var(--gold-2);line-height:1}
+.note .btn{margin-top:14px}
+.note small{display:block;color:#aab4c5;margin-top:8px;font-size:.8rem}
+.disclaimer{font-size:.78rem;color:var(--muted);margin-top:16px;line-height:1.5}
+
+/* Content */
+.content{max-width:760px;margin:0 auto;padding:30px 0 40px}
+.content table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.95rem;background:var(--paper)}
+.content th,.content td{border:1px solid var(--line);padding:10px 12px;text-align:left}
+.content th{background:var(--navy);color:#fff;font-weight:600}
+.table-wrap{overflow-x:auto}
+.cta-box{background:var(--paper);border:1.5px solid var(--gold);border-radius:14px;padding:20px 22px;margin:24px 0}
+.cta-box p{margin:0 0 12px;font-weight:600;color:var(--navy)}
+details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:10px 0}
+summary{font-weight:600;color:var(--navy);cursor:pointer}
+.final{background:var(--navy);color:#fff;text-align:center;padding:48px 16px;margin-top:20px}
+.final h2{color:#fff;margin:0 0 10px}
+.final p{color:#cfd6e2;max-width:600px;margin:0 auto 22px}
+footer{background:#081222;color:#8f9ab0;font-size:.85rem;padding:20px 0;text-align:center}
+
+/* Sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;background:var(--navy);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;z-index:50;box-shadow:0 -6px 20px rgba(0,0,0,.2)}
+.sticky .btn{width:100%}
+
+@media (max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .gift-inner{padding:96px 14px 18px}
+  .gift-panel{padding:20px 16px}
+  .gift::after{top:56px}
+  .pills{grid-template-columns:1fr}
+  .note{grid-template-columns:1fr;text-align:left}
+  .sticky.on{display:block}
+  body.has-sticky{padding-bottom:76px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://jorgesergio.com/">Jorge Sergio Ramírez</a>
+    <a class="btn btn-gold btn-sm" href="https://jorgesergio.com/agenda/?utm_source=simulador-ppr&amp;utm_medium=herramienta&amp;utm_campaign=regalo-jorge&amp;utm_content=header">Agenda tu sesión</a>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="tag"><small>Un regalo para ti</small><span>De: Jorge Sergio Ramírez</span></div>
+  <h1>Simulador PPR: calcula tu Plan Personal de Retiro gratis</h1>
+  <p class="lead">Descubre en un minuto cuánto podrías tener a los 65 años con tu PPR y cuánto te devolvería el SAT cada año. Sin registro, sin costo: es mi regalo para que empieces a planear tu retiro con números reales.</p>
+</section>
+
+<section class="wrap" aria-labelledby="form-title">
+  <div class="gift">
+    <svg class="bow" viewBox="0 0 120 70" aria-hidden="true">
+      <path d="M60 36 C40 4, 6 6, 10 30 C13 48, 42 46, 60 36Z" fill="#c9a24a"/>
+      <path d="M60 36 C80 4, 114 6, 110 30 C107 48, 78 46, 60 36Z" fill="#c9a24a"/>
+      <path d="M60 36 C46 18, 22 16, 22 30 C22 40, 44 40, 60 36Z" fill="#e2c47a"/>
+      <path d="M60 36 C74 18, 98 16, 98 30 C98 40, 76 40, 60 36Z" fill="#e2c47a"/>
+      <path d="M56 38 L44 68 L52 64 L58 70 L60 40Z" fill="#b38c36"/>
+      <path d="M64 38 L76 68 L68 64 L62 70 L60 40Z" fill="#b38c36"/>
+      <circle cx="60" cy="36" r="9" fill="#e2c47a" stroke="#b38c36" stroke-width="2"/>
+    </svg>
+    <div class="gift-inner">
+      <form class="gift-panel" id="simForm" novalidate>
+        <h2 id="form-title">Calculadora PPR: tus datos</h2>
+        <p class="hint">Llena seis datos y abre tu regalo. Los resultados se muestran en pesos de hoy.</p>
+        <div class="grid">
+          <div class="field">
+            <label for="edad">Tu edad actual</label>
+            <input class="input" id="edad" name="edad" type="number" inputmode="numeric" min="18" max="64" value="40" required>
+          </div>
+          <div class="field">
+            <label for="edadRetiro">Edad a la que te quieres retirar</label>
+            <select class="input" id="edadRetiro" name="edadRetiro">
+              <option value="65" selected>65 años (edad del PPR deducible)</option>
+              <option value="66">66 años</option><option value="67">67 años</option>
+              <option value="68">68 años</option><option value="69">69 años</option>
+              <option value="70">70 años</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="mensual">¿Cuánto aportarías al mes?</label>
+            <div class="money"><input class="input" id="mensual" name="mensual" type="number" inputmode="numeric" min="500" step="500" value="3000" required></div>
+            <input type="range" id="mensualRange" min="500" max="30000" step="500" value="3000" aria-label="Aportación mensual">
+          </div>
+          <div class="field">
+            <label for="inicial">Ahorro inicial (opcional)</label>
+            <div class="money"><input class="input" id="inicial" name="inicial" type="number" inputmode="numeric" min="0" step="1000" value="0"></div>
+            <span class="help">Lo que ya tengas para tu retiro fuera de la Afore.</span>
+          </div>
+          <div class="field full">
+            <label for="ingreso">Tu ingreso mensual bruto</label>
+            <div class="money"><input class="input" id="ingreso" name="ingreso" type="number" inputmode="numeric" min="0" step="1000" value="50000"></div>
+            <span class="help">Lo usamos solo para estimar cuánto te devolvería el SAT por deducir tu PPR. No se guarda.</span>
+          </div>
+          <fieldset class="field full" style="border:0;padding:0;margin:0">
+            <legend style="font-weight:600;font-size:.93rem;margin-bottom:6px;color:var(--navy)">Escenario de rendimiento (por encima de la inflación)</legend>
+            <div class="pills">
+              <div class="pill"><input type="radio" name="escenario" id="esc1" value="conservador"><label for="esc1"><b>Conservador</b><span>3% real anual</span></label></div>
+              <div class="pill"><input type="radio" name="escenario" id="esc2" value="moderado" checked><label for="esc2"><b>Moderado</b><span>5% real anual</span></label></div>
+              <div class="pill"><input type="radio" name="escenario" id="esc3" value="dinamico"><label for="esc3"><b>Dinámico</b><span>7% real anual</span></label></div>
+            </div>
+          </fieldset>
+          <label class="check full"><input type="checkbox" id="reinvertir" checked> Reinvertir cada año en mi PPR la devolución del SAT</label>
+        </div>
+        <p class="error" id="error" role="alert"></p>
+        <div class="submit">
+          <button class="btn btn-gold" type="submit">Abrir mi regalo</button>
+          <small>Gratis, sin registro. Tus datos no salen de tu navegador.</small>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="reveal wrap" id="reveal" aria-live="polite">
+  <div class="box-anim" id="boxAnim" aria-hidden="true"><div class="box" id="box"><div class="base"></div><div class="lid"></div><span class="spark"></span><span class="spark"></span><span class="spark"></span><span class="spark"></span></div></div>
+  <div class="result" id="result">
+    <div class="kicker">Tu regalo</div>
+    <h2 style="text-align:center;margin:6px 0 0;font-size:1.3rem">A los <span id="rEdad">65</span> años podrías tener</h2>
+    <div class="big" id="rSaldo">$0</div>
+    <p class="big-sub">en pesos de hoy, con el escenario <b id="rEsc">moderado</b></p>
+
+    <div class="stats">
+      <div class="stat"><small>Lo que tú aportas</small><b id="rAportado">$0</b></div>
+      <div class="stat"><small>Rendimientos y devoluciones del SAT</small><b id="rRend">$0</b></div>
+      <div class="stat gold"><small>Te devuelve el SAT al año</small><b id="rDev">$0</b></div>
+      <div class="stat gold"><small>Ingreso mensual por <span id="rAnosRet">20</span> años de retiro</small><b id="rMensual">$0</b></div>
+    </div>
+
+    <div class="chart" id="chart" role="img" aria-label="Gráfica del crecimiento de tu PPR por edad"></div>
+    <div class="legend"><span><i style="background:#0d1b30"></i>Tus aportaciones</span><span><i style="background:#e2c47a"></i>Devoluciones del SAT reinvertidas</span><span><i style="background:#c9a24a"></i>Rendimientos</span></div>
+    <p class="disclaimer" id="rDeduccion"></p>
+
+    <div class="note">
+      <div class="avatar" aria-hidden="true">JS</div>
+      <div>
+        <p>Este número es un buen comienzo, pero un plan de retiro es más que un simulador: hay que elegir el PPR correcto, cuidar la deducción cada año y sumar tu Afore y tu pensión.</p>
+        <p>Te regalo también 30 minutos de mi tiempo para revisarlo contigo y convertir este número en un plan.</p>
+        <div class="sign">Jorge Sergio</div>
+        <a class="btn btn-gold" id="ctaResult" href="https://jorgesergio.com/agenda/?utm_source=simulador-ppr&amp;utm_medium=herramienta&amp;utm_campaign=regalo-jorge&amp;utm_content=resultado">Agenda tu Estrategia Patrimonial sin costo</a>
+        <small>Llamada en línea de 30 minutos. Sin compromiso.</small>
+      </div>
+    </div>
+
+    <p class="disclaimer">Simulación ilustrativa en pesos de hoy. Los rendimientos no están garantizados y dependen del instrumento que elijas. La devolución del SAT se estima con la tarifa anual del ISR 2026 y la UMA 2026, considerando solo la deducción del PPR (hasta el 10% de tus ingresos, máximo 5 UMA anuales); no incluye otras deducciones, comisiones ni impuestos al retirar. No sustituye asesoría fiscal o financiera personalizada.</p>
+  </div>
+</section>
+
+<article class="content wrap">
+  <h2>Cómo usar el simulador PPR</h2>
+  <p>Este simulador de PPR calcula cuánto podrías acumular en tu Plan Personal de Retiro y cuánto te devolvería el SAT por deducir tus aportaciones. Solo necesitas:</p>
+  <ol>
+    <li><b>Tu edad actual</b> y la edad a la que quieres retirarte. El PPR deducible se puede retirar a partir de los 65 años.</li>
+    <li><b>Tu aportación mensual</b> y, si tienes, un ahorro inicial.</li>
+    <li><b>Tu ingreso mensual bruto</b>, para estimar tu devolución de impuestos.</li>
+    <li><b>Un escenario de rendimiento:</b> conservador, moderado o dinámico.</li>
+  </ol>
+  <p>Al abrir tu regalo verás el monto estimado a tu edad de retiro, cuánto viene de tus aportaciones y cuánto de los rendimientos, tu devolución anual del SAT y el ingreso mensual que podrías recibir durante 20 años de retiro.</p>
+
+  <h2>Ejemplo: cuánto tendrías con $3,000 al mes desde los 40</h2>
+  <p>Una persona de 40 años con un ingreso de $50,000 al mes aporta $3,000 mensuales a su PPR hasta los 65 y reinvierte su devolución del SAT. Con el simulador PPR:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Escenario</th><th>Monto a los 65</th><th>Ingreso mensual por 20 años</th></tr></thead>
+    <tbody>
+      <tr><td>Conservador (3% real)</td><td>$1,630,725</td><td>$9,011</td></tr>
+      <tr><td>Moderado (5% real)</td><td>$2,152,851</td><td>$14,076</td></tr>
+      <tr><td>Dinámico (7% real)</td><td>$2,876,201</td><td>$21,929</td></tr>
+    </tbody>
+  </table></div>
+  <p>En los tres casos aporta $900,000 en total, y el SAT le devuelve alrededor de <b>$8,467 al año</b>. La diferencia entre escenarios muestra por qué importa tanto elegir bien el tipo de PPR.</p>
+  <p>La edad también pesa: con los mismos $3,000 al mes en el escenario moderado, quien empieza a los 30 llegaría a los 65 con unos <b>$4,081,682</b>, y quien empieza a los 50, con unos <b>$968,717</b>.</p>
+
+  <div class="cta-box">
+    <p>¿Quieres saber qué escenario es realista para ti y qué PPR te conviene?</p>
+    <a class="btn btn-gold" href="https://jorgesergio.com/agenda/?utm_source=simulador-ppr&amp;utm_medium=herramienta&amp;utm_campaign=regalo-jorge&amp;utm_content=ejemplo">Agenda tu Estrategia Patrimonial sin costo</a>
+  </div>
+
+  <h2>Cómo calcula esta calculadora PPR</h2>
+  <ul>
+    <li><b>Pesos de hoy:</b> usa un rendimiento real, es decir, por encima de la inflación, para que el resultado sea comparable con lo que hoy cuestan las cosas.</li>
+    <li><b>Interés compuesto mensual:</b> tus aportaciones se suman cada mes y generan rendimientos sobre rendimientos.</li>
+    <li><b>Devolución del SAT:</b> calcula tu deducción (hasta el 10% de tus ingresos, con un tope de 5 UMA anuales, $213,973.20 en 2026) y la diferencia de ISR con la tarifa anual 2026.</li>
+    <li><b>Reinversión:</b> si eliges reinvertir, la devolución de cada año se suma a tu PPR.</li>
+    <li><b>Ingreso en el retiro:</b> reparte el saldo final en pagos mensuales durante 20 años, con el mismo rendimiento real.</li>
+  </ul>
+
+  <h2>¿Cuánto rendimiento da un PPR?</h2>
+  <p>Depende del tipo de PPR y de en qué invierta: deuda, renta variable o una mezcla. No existe un rendimiento garantizado. Por eso el simulador usa tres escenarios reales anuales, del 3% al 7%, para que veas un rango y no una promesa.</p>
+
+  <h2>¿Cuánto me dan si invierto 100 mil pesos en un PPR?</h2>
+  <p>Si inviertes $100,000 hoy y no los tocas durante 25 años, en pesos de hoy tendrías aproximadamente:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Escenario</th><th>Monto en 25 años</th></tr></thead>
+    <tbody>
+      <tr><td>Conservador (3% real)</td><td>$209,378</td></tr>
+      <tr><td>Moderado (5% real)</td><td>$338,635</td></tr>
+      <tr><td>Dinámico (7% real)</td><td>$542,743</td></tr>
+    </tbody>
+  </table></div>
+  <p>A eso hay que sumar la devolución del SAT, si deduces esa aportación en tu declaración anual.</p>
+
+  <h2>Simulador PPR gratis vs simuladores de las instituciones</h2>
+  <p>Las aseguradoras, bancos y operadoras tienen su propio simulador de plan personal de retiro, pensado para su producto. Este simulador es independiente: te ayuda a entender tu número antes de elegir dónde contratar. Para comparar opciones concretas, lo ideal es revisarlas con un asesor.</p>
+
+  <h2>Preguntas frecuentes sobre el simulador PPR</h2>
+  <details><summary>¿El simulador PPR es gratis?</summary><p>Sí. Es gratuito, no pide registro y tus datos no salen de tu navegador.</p></details>
+  <details><summary>¿Por qué los resultados están en pesos de hoy?</summary><p>Porque usa un rendimiento por encima de la inflación. Así, $2 millones en el resultado equivalen a lo que hoy compras con $2 millones, no a un monto inflado del futuro.</p></details>
+  <details><summary>¿Cuánto me devuelve el SAT por mi PPR?</summary><p>Depende de tu ingreso y de cuánto aportes. El simulador lo calcula con la tarifa anual del ISR 2026. Por ejemplo, con ingresos de $50,000 al mes y $3,000 de aportación mensual, la devolución estimada es de unos $8,467 al año.</p></details>
+  <details><summary>¿Puedo retirar mi PPR antes de los 65?</summary><p>Sí, pero pierdes el beneficio fiscal: lo deducido más sus rendimientos se vuelve ingreso acumulable y la institución retiene 20% de ISR. Por eso el simulador usa 65 años como edad mínima de retiro.</p></details>
+  <details><summary>¿El simulador sirve para cualquier PPR?</summary><p>Sirve para darte una referencia de cualquier plan personal de retiro deducible. Cada producto tiene costos, coberturas y rendimientos distintos que conviene revisar antes de contratar.</p></details>
+  <details><summary>¿Qué hago con mi resultado?</summary><p>Úsalo como punto de partida. En una Estrategia Patrimonial sin costo, Jorge Sergio revisa contigo tu número, tu Afore y el PPR que más te conviene.</p></details>
+</article>
+
+<section class="final">
+  <h2>Tu regalo completo: una estrategia de retiro a tu medida</h2>
+  <p>El simulador te da un número. En 30 minutos, Jorge Sergio te ayuda a convertirlo en un plan.</p>
+  <a class="btn btn-gold" href="https://jorgesergio.com/agenda/?utm_source=simulador-ppr&amp;utm_medium=herramienta&amp;utm_campaign=regalo-jorge&amp;utm_content=final">Agenda tu Estrategia Patrimonial sin costo</a>
+</section>
+</main>
+
+<footer><div class="wrap">© 2026 · Jorge Sergio Ramírez Lizárraga · Contenido informativo; no sustituye asesoría fiscal o financiera personalizada.</div></footer>
+
+<div class="sticky" id="sticky"><a class="btn btn-gold" href="https://jorgesergio.com/agenda/?utm_source=simulador-ppr&amp;utm_medium=herramienta&amp;utm_campaign=regalo-jorge&amp;utm_content=sticky">Agenda tu Estrategia Patrimonial</a></div>
+
+<script>
+/* ===== Motor de cálculo (igual a calc.js) ===== */
+const UMA_ANUAL_2026=42794.64, TOPE_DEDUCCION_PPR=UMA_ANUAL_2026*5;
+const TARIFA_ISR_ANUAL_2026=[[0.01,0,0.0192],[10135.12,194.59,0.064],[86022.12,5051.37,0.1088],[151176.2,12140.13,0.16],[175735.67,16069.64,0.1792],[210403.7,22282.14,0.2136],[424353.98,67981.92,0.2352],[668840.15,125485.07,0.3],[1276925.99,307910.81,0.32],[1702567.98,444116.23,0.34],[5107703.93,1601862.46,0.35]];
+const ESCENARIOS={conservador:{nombre:"conservador",tasaReal:0.03},moderado:{nombre:"moderado",tasaReal:0.05},dinamico:{nombre:"dinámico",tasaReal:0.07}};
+function isrAnual(x){if(x<=0)return 0;let f=TARIFA_ISR_ANUAL_2026[0];for(const r of TARIFA_ISR_ANUAL_2026)if(x>=r[0])f=r;return f[1]+(x-f[0])*f[2];}
+function simularPPR(p){
+  const anos=p.edadRetiro-p.edad; if(anos<1)throw new Error("La edad de retiro debe ser mayor que tu edad actual.");
+  const i=Math.pow(1+p.tasaReal,1/12)-1, ingresoAnual=Math.max(0,p.ingresoMensual)*12;
+  const deduccionAnual=Math.min(p.mensual*12,ingresoAnual*0.1,TOPE_DEDUCCION_PPR);
+  const devolucionAnual=Math.max(0,isrAnual(ingresoAnual)-isrAnual(ingresoAnual-deduccionAnual));
+  const limitadoPor=deduccionAnual===p.mensual*12?"aportacion":deduccionAnual===TOPE_DEDUCCION_PPR?"tope5uma":"diezPorciento";
+  let saldo=p.inicial,aportado=p.inicial,dev=0;const serie=[{edad:p.edad,saldo,aportado,devoluciones:0}];
+  for(let y=1;y<=anos;y++){for(let m=0;m<12;m++){saldo=saldo*(1+i)+p.mensual;aportado+=p.mensual;}
+    if(p.reinvertir&&y<anos){saldo+=devolucionAnual;dev+=devolucionAnual;}
+    serie.push({edad:p.edad+y,saldo,aportado,devoluciones:dev});}
+  const anosRetiro=p.anosRetiro??20,meses=anosRetiro*12;
+  const ingresoMensualRetiro=i>0?saldo*i/(1-Math.pow(1+i,-meses)):saldo/meses;
+  return{anos,saldoFinal:saldo,totalAportado:aportado,devolucionesReinvertidas:dev,rendimientos:saldo-aportado-dev,deduccionAnual,devolucionAnual,devolucionTotal:devolucionAnual*anos,limitadoPor,ingresoMensualRetiro,anosRetiro,serie};
+}
+
+/* ===== UI ===== */
+const $=id=>document.getElementById(id);
+const mxn=n=>new Intl.NumberFormat("es-MX",{style:"currency",currency:"MXN",maximumFractionDigits:0}).format(Math.round(n));
+const mensual=$("mensual"), range=$("mensualRange");
+range.addEventListener("input",()=>{mensual.value=range.value;});
+mensual.addEventListener("input",()=>{range.value=Math.min(30000,Math.max(500,+mensual.value||500));});
+
+const corto=v=>v>=1e6?`$${(v/1e6).toFixed(1)} M`:v>=1e3?`$${Math.round(v/1e3)} mil`:`$${Math.round(v)}`;
+function chart(serie){
+  const W=Math.max(300,Math.round($("chart").clientWidth||760)),H=W<500?220:260,pl=58,pr=8,pt=14,pb=30,n=serie.length-1;
+  const max=Math.max(...serie.map(s=>s.saldo))||1, bw=(W-pl-pr)/serie.length, gap=Math.min(4,bw*.25);
+  const y=v=>pt+(H-pt-pb)*(1-v/max), h=v=>(H-pt-pb)*(v/max);
+  let bars="";
+  serie.forEach((s,k)=>{const x=pl+k*bw+gap/2,w=Math.max(1,bw-gap),a=Math.min(s.aportado,s.saldo),d=Math.min(s.devoluciones,Math.max(0,s.saldo-a)),r=Math.max(0,s.saldo-a-d);
+    bars+=`<rect x="${x}" y="${y(a)}" width="${w}" height="${h(a)}" fill="#0d1b30" rx="1.5"/>`;
+    bars+=`<rect x="${x}" y="${y(a+d)}" width="${w}" height="${h(d)}" fill="#e2c47a"/>`;
+    bars+=`<rect x="${x}" y="${y(a+d+r)}" width="${w}" height="${h(r)}" fill="#c9a24a" rx="1.5"/>`;});
+  const ticks=[0,.5,1].map(t=>`<line x1="${pl}" x2="${W-pr}" y1="${y(max*t)}" y2="${y(max*t)}" stroke="#e6dccb"/><text x="${pl-8}" y="${y(max*t)+4}" text-anchor="end" font-size="12" fill="#5b6474">${corto(max*t)}</text>`).join("");
+  const idx=[0,Math.round(n/2),n];
+  const ages=idx.map((k,j)=>`<text x="${j===0?pl:j===2?W-pr:pl+k*bw+bw/2}" y="${H-8}" text-anchor="${j===0?"start":j===2?"end":"middle"}" font-size="12" fill="#5b6474">${serie[k].edad} años</text>`).join("");
+  $("chart").innerHTML=`<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">${ticks}${bars}${ages}</svg>`;
+}
+
+$("simForm").addEventListener("submit",e=>{
+  e.preventDefault(); $("error").textContent="";
+  const p={edad:+$("edad").value,edadRetiro:+$("edadRetiro").value,mensual:+mensual.value,inicial:+$("inicial").value||0,
+    ingresoMensual:+$("ingreso").value||0,tasaReal:ESCENARIOS[document.querySelector('input[name=escenario]:checked').value].tasaReal,reinvertir:$("reinvertir").checked};
+  const esc=ESCENARIOS[document.querySelector('input[name=escenario]:checked').value].nombre;
+  if(!(p.edad>=18&&p.edad<=64)){$("error").textContent="Escribe una edad entre 18 y 64 años.";return;}
+  if(!(p.mensual>=500)){$("error").textContent="La aportación mensual mínima del simulador es de $500.";return;}
+  let r; try{r=simularPPR(p);}catch(err){$("error").textContent=err.message;return;}
+
+  $("rEdad").textContent=p.edadRetiro; $("rSaldo").textContent=mxn(r.saldoFinal); $("rEsc").textContent=esc;
+  $("rAportado").textContent=mxn(r.totalAportado); $("rRend").textContent=mxn(r.rendimientos+r.devolucionesReinvertidas);
+  $("rDev").textContent=mxn(r.devolucionAnual); $("rMensual").textContent=mxn(r.ingresoMensualRetiro); $("rAnosRet").textContent=r.anosRetiro;
+  const lim={aportacion:"tu aportación anual completa",diezPorciento:"el 10% de tus ingresos (el resto de tu aportación ya no es deducible)",tope5uma:"el tope de 5 UMA anuales ($213,973.20)"}[r.limitadoPor];
+  $("rDeduccion").textContent=r.devolucionAnual>0?`Puedes deducir ${mxn(r.deduccionAnual)} al año: ${lim}.${p.reinvertir?` Reinvirtiendo tus devoluciones sumas ${mxn(r.devolucionesReinvertidas)} a tu PPR.`:` En ${r.anos} años, el SAT te devolvería unos ${mxn(r.devolucionTotal)} en total.`}`:"Sin ingreso capturado no estimamos devolución del SAT.";
+  const reveal=$("reveal"),box=$("box"),res=$("result");
+  reveal.classList.add("show"); $("boxAnim").classList.remove("done"); chart(r.serie); res.classList.remove("in"); box.classList.remove("open"); void box.offsetWidth; box.classList.add("open");
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  setTimeout(()=>res.classList.add("in"),reduce?0:650);
+  setTimeout(()=>$("boxAnim").classList.add("done"),reduce?0:1500);
+  reveal.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});
+  $("sticky").classList.add("on"); document.body.classList.add("has-sticky");
+  // Analytics: evento de simulación completada (Claude Code lo conecta al analytics del sitio)
+  window.dispatchEvent(new CustomEvent("simulador_ppr_calculado",{detail:{edad:p.edad,mensual:p.mensual,escenario:esc}}));
+});
+</script>
+</body>
+</html>

@@ -90,7 +90,7 @@ Aplica el que resulte **menor** de los dos límites. Además, la deducción del 
 Imagina que tus ingresos acumulables en el año son de $600,000 pesos:
 
 - Tu límite de deducción por ingresos es de $60,000 (10%), menor al tope de $213,973.20.
-- Si aportas $60,000 a tu PPR y tu tasa marginal de ISR es de 30%, tu ahorro de impuestos aproximado es de **$18,000 pesos**.
+- Si aportas $60,000 a tu PPR, con ese nivel de ingresos tu tasa marginal de ISR en la tarifa 2026 es de 23.52%, así que tu ahorro de impuestos aproximado es de **$14,112 pesos**.
 
 *Ejemplo ilustrativo. Tu tasa marginal depende de la tarifa del ISR y de tus ingresos reales; confírmalo con tu contador.*
 

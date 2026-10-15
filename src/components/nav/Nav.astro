@@ -2,7 +2,14 @@
 import { navLinks } from '../../config/site';
 import { getPublishedPosts } from '../../lib/blog';
 import PrimaryCta from '../cta/PrimaryCta.astro';
+import GiftNavLink from './GiftNavLink.astro';
 
+interface Props {
+  /** href del CTA "Agenda tu sesión" (p. ej. con UTMs de la página). */
+  ctaHref?: string;
+}
+
+const { ctaHref = '/agenda/' } = Astro.props;
 const links = navLinks((await getPublishedPosts()).length > 0);
 ---
 
@@ -15,27 +22,29 @@ const links = navLinks((await getPublishedPosts()).length > 0);
   >
     <a
       href="/"
-      class="whitespace-nowrap font-serif text-[20px] font-semibold tracking-[0.3px] text-bone-50 hover:text-bone-50"
+      class="shrink-0 whitespace-nowrap font-serif text-[20px] font-semibold tracking-[0.3px] text-bone-50 hover:text-bone-50"
     >
       Jorge Sergio Ramírez
     </a>
 
-    <div class="hidden items-center gap-9 lg:flex">
+    <div class="hidden items-center gap-6 xl:flex min-[1400px]:gap-9">
+      <GiftNavLink />
       {
         links.map((link) => (
           <a
             href={link.href}
-            class="text-[15px] font-medium text-slate-300 hover:text-gold-300"
+            class="whitespace-nowrap text-[15px] font-medium text-slate-300 hover:text-gold-300"
           >
             {link.label}
           </a>
         ))
       }
-      <PrimaryCta href="/agenda/" variant="gold">Agenda tu sesión</PrimaryCta>
+      <PrimaryCta href={ctaHref} variant="gold">Agenda tu sesión</PrimaryCta>
     </div>
 
-    <div class="flex items-center gap-3 lg:hidden">
-      <PrimaryCta href="/agenda/" variant="gold" class="!px-4 !py-2.5 !text-[13px]">
+    <div class="flex items-center gap-3 xl:hidden">
+      <GiftNavLink variant="compact" />
+      <PrimaryCta href={ctaHref} variant="gold" class="!px-4 !py-2.5 !text-[13px]">
         Agenda tu sesión
       </PrimaryCta>
       <button
@@ -56,8 +65,9 @@ const links = navLinks((await getPublishedPosts()).length > 0);
     </div>
   </nav>
 
-  <div id="nav-mobile-panel" class="hidden border-t border-gold-500/25 bg-navy-800 px-6 py-4 lg:hidden">
+  <div id="nav-mobile-panel" class="hidden border-t border-gold-500/25 bg-navy-800 px-6 py-4 xl:hidden">
     <div class="flex flex-col gap-4">
+      <GiftNavLink variant="mobile" />
       {
         links.map((link) => (
           <a href={link.href} class="text-[15px] font-medium text-slate-300 hover:text-gold-300">

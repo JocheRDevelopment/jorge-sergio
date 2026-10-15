@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@astrojs/react';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { satteri } from '@astrojs/markdown-satteri';
 import { blogHastPlugins } from './src/lib/blog-markdown.mjs';
@@ -141,6 +142,7 @@ export default defineConfig({
         return lastmod ? { ...item, lastmod } : item;
       },
     }),
+    react(),
   ],
   vite: {
     plugins: [tailwindcss()],
