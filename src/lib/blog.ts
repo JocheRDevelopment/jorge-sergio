@@ -41,6 +41,10 @@ export const AUTHOR = {
   name: 'Jorge Sergio Ramírez',
   fullName: 'Jorge Sergio Ramírez Lizárraga',
   path: '/sobre-jorge-sergio/',
+  jobTitle: 'Coach de Liderazgo Comercial y Planeación Patrimonial',
+  // TODO: agregar URL del perfil de LinkedIn de Jorge Sergio. Mientras esté
+  // vacío, no se emite `sameAs` en el JSON-LD.
+  sameAs: [] as string[],
 };
 
 const isTemplate = (post: Post) => /(^|[\\/])_[^\\/]*$/.test(post.filePath ?? '');
@@ -96,8 +100,8 @@ export function blogPostingSchema(post: Post, imageURL: string) {
       '@id': `${SITE_URL}${AUTHOR.path}#person`,
       name: AUTHOR.fullName,
       url: `${SITE_URL}${AUTHOR.path}`,
-      // TODO: agregar URL del perfil de LinkedIn de Jorge Sergio.
-      sameAs: [],
+      jobTitle: AUTHOR.jobTitle,
+      ...(AUTHOR.sameAs.length ? { sameAs: AUTHOR.sameAs } : {}),
     },
     publisher: { '@id': `${SITE_URL}/#organization`, name: SITE_NAME },
   };

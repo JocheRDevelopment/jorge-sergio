@@ -11,6 +11,7 @@ export const GET: APIRoute = async ({ site }) => {
     ? `
 ## Blog
 
+- [Blog](${url('/blog/')}): Guías sobre retiro, PPR, pensiones del IMSS, ventas y coaching empresarial.
 ${posts.map((p) => `- [${p.data.title}](${url(postPath(p))}): ${p.data.description}`).join('\n')}
 `
     : '';
@@ -24,6 +25,10 @@ ${posts.map((p) => `- [${p.data.title}](${url(postPath(p))}): ${p.data.descripti
 - [Coaching de Ventas — Método CMV](${url('/coaching-de-ventas/')}): Coaching de ventas y formación de equipos comerciales para empresas (B2B). Crecimiento, Mentoría y Ventas.
 - [Plan Personal de Retiro (PPR)](${url('/plan-personal-de-retiro-ppr/')}): Estrategia personalizada de ahorro para el retiro y protección patrimonial ante la inflación, para profesionales y empresarios de 35 a 65 años.
 - [Agenda tu sesión](${url('/agenda/')}): Reserva automática 24/7 de una sesión de Diagnóstico Comercial o Estrategia Patrimonial, sin costo.
+
+## Herramientas
+
+- [Simulador PPR](${url('/simulador-ppr/')}): Calculadora gratuita de cuánto podrías acumular en un Plan Personal de Retiro y cuánto te devolvería el SAT por deducirlo.
 
 ## Sobre Jorge Sergio
 

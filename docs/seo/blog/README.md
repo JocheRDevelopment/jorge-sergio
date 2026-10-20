@@ -39,3 +39,7 @@ Ojo: el chequeo de enlaces del build revisa solo los artículos del blog, no `si
 ### Coaching empresarial (pilar `coaching`)
 
 `coaching-empresarial` es la guía pilar de Coaching y no depende de otros artículos del blog. Solo enlaza a páginas de servicio (`/coaching-de-ventas/` y `/agenda/`). Cuando se publiquen los artículos #3 (`proceso-de-ventas`), #16 y #20, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" de `coaching-empresarial.brief.md`.
+
+### Pensión Ley 73 (pilar `retiro`)
+
+`pension-ley-73` es la guía principal de pensiones IMSS. Se publicó antes que `que-es-un-ppr`, así que su enlace a ese artículo quedó en [`enlaces-pendientes.md`](enlaces-pendientes.md). Cuando se publiquen los artículos #9 (Ley 97) y #13 (Modalidad 40), agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" de `pension-ley-73.brief.md`.
