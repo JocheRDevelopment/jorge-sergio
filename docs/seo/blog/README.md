@@ -2,44 +2,27 @@
 
 Briefs de referencia de cada artículo (`<slug>.brief.md`). Esta carpeta no la procesa Astro y no se publica. Los artículos viven en `src/content/blog/`.
 
+## Publicación
+
+No hay borradores: todo archivo `.md` en `src/content/blog/` se publica en local, dev y producción. Solo se ignoran los que empiezan con `_` (como `_plantilla.md`).
+
 ## Chequeos del build
 
-`npm run build` falla si un artículo con `draft: false`:
+`npm run build` falla si un artículo:
 
 - conserva placeholders `[ANÉCDOTA DE JORGE — PENDIENTE…]`, o
-- enlaza a una ruta `/blog/...` que no se va a generar, porque no existe o porque el artículo destino sigue en `draft: true`.
+- enlaza a una ruta `/blog/...` que no existe.
 
-El error indica el archivo, la línea, el enlace y el motivo. Para revisar localmente el HTML de un borrador con placeholders, usa `SKIP_BLOG_GUARD=1 npm run build`. Esa variable solo salta la revisión de placeholders, nunca la de enlaces, y no se usa en CI ni en deploy. Ver `blogPublishGuard` en `astro.config.mjs`.
+El error indica el archivo, la línea, el enlace y el motivo. Para revisar localmente el HTML de un artículo con placeholders, usa `SKIP_BLOG_GUARD=1 npm run build`. Esa variable solo salta la revisión de placeholders, nunca la de enlaces, y no se usa en CI ni en deploy. Ver `blogPublishGuard` en `astro.config.mjs`.
 
-## Orden de publicación
+Ojo: el chequeo de enlaces revisa solo los artículos del blog, no las páginas `.astro` como `simulador-ppr.astro`; confirma a mano que el artículo destino exista antes de enlazarlo desde ahí.
 
-1. Publicar `que-es-un-ppr` primero.
-2. Al publicar `ppr-sat-deducible-de-impuestos`, agregar estos 2 enlaces en `src/content/blog/que-es-un-ppr.md`:
-   - Al final del H3 "¿Qué es un PPR para el SAT?", agregar:
-     `Te lo explico a detalle en la guía de [PPR y SAT](/blog/retiro/ppr-sat-deducible-de-impuestos/).`
-   - En el H2 "¿Cuánto puedes deducir de un PPR en 2026?", convertir en enlace a `/blog/retiro/ppr-sat-deducible-de-impuestos/` la primera aparición de la palabra "deducir" que esté en el cuerpo (no en el título).
+## Enlaces internos
 
-Con el chequeo de enlaces, el build no deja publicar `ppr-sat-deducible-de-impuestos` mientras `que-es-un-ppr` siga en borrador.
+Los enlaces entre `que-es-un-ppr`, `ppr-sat-deducible-de-impuestos`, `pension-ley-73`, `coaching-empresarial`, `proceso-de-ventas` y `/simulador-ppr/` ya están puestos. Cuando se cree un artículo nuevo, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" del brief de cada artículo que lo mencione:
 
-### Simulador PPR (`/simulador-ppr/`)
+- `proceso-de-ventas`: artículos #7, #8, #12, #19 y #24 (tabla "Keywords que se mencionan…" de `proceso-de-ventas.brief.md`). Si cambian las etapas o los puntos de decisión del artículo, actualiza también `public/images/blog/diagrama-proceso-de-ventas.svg` (incluido su `<desc>`).
+- `coaching-empresarial`: artículos #16 y #20 (`coaching-empresarial.brief.md`).
+- `pension-ley-73`: artículos #9 (Ley 97) y #13 (Modalidad 40) (`pension-ley-73.brief.md`).
 
-El simulador es una página-herramienta, no un artículo (brief en `docs/seo/simulador-ppr/`). Ya está enlazado desde el footer y desde `/plan-personal-de-retiro-ppr/`. Los enlaces con el blog se agregan solo cuando el artículo correspondiente se publique:
-
-- Al publicar `que-es-un-ppr`:
-  - En `src/content/blog/que-es-un-ppr.md`, H2 "Cómo empezar tu PPR en 4 pasos", paso 1: convertir "Calcula cuánto necesitas para retirarte" en enlace a `/simulador-ppr/`.
-  - En `src/pages/simulador-ppr.astro`, H2 "¿Cuánto rendimiento da un PPR?": convertir la primera aparición de "PPR" en el párrafo en enlace a `/blog/retiro/que-es-un-ppr/`.
-- Al publicar `ppr-sat-deducible-de-impuestos`: en `src/content/blog/ppr-sat-deducible-de-impuestos.md`, H2 "¿Cuánto te devuelve el SAT por tu PPR?", agregar al final la línea `Calcula tu devolución exacta en el [simulador PPR](/simulador-ppr/).`
-
-Ojo: el chequeo de enlaces del build revisa solo los artículos del blog, no `simulador-ppr.astro`; confirma a mano que el artículo destino ya tenga `draft: false` antes de enlazarlo desde el simulador.
-
-### Proceso de ventas (pilar `ventas`)
-
-`proceso-de-ventas` es la guía pilar de Ventas y no depende de otros artículos del blog. Usa el diagrama `public/images/blog/diagrama-proceso-de-ventas.svg`: si cambian las etapas o los puntos de decisión del artículo, actualiza también el SVG (incluido su `<desc>`). Cuando se publiquen los artículos #7, #8, #12, #19 y #24, agrega los enlaces de la tabla "Keywords que se mencionan…" de `proceso-de-ventas.brief.md`.
-
-### Coaching empresarial (pilar `coaching`)
-
-`coaching-empresarial` es la guía pilar de Coaching y no depende de otros artículos del blog. Solo enlaza a páginas de servicio (`/coaching-de-ventas/` y `/agenda/`). Cuando se publiquen los artículos #3 (`proceso-de-ventas`), #16 y #20, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" de `coaching-empresarial.brief.md`.
-
-### Pensión Ley 73 (pilar `retiro`)
-
-`pension-ley-73` es la guía principal de pensiones IMSS. Se publicó antes que `que-es-un-ppr`, así que su enlace a ese artículo quedó en [`enlaces-pendientes.md`](enlaces-pendientes.md). Cuando se publiquen los artículos #9 (Ley 97) y #13 (Modalidad 40), agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" de `pension-ley-73.brief.md`.
+Si al escribir un artículo un enlace apunta a una página que todavía no existe, deja el texto sin enlace y anótalo en [`enlaces-pendientes.md`](enlaces-pendientes.md).

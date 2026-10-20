@@ -7,7 +7,6 @@ keyword: "pension ley 73"
 cta: "patrimonial"
 heroImage: ../../assets/blogs/pension-ley-73-blog.jpg
 heroImageAlt: "Pensión Ley 73 del IMSS: requisitos y cálculo"
-draft: false
 faqs:
   - question: "¿Qué es la Ley 73 del IMSS?"
     answer: "La Ley 73 es la Ley del Seguro Social de 1973, que estuvo vigente hasta el 30 de junio de 1997. Aplica a quienes empezaron a cotizar en el IMSS antes del 1 de julio de 1997. Bajo este régimen, el IMSS paga una pensión vitalicia calculada con tu salario promedio y tus semanas cotizadas, no con lo que ahorraste en tu Afore."
@@ -158,7 +157,7 @@ Hay cinco formas de aumentar tu pensión IMSS Ley 73:
 2. **Sumar semanas cotizadas.** Cada bloque de 52 semanas después de las primeras 500 incrementa tu pensión.
 3. **Cotizar en la Modalidad 40.** Permite seguir cotizando de forma voluntaria, incluso con un salario más alto que el último, para mejorar tu salario promedio de las últimas 250 semanas. Es la estrategia más conocida de la Ley 73, pero requiere una inversión importante y hay que planearla bien.
 4. **Registrar tus asignaciones familiares** al pensionarte.
-5. **Complementarla con un Plan Personal de Retiro.** Si tu pensión va a cubrir solo una parte de tus gastos, un PPR te ayuda a cubrir la diferencia y, además, es deducible de impuestos.
+5. **Complementarla con un Plan Personal de Retiro.** Si tu pensión va a cubrir solo una parte de tus gastos, un [PPR](/blog/retiro/que-es-un-ppr/) te ayuda a cubrir la diferencia y, además, es deducible de impuestos.
 
 Calcula cuánto podrías juntar con un PPR en el [simulador PPR gratis](/simulador-ppr/).
 

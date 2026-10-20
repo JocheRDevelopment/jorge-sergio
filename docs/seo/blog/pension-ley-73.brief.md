@@ -14,7 +14,7 @@
 | Meta description | 140 caracteres (ver frontmatter) |
 | Extensión | ~1,950 palabras + 7 FAQs |
 | Fecha sugerida | 1 de diciembre de 2026 |
-| Estado | `draft: true` hasta completar los pendientes de abajo |
+| Estado | Publicado |
 | Dependencias | Enlaza al artículo #1 (`/blog/retiro/que-es-un-ppr/`) y al simulador (`/simulador-ppr/`). Publicar después de ambos |
 
 ## Por qué este artículo es el más importante del calendario
@@ -145,7 +145,7 @@ Es más competido que los artículos anteriores: hay sitios del gobierno arriba.
 | Externo | Crónica · Uno TV | Pensión mínima 2026 |
 | Externo | Amafore | https://amafore.org/sistemaahorro/el-regimen-73-del-imss/ |
 
-## Pendientes antes de publicar (`draft: false`)
+## Pendientes
 
 - [ ] Jorge escribe la anécdota marcada como `[ANÉCDOTA DE JORGE — PENDIENTE]`.
 - [ ] **Revisión de un especialista en pensiones IMSS o un contador**: es contenido de "tu dinero o tu vida" con cifras sensibles. Revisar en especial la pensión mínima 2026, las asignaciones familiares y la sección de recursos de la Afore.

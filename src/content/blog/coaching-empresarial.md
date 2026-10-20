@@ -7,7 +7,6 @@ keyword: "coaching empresarial"
 cta: "comercial"
 heroImage: ../../assets/blogs/coaching-empresarial-blog.jpg
 heroImageAlt: "Coaching empresarial para dueños de empresa en México"
-draft: true
 faqs:
   - question: "¿Qué es el coaching empresarial?"
     answer: "El coaching empresarial es un proceso de acompañamiento en el que un coach trabaja con dueños, directivos o equipos de una empresa para alcanzar objetivos de negocio concretos, como vender más, mejorar el liderazgo o profesionalizar la operación. El coach no hace el trabajo por ti: te ayuda a definir metas, detectar lo que te frena y sostener el cambio con seguimiento."
@@ -67,7 +66,7 @@ Un buen coach empresarial no te dice lo que quieres oír. Su valor está en ver 
 | Coaching para dueños de negocio | Dueños y socios de PyMEs | Dirección, delegación, crecimiento y equilibrio entre operar y dirigir |
 | Coaching ejecutivo | Directores y gerentes | Liderazgo, toma de decisiones y desempeño en el puesto |
 | Coaching de equipos | Equipos de trabajo completos | Comunicación, colaboración y responsabilidad compartida |
-| Coaching de ventas | Directores comerciales y vendedores | Proceso de ventas, prospección, cierre y seguimiento de indicadores |
+| Coaching de ventas | Directores comerciales y vendedores | [Proceso de ventas](/blog/ventas/proceso-de-ventas/), prospección, cierre y seguimiento de indicadores |
 | Coaching organizacional | Toda la empresa | Cultura, valores, estructura y cambio organizacional |
 
 En las PyMEs mexicanas, los tipos más solicitados suelen ser el **coaching para dueños** y el **coaching de ventas**, porque es donde el impacto en la facturación se ve más rápido. El liderazgo y el coaching empresarial van de la mano: casi todos los procesos terminan trabajando la forma en que el dueño dirige a su equipo.

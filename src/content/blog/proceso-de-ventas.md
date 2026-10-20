@@ -7,7 +7,6 @@ keyword: "proceso de ventas"
 cta: "comercial"
 heroImage: ../../assets/blogs/proceso-de-venta-blog.jpg
 heroImageAlt: "Proceso de ventas en 7 etapas"
-draft: true
 faqs:
   - question: "¿Qué es el proceso de ventas?"
     answer: "El proceso de ventas es la serie de etapas ordenadas y repetibles que sigue un equipo comercial para convertir a un prospecto en cliente: desde encontrarlo hasta cerrar la venta y darle seguimiento. Sirve para que los resultados dependan del sistema y no del talento de un solo vendedor."

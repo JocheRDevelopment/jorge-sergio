@@ -14,7 +14,7 @@
 | Meta description | 152 caracteres (ver frontmatter) |
 | Extensión | ~1,500 palabras + 6 FAQs |
 | Fecha sugerida | 24 de noviembre de 2026 |
-| Estado | `draft: true` hasta completar los pendientes de abajo |
+| Estado | Publicado |
 | Método CMV | No se explica. Solo hay un CTA final para agendar una llamada con Jorge |
 
 ## Mapa de keywords
@@ -116,7 +116,7 @@ También aparecen APD, ADEN y Escuela de Negocios y Dirección (España y Latino
 
 Sin enlaces externos: el artículo no cita estadísticas ni leyes. El modelo GROW es de dominio público (John Whitmore).
 
-## Pendientes antes de publicar (`draft: false`)
+## Pendientes
 
 - [x] Jorge escribe las 2 anécdotas marcadas como `[ANÉCDOTA DE JORGE — PENDIENTE]`. Escritas el 14 de octubre de 2026.
 - [ ] Imagen destacada (`heroImage`) de 1200×630 con texto "Coaching empresarial" y alt "Coaching empresarial para dueños de empresa en México".

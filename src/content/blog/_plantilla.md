@@ -41,8 +41,6 @@ faqs:
   - question: "¿Pregunta frecuente?"
     answer: "Respuesta directa en 1–3 frases."
 
-# true = borrador (no se genera en producción). Cambiar a false para publicar.
-draft: true
 ---
 
 Primer párrafo: responde la pregunta principal de forma directa.

@@ -50,15 +50,12 @@ export const AUTHOR = {
 const isTemplate = (post: Post) => /(^|[\\/])_[^\\/]*$/.test(post.filePath ?? '');
 
 /**
- * Posts visibles, del más reciente al más antiguo. En producción se excluyen
- * los borradores; en `astro dev` se muestran para poder revisarlos. Los
- * archivos que empiezan con "_" (plantillas) nunca se publican.
+ * Posts visibles, del más reciente al más antiguo. Todo archivo de
+ * src/content/blog/ se publica en cualquier entorno, salvo los que empiezan
+ * con "_" (plantillas).
  */
 export async function getPublishedPosts(): Promise<Post[]> {
-  const posts = await getCollection(
-    'blog',
-    (post) => !isTemplate(post) && (!import.meta.env.PROD || !post.data.draft)
-  );
+  const posts = await getCollection('blog', (post) => !isTemplate(post));
   return posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 }
 

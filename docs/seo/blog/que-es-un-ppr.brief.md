@@ -14,7 +14,7 @@
 | Meta description | 148 caracteres (ver frontmatter) |
 | Extensión | ~1,600 palabras + 6 FAQs (~1,850 con FAQs) |
 | Fecha sugerida | 8 de octubre de 2026 |
-| Estado | `draft: true` hasta completar los pendientes de abajo |
+| Estado | Publicado |
 
 ## Mapa de keywords
 
@@ -93,7 +93,7 @@ Santander (DR 73), BBVA (DR 76), Fintual, Skandia, AXA, Nu, Monterrey New York L
 | Externo (autoridad) | artículo 151, fracción V, de la Ley del ISR | https://www.diputados.gob.mx/LeyesBiblio/pdf/LISR.pdf |
 | Externo (autoridad) | $42,794.64 pesos anuales según el INEGI | https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/uma/uma2026.pdf |
 
-## Pendientes antes de publicar (`draft: false`)
+## Pendientes
 
 - [x] Jorge escribe las 2 anécdotas marcadas como `[ANÉCDOTA DE JORGE — PENDIENTE]` (2–3 líneas cada una). La primera (Carlos, 48 años) ya está escrita; la segunda se eliminó.
 - [ ] Un contador revisa las secciones de deducción, retiro anticipado e impuestos al retirar.

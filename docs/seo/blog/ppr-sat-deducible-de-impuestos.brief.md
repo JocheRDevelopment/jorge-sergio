@@ -14,7 +14,7 @@
 | Meta description | 150 caracteres (ver frontmatter) |
 | Extensión | ~1,600 palabras + 7 FAQs |
 | Fecha sugerida | 9 de octubre de 2026 (antes del cierre de año: es el momento de mayor intención) |
-| Estado | `draft: true` hasta completar los pendientes de abajo |
+| Estado | Publicado |
 | Dependencia | Publicar **después** del artículo #1, porque enlaza a `/blog/retiro/que-es-un-ppr/` |
 
 ## Mapa de keywords
@@ -99,7 +99,7 @@ El SAT ([minisitio de deducciones personales](https://sat.gob.mx/minisitio/Deduc
 | Externo (autoridad) | minisitio de deducciones personales | https://sat.gob.mx/minisitio/DeduccionesPersonales/aportaciones_complementarias.html |
 | Externo (autoridad) | $42,794.64 pesos anuales según el INEGI | https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/uma/uma2026.pdf |
 
-## Pendientes antes de publicar (`draft: false`)
+## Pendientes
 
 - [x] ~~Jorge escribe las 2 anécdotas marcadas como `[ANÉCDOTA DE JORGE — PENDIENTE]`.~~ Se quitaron los 2 placeholders (9 oct 2026) en vez de inventar historias de clientes. Si Jorge tiene un caso real, se puede agregar como blockquote después del párrafo de introducción o al final de "Aporta antes del 31 de diciembre".
 - [ ] Un contador revisa todo el artículo, en especial la tabla 151 vs 185 y la sección de RESICO.

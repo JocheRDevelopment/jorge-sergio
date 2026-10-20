@@ -7,7 +7,6 @@ keyword: "ppr sat"
 cta: "patrimonial"
 heroImage: ../../assets/blogs/ppr-sat-deducible-de-impuestos.jpg
 heroImageAlt: "Cómo deducir tu PPR de impuestos ante el SAT"
-draft: true
 faqs:
   - question: "¿El PPR es deducible de impuestos?"
     answer: "Sí. Las aportaciones a un Plan Personal de Retiro son deducibles de impuestos si el plan cumple con el artículo 151, fracción V, de la Ley del ISR: debe administrarlo una institución autorizada y el dinero solo se puede retirar a los 65 años o por invalidez o incapacidad."
@@ -92,6 +91,8 @@ El ahorro de impuestos depende de tu **tasa marginal de ISR**, es decir, el porc
 *Ejemplo ilustrativo. Tu tasa marginal depende de la tarifa del ISR y de tu situación; el saldo a favor final sale de tu cálculo anual completo. Confírmalo con tu contador.*
 
 Si eres asalariado, ese ahorro normalmente llega como **saldo a favor** en tu declaración anual. Si eres independiente o tienes actividad empresarial, se refleja como menos impuesto a pagar.
+
+Calcula tu devolución exacta en el [simulador PPR](/simulador-ppr/).
 
 > **¿Quieres saber cuánto podrías aportar este año y cuánto te devolvería el SAT?** [Agenda tu Estrategia Patrimonial sin costo](/agenda/) y lo calculamos con tus números.
 

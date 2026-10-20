@@ -7,7 +7,6 @@ keyword: "que es un ppr"
 cta: "patrimonial"
 heroImage: ../../assets/blogs/que-es-un-ppr-blog.jpg
 heroImageAlt: "Qué es un PPR, Plan Personal de Retiro en México"
-draft: true
 faqs:
   - question: "¿Qué es un PPR en pocas palabras?"
     answer: "Un PPR, o Plan Personal de Retiro, es un instrumento de ahorro e inversión a largo plazo que te ayuda a juntar dinero para tu retiro. Si cumple con el artículo 151 de la Ley del ISR, tus aportaciones son deducibles de impuestos y el SAT te puede devolver parte del ISR que pagaste."
@@ -50,6 +49,8 @@ Para el SAT, un PPR es una cuenta o canal de inversión **destinado exclusivamen
 
 Si el plan no cumple estas reglas, no deja de ser un ahorro, pero **no es deducible** como PPR del artículo 151.
 
+Te lo explico a detalle en la guía de [PPR y SAT](/blog/retiro/ppr-sat-deducible-de-impuestos/).
+
 ## ¿Cómo funciona un PPR?
 
 Un PPR funciona en cuatro pasos:
@@ -73,7 +74,7 @@ Para profesionistas y empresarios de 35 a 65 años, este último punto es más i
 
 ## ¿Cuánto puedes deducir de un PPR en 2026?
 
-En 2026 puedes deducir **hasta el 10% de tus ingresos acumulables del año, sin pasar de 5 UMA anuales**.
+En 2026 puedes [deducir](/blog/retiro/ppr-sat-deducible-de-impuestos/) **hasta el 10% de tus ingresos acumulables del año, sin pasar de 5 UMA anuales**.
 
 Con el valor de la UMA vigente desde el 1 de febrero de 2026, de [$42,794.64 pesos anuales según el INEGI](https://www.inegi.org.mx/contenidos/saladeprensa/boletines/2026/uma/uma2026.pdf), el tope es:
 
@@ -155,7 +156,7 @@ Probablemente no es tu prioridad si tienes deudas caras (como tarjetas de crédi
 
 ## Cómo empezar tu PPR en 4 pasos
 
-1. **Calcula cuánto necesitas para retirarte.** Parte de tus gastos mensuales actuales y de la pensión que esperas de tu Afore.
+1. **[Calcula cuánto necesitas para retirarte](/simulador-ppr/).** Parte de tus gastos mensuales actuales y de la pensión que esperas de tu Afore.
 2. **Define cuánto puedes aportar** sin poner en riesgo tu flujo mensual, y cuánto te conviene deducir.
 3. **Compara opciones de PPR:** costos, comisiones, perfil de inversión, coberturas y penalizaciones por retiro anticipado.
 4. **Revisa tu plan cada año:** ajusta aportaciones conforme suben tus ingresos y aprovecha la deducción antes del 31 de diciembre.

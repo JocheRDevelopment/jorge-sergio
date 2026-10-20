@@ -42,7 +42,6 @@ const blog = defineCollection({
       heroImage: image().optional(),
       heroImageAlt: z.string().optional(),
       faqs: z.array(z.object({ question: z.string(), answer: z.string() })).optional(),
-      draft: z.boolean().default(true),
     }),
 });
 

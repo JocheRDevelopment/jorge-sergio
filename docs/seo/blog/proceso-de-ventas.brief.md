@@ -14,7 +14,7 @@
 | Meta description | 158 caracteres (ver frontmatter) |
 | Extensión | ~1,950 palabras + 6 FAQs |
 | Fecha sugerida | 12 de octubre de 2026 |
-| Estado | `draft: true` hasta completar los pendientes de abajo |
+| Estado | Publicado |
 | Activo nuevo | Diagrama SVG en `/public/images/blog/diagrama-proceso-de-ventas.svg` (Claude Code lo crea) |
 
 ## Mapa de keywords
@@ -117,7 +117,7 @@ Docusign (DR 88), Salesforce (DR 92, con 3 URLs), Pipedrive (DR 90), Sage (DR 89
 
 Este artículo no tiene enlaces externos: no cita datos ni leyes. Si Jorge agrega alguna estadística, debe llevar su fuente enlazada.
 
-## Pendientes antes de publicar (`draft: false`)
+## Pendientes
 
 - [x] Jorge escribe la anécdota marcada como `[ANÉCDOTA DE JORGE — PENDIENTE]` (solo hay una). Escrita el 12 de octubre de 2026.
 - [x] **Decisión (confirmada):** el artículo no explica el método CMV. Solo lo menciona en un CTA final que invita a agendar una llamada con Jorge para conocerlo. Las 7 etapas son el modelo estándar, elegido por keywords.
