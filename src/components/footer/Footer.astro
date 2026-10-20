@@ -1,9 +1,8 @@
 ---
 import LogoStrip from '../sections/LogoStrip.astro';
-import { navLinks } from '../../config/site';
-import { getPublishedPosts } from '../../lib/blog';
+import { NAV_LINKS } from '../../config/site';
 
-const links = navLinks((await getPublishedPosts()).length > 0);
+const links = NAV_LINKS;
 const year = new Date().getFullYear();
 ---
 

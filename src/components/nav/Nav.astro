@@ -1,6 +1,5 @@
 ---
-import { navLinks } from '../../config/site';
-import { getPublishedPosts } from '../../lib/blog';
+import { NAV_LINKS } from '../../config/site';
 import PrimaryCta from '../cta/PrimaryCta.astro';
 import GiftNavLink from './GiftNavLink.astro';
 
@@ -10,7 +9,7 @@ interface Props {
 }
 
 const { ctaHref = '/agenda/' } = Astro.props;
-const links = navLinks((await getPublishedPosts()).length > 0);
+const links = NAV_LINKS;
 ---
 
 <header

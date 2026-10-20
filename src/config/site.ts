@@ -23,17 +23,9 @@ export const CONTACT = {
 export const NAV_LINKS = [
   { href: '/coaching-de-ventas/', label: 'Coaching de Ventas' },
   { href: '/plan-personal-de-retiro-ppr/', label: 'Plan de Retiro (PPR)' },
+  { href: '/blog/', label: 'Blog' },
   { href: '/sobre-jorge-sergio/', label: 'Sobre Jorge' },
 ] as const;
-
-/** Se inserta antes de "Sobre Jorge" solo si hay artículos publicados. */
-export const BLOG_NAV_LINK = { href: '/blog/', label: 'Blog' } as const;
-
-/** Enlaces de navegación, con "Blog" solo cuando el blog tiene contenido. */
-export function navLinks(hasPosts: boolean) {
-  if (!hasPosts) return [...NAV_LINKS];
-  return [...NAV_LINKS.slice(0, 2), BLOG_NAV_LINK, ...NAV_LINKS.slice(2)];
-}
 
 export const CAREER_HISTORY = [
   'Coca-Cola',
