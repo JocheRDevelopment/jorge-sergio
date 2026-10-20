@@ -35,6 +35,12 @@ const postLastmod = new Map(
     new Date(/** @type {string} */ (frontmatterField(source, 'updatedDate') ?? frontmatterField(source, 'pubDate'))).toISOString(),
   ])
 );
+// /blog/ y cada pilar toman el <lastmod> del artículo más reciente que listan.
+for (const [url, lastmod] of [...postLastmod]) {
+  for (const hub of [`${SITE}/blog/`, url.replace(/[^/]+\/$/, '')]) {
+    if (lastmod > (postLastmod.get(hub) ?? '')) postLastmod.set(hub, lastmod);
+  }
+}
 
 // Hace fallar `astro build` si un artículo publicado:
 //  1. conserva placeholders de anécdota. Para inspeccionar el HTML de un
