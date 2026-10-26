@@ -2,6 +2,7 @@
 title: "Pensión Ley 73 IMSS: requisitos, cálculo y cómo aumentarla"
 description: "Qué es la Ley 73 del IMSS, cómo saber si eres Ley 73 o 97, requisitos para pensionarte, cuánto te toca de pensión y cómo aumentarla en 2026."
 pubDate: 2026-10-20
+updatedDate: 2026-10-26
 pillar: "retiro"
 keyword: "pension ley 73"
 cta: "patrimonial"
@@ -21,7 +22,7 @@ faqs:
   - question: "¿Me puedo pensionar antes de los 60 años por la Ley 73?"
     answer: "No por cesantía o vejez: la edad mínima es 60 años. Antes de esa edad solo hay pensión por invalidez o por riesgo de trabajo, que tienen otros requisitos."
   - question: "¿Cómo puedo aumentar mi pensión Ley 73?"
-    answer: "Las formas más comunes son seguir cotizando para sumar semanas, retrasar la pensión hasta los 65 años, cotizar en la Modalidad 40 con un salario más alto en los últimos años y registrar asignaciones familiares. Además, puedes complementarla con un Plan Personal de Retiro."
+    answer: "Las formas más comunes son seguir cotizando para sumar semanas, retrasar la pensión hasta los 65 años, cotizar en la Modalidad 40 si dejaste de trabajar (desde octubre de 2026, solo con tu último salario más una UMA) y registrar asignaciones familiares. Además, puedes complementarla con un Plan Personal de Retiro."
 ---
 
 **La pensión Ley 73 es la pensión que paga el IMSS a quienes empezaron a cotizar antes del 1 de julio de 1997.** Para obtenerla necesitas al menos 500 semanas cotizadas y 60 años o más. El monto depende de tu salario promedio de los últimos cinco años, tus semanas cotizadas y tu edad al pensionarte: a los 65 recibes el 100% y a los 60, el 75%.
@@ -155,7 +156,7 @@ Hay cinco formas de aumentar tu pensión IMSS Ley 73:
 
 1. **Retrasar tu pensión hasta los 65.** Pasar del 75% al 100% es el aumento más directo.
 2. **Sumar semanas cotizadas.** Cada bloque de 52 semanas después de las primeras 500 incrementa tu pensión.
-3. **Cotizar en la Modalidad 40.** Permite seguir cotizando de forma voluntaria, incluso con un salario más alto que el último, para mejorar tu salario promedio de las últimas 250 semanas. Es la estrategia más conocida de la Ley 73, pero requiere una inversión importante y hay que planearla bien.
+3. **Cotizar en la Modalidad 40.** Permite seguir cotizando de forma voluntaria si dejaste de trabajar, para sumar semanas y conservar tu salario promedio de las últimas 250 semanas. Desde el 22 de octubre de 2026, los nuevos inscritos solo pueden cotizar con su último salario registrado más una UMA diaria, así que ya no sirve para subir mucho la pensión. Te lo explico en la guía de los [cambios a la Modalidad 40](/blog/retiro/modalidad-40/).
 4. **Registrar tus asignaciones familiares** al pensionarte.
 5. **Complementarla con un Plan Personal de Retiro.** Si tu pensión va a cubrir solo una parte de tus gastos, un [PPR](/blog/retiro/que-es-un-ppr/) te ayuda a cubrir la diferencia y, además, es deducible de impuestos.
 
@@ -183,4 +184,4 @@ La pensión de la Ley 73 es una base sólida, pero rara vez es suficiente por s�
 
 Un [plan personal de retiro](/plan-personal-de-retiro-ppr/) bien armado junta todas las piezas para que llegues al retiro con certeza.
 
-*Información vigente a octubre de 2026. Las reglas del IMSS y los montos cambian; confirma tu caso con el IMSS y con un asesor antes de tomar decisiones.*
+*Información vigente al 26 de octubre de 2026. Las reglas del IMSS y los montos cambian; confirma tu caso con el IMSS y con un asesor antes de tomar decisiones.*
