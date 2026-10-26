@@ -19,10 +19,10 @@ Ojo: el chequeo de enlaces revisa solo los artículos del blog, no las páginas 
 
 ## Enlaces internos
 
-Los enlaces entre `que-es-un-ppr`, `ppr-sat-deducible-de-impuestos`, `pension-ley-73`, `coaching-empresarial`, `proceso-de-ventas` y `/simulador-ppr/` ya están puestos. Cuando se cree un artículo nuevo, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" del brief de cada artículo que lo mencione:
+Los enlaces entre `que-es-un-ppr`, `ppr-sat-deducible-de-impuestos`, `pension-ley-73`, `modalidad-40`, `coaching-empresarial`, `proceso-de-ventas` y `/simulador-ppr/` ya están puestos. Cuando se cree un artículo nuevo, agrega los enlaces de la tabla "Keywords que pertenecen a otro artículo o página" del brief de cada artículo que lo mencione:
 
 - `proceso-de-ventas`: artículos #7, #8, #12, #19 y #24 (tabla "Keywords que se mencionan…" de `proceso-de-ventas.brief.md`). Si cambian las etapas o los puntos de decisión del artículo, actualiza también `public/images/blog/diagrama-proceso-de-ventas.svg` (incluido su `<desc>`).
 - `coaching-empresarial`: artículos #16 y #20 (`coaching-empresarial.brief.md`).
-- `pension-ley-73`: artículos #9 (Ley 97) y #13 (Modalidad 40) (`pension-ley-73.brief.md`).
+- `pension-ley-73`: artículo #9 (Ley 97) (`pension-ley-73.brief.md`). El enlace a #13 (Modalidad 40, ahora `modalidad-40`) ya está puesto.
 
 Si al escribir un artículo un enlace apunta a una página que todavía no existe, deja el texto sin enlace y anótalo en [`enlaces-pendientes.md`](enlaces-pendientes.md).
