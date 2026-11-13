@@ -165,6 +165,6 @@ Una estrategia financiera sólida para el retiro combina tres pilares:
 
 Un [plan personal de retiro](/plan-personal-de-retiro-ppr/) bien armado junta las tres piezas y se ajusta cuando cambian las reglas.
 
-> **Revisa tu caso antes de tomar decisiones.** [Agenda tu Estrategia Patrimonial sin costo](/agenda/): en 30 minutos revisamos tu pensión, tu situación con la Modalidad 40 y cuánto necesitas ahorrar por tu cuenta.
+> **Revisa tu caso antes de tomar decisiones.** [Agenda tu Estrategia Patrimonial sin costo](/agenda/): en 25 minutos revisamos tu pensión, tu situación con la Modalidad 40 y cuánto necesitas ahorrar por tu cuenta.
 
 *Información vigente al 26 de octubre de 2026. El IMSS anunció revisiones a la Modalidad 40 en los próximos meses; esta guía se actualizará cuando haya cambios. Consulta tu caso con el IMSS y con un asesor antes de tomar decisiones.*
