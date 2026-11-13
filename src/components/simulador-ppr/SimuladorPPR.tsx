@@ -338,13 +338,13 @@ export default function SimuladorPPR({ foto }: Props) {
                     PPR correcto, cuidar la deducción cada año y sumar tu Afore y tu pensión.
                   </p>
                   <p className="mb-2.5 text-slate-100">
-                    Te regalo también 30 minutos de mi tiempo para revisarlo contigo y convertir este número en un plan.
+                    Te regalo también 25 minutos de mi tiempo para revisarlo contigo y convertir este número en un plan.
                   </p>
                   <div className={s.signature}>Jorge Sergio</div>
                   <a href={agendaUrl('resultado')} className={`${btnGold} mt-3.5 px-6 py-3.5 text-[15px]`}>
                     Agenda tu Estrategia Patrimonial sin costo
                   </a>
-                  <small className="mt-2 block text-[13px] text-slate-400">Llamada en línea de 30 minutos. Sin compromiso.</small>
+                  <small className="mt-2 block text-[13px] text-slate-400">Llamada en línea de 25 minutos. Sin compromiso.</small>
                 </div>
               </div>
 

@@ -9,7 +9,7 @@
     "id": "home-costo",
     "page": "home",
     "question": "¿Cuánto cuesta la primera sesión con Jorge Sergio?",
-    "answer": "La primera sesión, tanto de Diagnóstico Comercial como de Estrategia Patrimonial, no tiene costo. Es una llamada de 30 minutos para entender tu situación y decirte con claridad si — y cómo — podemos ayudarte."
+    "answer": "La primera sesión, tanto de Diagnóstico Comercial como de Estrategia Patrimonial, no tiene costo. Es una llamada de 25 minutos para entender tu situación y decirte con claridad si — y cómo — podemos ayudarte."
   },
   {
     "id": "home-modalidad",
@@ -21,7 +21,7 @@
     "id": "home-duracion",
     "page": "home",
     "question": "¿Cuánto dura la llamada y qué necesito preparar?",
-    "answer": "30 minutos. Al agendar respondes 2 o 3 preguntas rápidas que nos ayudan a llegar a la sesión ya enfocados en tu reto — no necesitas preparar ninguna presentación ni documento."
+    "answer": "25 minutos. Al agendar respondes 2 o 3 preguntas rápidas que nos ayudan a llegar a la sesión ya enfocados en tu reto — no necesitas preparar ninguna presentación ni documento."
   },
   {
     "id": "home-tamano-empresa",
@@ -57,7 +57,7 @@
     "id": "cmv-diagnostico",
     "page": "cmv",
     "question": "¿Qué pasa en la sesión de Diagnóstico Comercial?",
-    "answer": "En 30 minutos revisamos el estado actual de tu equipo comercial (proceso, rotación, accountability, resultados), identificamos el cuello de botella real que está deteniendo tu facturación, y te digo con claridad si el método CMV es el camino correcto para tu empresa — sin presión ni discurso de venta."
+    "answer": "En 25 minutos revisamos el estado actual de tu equipo comercial (proceso, rotación, accountability, resultados), identificamos el cuello de botella real que está deteniendo tu facturación, y te digo con claridad si el método CMV es el camino correcto para tu empresa — sin presión ni discurso de venta."
   },
   {
     "id": "ppr-que-es",
@@ -87,7 +87,7 @@
     "id": "ppr-sesion",
     "page": "ppr",
     "question": "¿Qué pasa en la Sesión de Estrategia Patrimonial?",
-    "answer": "En 30 minutos revisamos tu situación actual (edad, capacidad de ahorro, si ya tienes un plan de retiro o no), te muestro con números qué tan lejos o cerca estás de tu meta de retiro, y definimos si una estrategia patrimonial contigo tiene sentido — sin costo y sin compromiso."
+    "answer": "En 25 minutos revisamos tu situación actual (edad, capacidad de ahorro, si ya tienes un plan de retiro o no), te muestro con números qué tan lejos o cerca estás de tu meta de retiro, y definimos si una estrategia patrimonial contigo tiene sentido — sin costo y sin compromiso."
   },
   {
     "id": "ppr-deducible",
